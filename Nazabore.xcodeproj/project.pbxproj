@@ -10,11 +10,37 @@
 		3FC765296288BBDD36F90C36 /* libPods-Nazabore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2F50143F83066885507381 /* libPods-Nazabore.a */; };
 		731B365C1C8C05EF0083BFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365B1C8C05EF0083BFFA /* main.m */; };
 		731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365E1C8C05EF0083BFFA /* AppDelegate.m */; };
-		731B36621C8C05EF0083BFFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36611C8C05EF0083BFFA /* ViewController.m */; };
-		731B36651C8C05EF0083BFFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 731B36631C8C05EF0083BFFA /* Main.storyboard */; };
 		731B36671C8C05EF0083BFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 731B36661C8C05EF0083BFFA /* Assets.xcassets */; };
 		731B366A1C8C05EF0083BFFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 731B36681C8C05EF0083BFFA /* LaunchScreen.storyboard */; };
 		731B36751C8C05EF0083BFFA /* NazaboreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36741C8C05EF0083BFFA /* NazaboreTests.m */; };
+		731B36AB1C8C1AEC0083BFFA /* NZBUserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36AA1C8C1AEC0083BFFA /* NZBUserVC.m */; };
+		731B36AC1C8C1AEC0083BFFA /* NZBUserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36AA1C8C1AEC0083BFFA /* NZBUserVC.m */; };
+		731B36B41C8C1B790083BFFA /* NZBMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36AF1C8C1B790083BFFA /* NZBMapVC.m */; };
+		731B36B51C8C1B790083BFFA /* NZBMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36AF1C8C1B790083BFFA /* NZBMapVC.m */; };
+		731B36B61C8C1B790083BFFA /* NZBZaborVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36B11C8C1B790083BFFA /* NZBZaborVC.m */; };
+		731B36B71C8C1B790083BFFA /* NZBZaborVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36B11C8C1B790083BFFA /* NZBZaborVC.m */; };
+		731B36B81C8C1B790083BFFA /* NZBWriteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36B31C8C1B790083BFFA /* NZBWriteVC.m */; };
+		731B36B91C8C1B790083BFFA /* NZBWriteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36B31C8C1B790083BFFA /* NZBWriteVC.m */; };
+		731B36BF1C8C1BA70083BFFA /* UIFont+System.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36BC1C8C1BA70083BFFA /* UIFont+System.m */; };
+		731B36C01C8C1BA70083BFFA /* UIFont+System.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36BC1C8C1BA70083BFFA /* UIFont+System.m */; };
+		731B36C11C8C1BA70083BFFA /* UIColor+System.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36BE1C8C1BA70083BFFA /* UIColor+System.m */; };
+		731B36C21C8C1BA70083BFFA /* UIColor+System.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36BE1C8C1BA70083BFFA /* UIColor+System.m */; };
+		731B36C91C8C1BE10083BFFA /* RDRGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36C61C8C1BE10083BFFA /* RDRGrowingTextView.m */; };
+		731B36CA1C8C1BE10083BFFA /* RDRGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36C61C8C1BE10083BFFA /* RDRGrowingTextView.m */; };
+		731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36C81C8C1BE10083BFFA /* NZBEmojiSelectView.m */; };
+		731B36CC1C8C1BE10083BFFA /* NZBEmojiSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36C81C8C1BE10083BFFA /* NZBEmojiSelectView.m */; };
+		731B36D71C8C1BF30083BFFA /* NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36CF1C8C1BF30083BFFA /* NZBMessageCell.m */; };
+		731B36D81C8C1BF30083BFFA /* NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36CF1C8C1BF30083BFFA /* NZBMessageCell.m */; };
+		731B36D91C8C1BF30083BFFA /* NZBAdsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36D11C8C1BF30083BFFA /* NZBAdsCell.m */; };
+		731B36DA1C8C1BF30083BFFA /* NZBAdsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36D11C8C1BF30083BFFA /* NZBAdsCell.m */; };
+		731B36DB1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36D41C8C1BF30083BFFA /* NZBAnnotationView.m */; };
+		731B36DC1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36D41C8C1BF30083BFFA /* NZBAnnotationView.m */; };
+		731B36DD1C8C1BF30083BFFA /* NZBEmojiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36D61C8C1BF30083BFFA /* NZBEmojiCell.m */; };
+		731B36DE1C8C1BF30083BFFA /* NZBEmojiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36D61C8C1BF30083BFFA /* NZBEmojiCell.m */; };
+		731B36E41C8C1CD70083BFFA /* MZBBoardAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36E11C8C1CD70083BFFA /* MZBBoardAnnotation.m */; };
+		731B36E51C8C1CD70083BFFA /* MZBBoardAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36E11C8C1CD70083BFFA /* MZBBoardAnnotation.m */; };
+		731B36E61C8C1CD70083BFFA /* NZBDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36E31C8C1CD70083BFFA /* NZBDataProvider.m */; };
+		731B36E71C8C1CD70083BFFA /* NZBDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36E31C8C1CD70083BFFA /* NZBDataProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,15 +58,42 @@
 		731B365B1C8C05EF0083BFFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		731B365D1C8C05EF0083BFFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		731B365E1C8C05EF0083BFFA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		731B36601C8C05EF0083BFFA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		731B36611C8C05EF0083BFFA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		731B36641C8C05EF0083BFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		731B36661C8C05EF0083BFFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		731B36691C8C05EF0083BFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		731B366B1C8C05EF0083BFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		731B36701C8C05EF0083BFFA /* NazaboreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NazaboreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B36741C8C05EF0083BFFA /* NazaboreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NazaboreTests.m; sourceTree = "<group>"; };
 		731B36761C8C05EF0083BFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		731B36A91C8C1AEC0083BFFA /* NZBUserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBUserVC.h; sourceTree = "<group>"; };
+		731B36AA1C8C1AEC0083BFFA /* NZBUserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBUserVC.m; sourceTree = "<group>"; };
+		731B36AD1C8C1B000083BFFA /* Prefix-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-Header.h"; sourceTree = "<group>"; };
+		731B36AE1C8C1B790083BFFA /* NZBMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBMapVC.h; sourceTree = "<group>"; };
+		731B36AF1C8C1B790083BFFA /* NZBMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBMapVC.m; sourceTree = "<group>"; };
+		731B36B01C8C1B790083BFFA /* NZBZaborVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBZaborVC.h; sourceTree = "<group>"; };
+		731B36B11C8C1B790083BFFA /* NZBZaborVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBZaborVC.m; sourceTree = "<group>"; };
+		731B36B21C8C1B790083BFFA /* NZBWriteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBWriteVC.h; sourceTree = "<group>"; };
+		731B36B31C8C1B790083BFFA /* NZBWriteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBWriteVC.m; sourceTree = "<group>"; };
+		731B36BB1C8C1BA70083BFFA /* UIFont+System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+System.h"; sourceTree = "<group>"; };
+		731B36BC1C8C1BA70083BFFA /* UIFont+System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+System.m"; sourceTree = "<group>"; };
+		731B36BD1C8C1BA70083BFFA /* UIColor+System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+System.h"; sourceTree = "<group>"; };
+		731B36BE1C8C1BA70083BFFA /* UIColor+System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+System.m"; sourceTree = "<group>"; };
+		731B36C51C8C1BE10083BFFA /* RDRGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRGrowingTextView.h; sourceTree = "<group>"; };
+		731B36C61C8C1BE10083BFFA /* RDRGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRGrowingTextView.m; sourceTree = "<group>"; };
+		731B36C71C8C1BE10083BFFA /* NZBEmojiSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBEmojiSelectView.h; sourceTree = "<group>"; };
+		731B36C81C8C1BE10083BFFA /* NZBEmojiSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBEmojiSelectView.m; sourceTree = "<group>"; };
+		731B36CE1C8C1BF30083BFFA /* NZBMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBMessageCell.h; sourceTree = "<group>"; };
+		731B36CF1C8C1BF30083BFFA /* NZBMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBMessageCell.m; sourceTree = "<group>"; };
+		731B36D01C8C1BF30083BFFA /* NZBAdsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBAdsCell.h; sourceTree = "<group>"; };
+		731B36D11C8C1BF30083BFFA /* NZBAdsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBAdsCell.m; sourceTree = "<group>"; };
+		731B36D21C8C1BF30083BFFA /* NZBCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBCellProtocol.h; sourceTree = "<group>"; };
+		731B36D31C8C1BF30083BFFA /* NZBAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBAnnotationView.h; sourceTree = "<group>"; };
+		731B36D41C8C1BF30083BFFA /* NZBAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBAnnotationView.m; sourceTree = "<group>"; };
+		731B36D51C8C1BF30083BFFA /* NZBEmojiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBEmojiCell.h; sourceTree = "<group>"; };
+		731B36D61C8C1BF30083BFFA /* NZBEmojiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBEmojiCell.m; sourceTree = "<group>"; };
+		731B36E01C8C1CD70083BFFA /* MZBBoardAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBBoardAnnotation.h; sourceTree = "<group>"; };
+		731B36E11C8C1CD70083BFFA /* MZBBoardAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBBoardAnnotation.m; sourceTree = "<group>"; };
+		731B36E21C8C1CD70083BFFA /* NZBDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBDataProvider.h; sourceTree = "<group>"; };
+		731B36E31C8C1CD70083BFFA /* NZBDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBDataProvider.m; sourceTree = "<group>"; };
 		9E2F50143F83066885507381 /* libPods-Nazabore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nazabore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1ED6CD2D395E20F99AA367 /* Pods-Nazabore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.debug.xcconfig"; sourceTree = "<group>"; };
 		ED73E2DD813630DB9E7D3A9C /* Pods-Nazabore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,9 +151,9 @@
 			children = (
 				731B365D1C8C05EF0083BFFA /* AppDelegate.h */,
 				731B365E1C8C05EF0083BFFA /* AppDelegate.m */,
-				731B36601C8C05EF0083BFFA /* ViewController.h */,
-				731B36611C8C05EF0083BFFA /* ViewController.m */,
-				731B36631C8C05EF0083BFFA /* Main.storyboard */,
+				731B36DF1C8C1CC80083BFFA /* Models */,
+				731B36BA1C8C1B9B0083BFFA /* Utils */,
+				731B36A81C8C1AD30083BFFA /* Views */,
 				731B36661C8C05EF0083BFFA /* Assets.xcassets */,
 				731B36681C8C05EF0083BFFA /* LaunchScreen.storyboard */,
 				731B366B1C8C05EF0083BFFA /* Info.plist */,
@@ -112,6 +165,7 @@
 		731B365A1C8C05EF0083BFFA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				731B36AD1C8C1B000083BFFA /* Prefix-Header.h */,
 				731B365B1C8C05EF0083BFFA /* main.m */,
 			);
 			name = "Supporting Files";
@@ -124,6 +178,80 @@
 				731B36761C8C05EF0083BFFA /* Info.plist */,
 			);
 			path = NazaboreTests;
+			sourceTree = "<group>";
+		};
+		731B36A81C8C1AD30083BFFA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				731B36CD1C8C1BE60083BFFA /* Cell */,
+				731B36C41C8C1BD40083BFFA /* Views */,
+				731B36C31C8C1BBA0083BFFA /* ViewControllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		731B36BA1C8C1B9B0083BFFA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				731B36BB1C8C1BA70083BFFA /* UIFont+System.h */,
+				731B36BC1C8C1BA70083BFFA /* UIFont+System.m */,
+				731B36BD1C8C1BA70083BFFA /* UIColor+System.h */,
+				731B36BE1C8C1BA70083BFFA /* UIColor+System.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		731B36C31C8C1BBA0083BFFA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				731B36AE1C8C1B790083BFFA /* NZBMapVC.h */,
+				731B36AF1C8C1B790083BFFA /* NZBMapVC.m */,
+				731B36B01C8C1B790083BFFA /* NZBZaborVC.h */,
+				731B36B11C8C1B790083BFFA /* NZBZaborVC.m */,
+				731B36B21C8C1B790083BFFA /* NZBWriteVC.h */,
+				731B36B31C8C1B790083BFFA /* NZBWriteVC.m */,
+				731B36A91C8C1AEC0083BFFA /* NZBUserVC.h */,
+				731B36AA1C8C1AEC0083BFFA /* NZBUserVC.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		731B36C41C8C1BD40083BFFA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				731B36C51C8C1BE10083BFFA /* RDRGrowingTextView.h */,
+				731B36C61C8C1BE10083BFFA /* RDRGrowingTextView.m */,
+				731B36C71C8C1BE10083BFFA /* NZBEmojiSelectView.h */,
+				731B36C81C8C1BE10083BFFA /* NZBEmojiSelectView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		731B36CD1C8C1BE60083BFFA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				731B36CE1C8C1BF30083BFFA /* NZBMessageCell.h */,
+				731B36CF1C8C1BF30083BFFA /* NZBMessageCell.m */,
+				731B36D01C8C1BF30083BFFA /* NZBAdsCell.h */,
+				731B36D11C8C1BF30083BFFA /* NZBAdsCell.m */,
+				731B36D21C8C1BF30083BFFA /* NZBCellProtocol.h */,
+				731B36D31C8C1BF30083BFFA /* NZBAnnotationView.h */,
+				731B36D41C8C1BF30083BFFA /* NZBAnnotationView.m */,
+				731B36D51C8C1BF30083BFFA /* NZBEmojiCell.h */,
+				731B36D61C8C1BF30083BFFA /* NZBEmojiCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		731B36DF1C8C1CC80083BFFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				731B36E01C8C1CD70083BFFA /* MZBBoardAnnotation.h */,
+				731B36E11C8C1CD70083BFFA /* MZBBoardAnnotation.m */,
+				731B36E21C8C1CD70083BFFA /* NZBDataProvider.h */,
+				731B36E31C8C1CD70083BFFA /* NZBDataProvider.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F603CB45C9202F7A3A47C66E /* Pods */ = {
@@ -220,7 +348,6 @@
 			files = (
 				731B366A1C8C05EF0083BFFA /* LaunchScreen.storyboard in Resources */,
 				731B36671C8C05EF0083BFFA /* Assets.xcassets in Resources */,
-				731B36651C8C05EF0083BFFA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,9 +413,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				731B36621C8C05EF0083BFFA /* ViewController.m in Sources */,
+				731B36C11C8C1BA70083BFFA /* UIColor+System.m in Sources */,
+				731B36D91C8C1BF30083BFFA /* NZBAdsCell.m in Sources */,
 				731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */,
+				731B36D71C8C1BF30083BFFA /* NZBMessageCell.m in Sources */,
+				731B36C91C8C1BE10083BFFA /* RDRGrowingTextView.m in Sources */,
+				731B36B81C8C1B790083BFFA /* NZBWriteVC.m in Sources */,
+				731B36B61C8C1B790083BFFA /* NZBZaborVC.m in Sources */,
+				731B36DD1C8C1BF30083BFFA /* NZBEmojiCell.m in Sources */,
 				731B365C1C8C05EF0083BFFA /* main.m in Sources */,
+				731B36B41C8C1B790083BFFA /* NZBMapVC.m in Sources */,
+				731B36E41C8C1CD70083BFFA /* MZBBoardAnnotation.m in Sources */,
+				731B36E61C8C1CD70083BFFA /* NZBDataProvider.m in Sources */,
+				731B36AB1C8C1AEC0083BFFA /* NZBUserVC.m in Sources */,
+				731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectView.m in Sources */,
+				731B36BF1C8C1BA70083BFFA /* UIFont+System.m in Sources */,
+				731B36DB1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +436,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				731B36DA1C8C1BF30083BFFA /* NZBAdsCell.m in Sources */,
+				731B36CC1C8C1BE10083BFFA /* NZBEmojiSelectView.m in Sources */,
+				731B36B91C8C1B790083BFFA /* NZBWriteVC.m in Sources */,
+				731B36B71C8C1B790083BFFA /* NZBZaborVC.m in Sources */,
+				731B36AC1C8C1AEC0083BFFA /* NZBUserVC.m in Sources */,
+				731B36B51C8C1B790083BFFA /* NZBMapVC.m in Sources */,
+				731B36DC1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */,
+				731B36CA1C8C1BE10083BFFA /* RDRGrowingTextView.m in Sources */,
+				731B36D81C8C1BF30083BFFA /* NZBMessageCell.m in Sources */,
+				731B36C21C8C1BA70083BFFA /* UIColor+System.m in Sources */,
 				731B36751C8C05EF0083BFFA /* NazaboreTests.m in Sources */,
+				731B36E71C8C1CD70083BFFA /* NZBDataProvider.m in Sources */,
+				731B36DE1C8C1BF30083BFFA /* NZBEmojiCell.m in Sources */,
+				731B36C01C8C1BA70083BFFA /* UIFont+System.m in Sources */,
+				731B36E51C8C1CD70083BFFA /* MZBBoardAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,14 +465,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		731B36631C8C05EF0083BFFA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				731B36641C8C05EF0083BFFA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		731B36681C8C05EF0083BFFA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -415,6 +561,7 @@
 			baseConfigurationReference = AA1ED6CD2D395E20F99AA367 /* Pods-Nazabore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "Nazabore/Prefix-Header.h";
 				INFOPLIST_FILE = Nazabore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -428,6 +575,7 @@
 			baseConfigurationReference = ED73E2DD813630DB9E7D3A9C /* Pods-Nazabore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "Nazabore/Prefix-Header.h";
 				INFOPLIST_FILE = Nazabore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
