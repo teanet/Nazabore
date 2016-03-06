@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FC765296288BBDD36F90C36 /* libPods-Nazabore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2F50143F83066885507381 /* libPods-Nazabore.a */; };
 		731B365C1C8C05EF0083BFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365B1C8C05EF0083BFFA /* main.m */; };
 		731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365E1C8C05EF0083BFFA /* AppDelegate.m */; };
 		731B36621C8C05EF0083BFFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36611C8C05EF0083BFFA /* ViewController.m */; };
@@ -40,6 +41,9 @@
 		731B36701C8C05EF0083BFFA /* NazaboreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NazaboreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B36741C8C05EF0083BFFA /* NazaboreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NazaboreTests.m; sourceTree = "<group>"; };
 		731B36761C8C05EF0083BFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E2F50143F83066885507381 /* libPods-Nazabore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nazabore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA1ED6CD2D395E20F99AA367 /* Pods-Nazabore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.debug.xcconfig"; sourceTree = "<group>"; };
+		ED73E2DD813630DB9E7D3A9C /* Pods-Nazabore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC765296288BBDD36F90C36 /* libPods-Nazabore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +65,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FABD671D9A02A5281E869AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E2F50143F83066885507381 /* libPods-Nazabore.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		731B364E1C8C05EF0083BFFA = {
 			isa = PBXGroup;
 			children = (
 				731B36591C8C05EF0083BFFA /* Nazabore */,
 				731B36731C8C05EF0083BFFA /* NazaboreTests */,
 				731B36581C8C05EF0083BFFA /* Products */,
+				F603CB45C9202F7A3A47C66E /* Pods */,
+				0FABD671D9A02A5281E869AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +126,15 @@
 			path = NazaboreTests;
 			sourceTree = "<group>";
 		};
+		F603CB45C9202F7A3A47C66E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA1ED6CD2D395E20F99AA367 /* Pods-Nazabore.debug.xcconfig */,
+				ED73E2DD813630DB9E7D3A9C /* Pods-Nazabore.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 731B36791C8C05EF0083BFFA /* Build configuration list for PBXNativeTarget "Nazabore" */;
 			buildPhases = (
+				3587319E3C04033B34034A32 /* Check Pods Manifest.lock */,
 				731B36531C8C05EF0083BFFA /* Sources */,
 				731B36541C8C05EF0083BFFA /* Frameworks */,
 				731B36551C8C05EF0083BFFA /* Resources */,
+				E173504ACFD96387B94DD4A3 /* Embed Pods Frameworks */,
+				6BABD4C5D14E16E4B7F9B0CD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,6 +232,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3587319E3C04033B34034A32 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6BABD4C5D14E16E4B7F9B0CD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E173504ACFD96387B94DD4A3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		731B36531C8C05EF0083BFFA /* Sources */ = {
@@ -337,9 +412,11 @@
 		};
 		731B367A1C8C05EF0083BFFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA1ED6CD2D395E20F99AA367 /* Pods-Nazabore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Nazabore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.Nazabore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,9 +425,11 @@
 		};
 		731B367B1C8C05EF0083BFFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED73E2DD813630DB9E7D3A9C /* Pods-Nazabore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Nazabore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.Nazabore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -400,6 +479,7 @@
 				731B367B1C8C05EF0083BFFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		731B367C1C8C05EF0083BFFA /* Build configuration list for PBXNativeTarget "NazaboreTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +488,7 @@
 				731B367E1C8C05EF0083BFFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

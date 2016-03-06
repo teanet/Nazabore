@@ -1,0 +1,14 @@
+platform :ios, '8.0'
+#use_frameworks!
+
+target 'NZBEntities' do
+
+pod 'AFNetworking'
+
+end
+
+target 'NZBEntitiesTests' do
+
+pod 'Kiwi'
+
+end
