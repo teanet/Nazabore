@@ -2,6 +2,7 @@
 
 #import "NZBServerController.h"
 #import "NZBDataProvider.h"
+#import "NSDate+NZBPrettyString.h"
 
 @interface NZBMessageCell ()
 
@@ -84,7 +85,7 @@
 
 	self.swipeEffect = YATableSwipeEffectTrail;
 	[self setModeWillChangeBlock:^(UITableViewCell *cell, YATableSwipeMode mode) {
-		NSLog(@">>%ld", (long)mode);
+
 		if (mode == YATableSwipeModeDefault) return;
 		@strongify(self);
 
@@ -119,7 +120,7 @@
 {
 	self.messageLabel.text = self.message.messageForWatch;
 	self.powerLabel.text = self.message.powerString;
-	self.timeLabel.text = self.message.timeString;
+	self.timeLabel.text = [NSDate nzb_prettyStringFrom:self.message.timestamp * 0.001];
 	self.swipingEnabled = (self.message.rating.interaction == NZBUserInteractionNone);
 	self.iconView.image = [UIImage imageNamed:self.message.icon];
 }
