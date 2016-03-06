@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>UIWrapper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>731B366F1C8C05EF0083BFFA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>731B3CB71C8C33D20083BFFA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

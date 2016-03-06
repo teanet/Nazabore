@@ -1,0 +1,92 @@
+#!/bin/bash
+
+CURRENT_DIR="$(pwd)"
+SCRIPT_DIR="$(dirname $(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}") )"
+cd "${SCRIPT_DIR}/../"
+
+BUILD_DIR="${SIMULATOR_BUILD_DIR}"
+WORKSPACE="Nazabore.xcworkspace"
+SCHEME="UIWrapper"
+PROVISIONING_PROFILE=""
+CODE_SIGN_IDENTITY=""
+TEST_OUTPUT_SETTINGS="-ct"
+
+DESTINATION="platform=iOS Simulator,name=iPhone 6"
+
+hash xcpretty 2>/dev/null || { 
+  echo "require xcpretty: \ngem install xcpretty \nAborting." 
+}
+
+Usage(){
+  echo "Usage:"
+  echo "    $(basename $0) -d <Device ID>"
+  echo ""
+  echo "    -l|--list"
+  echo "        Print avaliable device list with id's and avaliable identities list"
+  echo "    -d|--destination"
+  echo "        Set device to test"
+  echo "    -p|--profile"
+  echo "        Provisioning profile"
+  echo "    -i|--identity"
+  echo "        Code sign identity"
+  echo "    -h|--help"
+  echo "        Print this message"
+  echo "    --verbose"
+  echo "        Show full test output"
+  echo "    --sim"
+  echo "        Force run tests on default simulator"
+  echo ""
+  echo "Example:"
+  echo "$(basename $0) -d 623A3833-41EE-4BD1-AA4E-3D4F286A70B5 -i 'iPhone Developer: Eugene Tutuev (YT796UPAG9)' -p XXXX-XXXX-XXXX-XXXX"
+  echo "	Run test on device with id=623A3833-41EE-4BD1-AA4E-3D4F286A70B5"
+  exit 0
+}
+
+DeviceList(){
+	echo "*** Avaliable device list" 	
+	xcrun instruments -s devices
+	echo "*** Avaliable identity list" 
+	IdentityList
+	exit 0
+}
+
+IdentityList(){	
+	/usr/bin/security find-identity -v -p codesigning
+}
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -l | --list )           shift
+                                DeviceList
+                                ;;
+        -i | --identity)        shift
+                                CODE_SIGN_IDENTITY="$1"
+                                ;;
+        -p | --profile)         shift
+                                PROVISIONING_PROFILE="$1"
+                                ;;
+        -d | --destination)     shift
+                                DESTINATION="id=$1"
+                                ;;
+        -h | --help )           Usage
+                                exit
+                                ;;
+        --verbose )             TEST_OUTPUT_SETTINGS="-c"
+                                ;;
+        * )                     Usage
+                                exit 1
+    esac
+    shift
+done
+
+RunTests(){
+  echo "Running tests on $DESTINATION"
+  xcodebuild test \
+    "$@" \
+    2>&1 | xcpretty "${TEST_OUTPUT_SETTINGS}"
+}
+
+XCODEBUILD_FLAGS=( -destination "${DESTINATION}" -workspace "${WORKSPACE}" -scheme "${SCHEME}" -parallelizeTargets )
+
+RunTests "${XCODEBUILD_FLAGS[@]}"
+cd "${CURRENT_DIR}"
