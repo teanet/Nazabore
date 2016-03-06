@@ -2,15 +2,14 @@
 
 #import "NZBDataProvider.h"
 #import "MZBBoardAnnotation.h"
-#import "NZBZaborVC.h"
 #import "NZBAnnotationView.h"
-#import "NZBEmojiSelectView.h"
 
 @interface NZBMapVC ()
 <
 MKMapViewDelegate,
 UIGestureRecognizerDelegate
 >
+
 @property (nonatomic, strong, readonly) MKMapView *mapView;
 @property (nonatomic, strong) NSArray *annotations;
 
@@ -20,7 +19,7 @@ UIGestureRecognizerDelegate
 
 - (void)dealloc
 {
-	[self.mapView removeFromSuperview]; // release crashes app
+	[self.mapView removeFromSuperview];
 	self.mapView.delegate = nil;
 }
 
@@ -43,51 +42,23 @@ UIGestureRecognizerDelegate
 								   options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)
 								   context:nil];
 
-
 	[[NZBDataProvider sharedProvider].nearestBoardsSignal subscribeNext:^(NSArray *boards) {
 		@strongify(self);
 
 		[self.mapView removeAnnotations:self.annotations];
 		self.annotations = [[[boards rac_sequence]
-							 map:^id(id value) {
-								 return [[MZBBoardAnnotation alloc] initWithBoard:value];
-							 }] array];
+			map:^id(id value) {
+				return [[MZBBoardAnnotation alloc] initWithBoard:value];
+			}] array];
 
 		[self.mapView addAnnotations:self.annotations];
-//		[self.mapView showAnnotations:self.annotations animated:NO];
 	}];
 
-	[NSTimer scheduledTimerWithTimeInterval:10.0
-									 target:[NZBDataProvider sharedProvider]
-								   selector:@selector(fetchNearestBoards)
-								   userInfo:nil
-									repeats:YES];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
 
 	UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
 	[panRec setDelegate:self];
 	[self.mapView addGestureRecognizer:panRec];
-
-	[self refetchData];
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if (self.mapView.userLocation == nil) {
-		return;
-	}
-
-	
-	MKCoordinateRegion region;
-	region.center = self.mapView.userLocation.coordinate;
-
-	MKCoordinateSpan span;
-	span.latitudeDelta  = 0.01; // Change these values to change the zoom
-	span.longitudeDelta = 0.01;
-	region.span = span;
-
-	[self.mapView setRegion:region animated:YES];
-	[self.mapView.userLocation removeObserver:self forKeyPath:@"location"];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -96,18 +67,31 @@ UIGestureRecognizerDelegate
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
-- (void)refetchData
+- (void)didBecomeActive
 {
-	[super refetchData];
-	[[NZBDataProvider sharedProvider] fetchNearestBoard];
+	[self refetchData];
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-	return YES;
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if (self.mapView.userLocation == nil) return;
+
+	MKCoordinateRegion region;
+	region.center = self.mapView.userLocation.coordinate;
+
+	MKCoordinateSpan span;
+	span.latitudeDelta  = 0.01;
+	span.longitudeDelta = 0.01;
+	region.span = span;
+
+	[self.mapView setRegion:region animated:YES];
+	[self.mapView.userLocation removeObserver:self forKeyPath:@"location"];
 }
 
-- (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer {
-	if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
+- (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer
+{
+	if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
+	{
 		[self.textView resignFirstResponder];
 	}
 }
@@ -123,8 +107,6 @@ UIGestureRecognizerDelegate
 		[self showBoard:annotation.board];
 	}
 }
-
-
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
@@ -150,6 +132,13 @@ UIGestureRecognizerDelegate
 	}
 	view.annotation = annotation;
 	return view;
+}
+
+#pragma mark UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+	return YES;
 }
 
 @end

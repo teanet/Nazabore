@@ -39,9 +39,8 @@ CLLocationManagerDelegate
 	[_clm requestWhenInUseAuthorization];
 	[_clm startUpdatingLocation];
 	_currentLocation = _clm.location;
-#warning 123
+	[self fetchNearestBoards];
 
-//	_currentLocation = [[CLLocation alloc] initWithLatitude:54.9899035 longitude:82.89718689999999];
 	return self;
 }
 
@@ -62,14 +61,15 @@ CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
-	self.currentLocation = locations.firstObject;
-}
-
-- (void)fetchNearestBoard
-{
-	[[[NZBServerController sharedController] fetchBoardForLocalion:self.currentLocation] subscribeNext:^(NZBBoard *board) {
-//		[[NZBWatchConnection sharedConnection] updateCurrentBoard:board];
-	}];
+	CLLocation *location = locations.firstObject;
+	CLLocationDistance distance =
+		MKMetersBetweenMapPoints(MKMapPointForCoordinate(self.currentLocation.coordinate),
+								 MKMapPointForCoordinate(location.coordinate));
+	if (self.currentLocation == nil || distance > 200.0)
+	{
+		self.currentLocation = location;
+		[self fetchNearestBoards];
+	}
 }
 
 - (void)fetchNearestBoards
