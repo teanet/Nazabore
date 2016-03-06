@@ -38,6 +38,7 @@
 		731B3CBF1C8C33D20083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3CBE1C8C33D20083BFFA /* AppDelegate.m */; };
 		731B3CD31C8C37480083BFFA /* NSDate+NZBPrettyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B39CB1C8C2FB90083BFFA /* NSDate+NZBPrettyString.m */; };
 		731B3CD41C8C37990083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3CBE1C8C33D20083BFFA /* AppDelegate.m */; };
+		731B3CD71C8C49080083BFFA /* NZBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3CD61C8C49080083BFFA /* NZBPreferences.m */; };
 		8AC7851D717D0E0356885BF6 /* libPods-UIWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CF1CE9B404F04EC0D1DE97 /* libPods-UIWrapper.a */; };
 		8EBBA6B2B26B9971E93E3C6C /* libPods-NazaboreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED963E3624FC716F80AB548E /* libPods-NazaboreTests.a */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,8 @@
 		731B3CCB1C8C33D20083BFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		731B3CD11C8C36960083BFFA /* Prefix-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-Header.h"; sourceTree = "<group>"; };
 		731B3CD21C8C372B0083BFFA /* Prefix-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-Header.h"; sourceTree = "<group>"; };
+		731B3CD51C8C49080083BFFA /* NZBPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBPreferences.h; sourceTree = "<group>"; };
+		731B3CD61C8C49080083BFFA /* NZBPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBPreferences.m; sourceTree = "<group>"; };
 		9E2F50143F83066885507381 /* libPods-Nazabore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nazabore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1ED6CD2D395E20F99AA367 /* Pods-Nazabore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.debug.xcconfig"; sourceTree = "<group>"; };
 		C670F3311DF3A061A367C707 /* Pods-NazaboreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -287,6 +290,8 @@
 				731B36E11C8C1CD70083BFFA /* MZBBoardAnnotation.m */,
 				731B36E21C8C1CD70083BFFA /* NZBDataProvider.h */,
 				731B36E31C8C1CD70083BFFA /* NZBDataProvider.m */,
+				731B3CD51C8C49080083BFFA /* NZBPreferences.h */,
+				731B3CD61C8C49080083BFFA /* NZBPreferences.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 				731B36B81C8C1B790083BFFA /* NZBWriteVC.m in Sources */,
 				731B36B61C8C1B790083BFFA /* NZBZaborVC.m in Sources */,
 				731B36DD1C8C1BF30083BFFA /* NZBEmojiCell.m in Sources */,
+				731B3CD71C8C49080083BFFA /* NZBPreferences.m in Sources */,
 				731B365C1C8C05EF0083BFFA /* main.m in Sources */,
 				731B36B41C8C1B790083BFFA /* NZBMapVC.m in Sources */,
 				731B36E41C8C1CD70083BFFA /* MZBBoardAnnotation.m in Sources */,

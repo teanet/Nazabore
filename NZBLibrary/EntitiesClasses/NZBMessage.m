@@ -32,7 +32,6 @@
 @property (nonatomic, copy, readonly) NSNumber *lat;
 @property (nonatomic, copy, readonly) NSNumber *lon;
 @property (nonatomic, copy, readonly) NSNumber *pylon;
-@property (nonatomic, copy, readonly) NSNumber *userid;
 @property (nonatomic, copy, readonly) NSNumber *power;
 @property (nonatomic, copy, readonly) NSNumber *interaction;
 
@@ -124,7 +123,7 @@
 		[formatter setDateStyle:NSDateFormatterNoStyle];
 		[formatter setTimeStyle:NSDateFormatterShortStyle];
 	});
-	return [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.timestamp/1000]];
+	return [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.timestamp * 0.001]];
 }
 
 - (NSString *)powerString
