@@ -3,6 +3,7 @@
 #import "NZBServerController.h"
 #import "NZBDataProvider.h"
 #import "NSDate+NZBPrettyString.h"
+#import "NZBPreferences.h"
 
 @interface NZBMessageCell ()
 
@@ -118,6 +119,9 @@
 
 - (void)nzb_update
 {
+	BOOL isCurrentUser = [[NZBPreferences defaultPreferences].userId isEqualToString:self.message.userid];
+
+	self.contentView.backgroundColor = [UIColor colorWithWhite:isCurrentUser ? 0.95 : 1.0 alpha:1.0];
 	self.messageLabel.text = self.message.messageForWatch;
 	self.powerLabel.text = self.message.powerString;
 	self.timeLabel.text = [NSDate nzb_prettyStringFrom:self.message.timestamp * 0.001];

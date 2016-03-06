@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, NZBUserInteraction) {
 @property (nonatomic, copy, readonly) NSString *phone;
 @property (nonatomic, copy, readonly) NSString *dbObjectIdentifier;
 @property (nonatomic, copy, readonly) NSNumber *karma;
+@property (nonatomic, copy, readonly) NSString *userid;
 @property (nonatomic, weak) id<NZBUpdateProtocol> relatedView;
 @property (nonatomic, strong) NSDictionary *boardD;
 
