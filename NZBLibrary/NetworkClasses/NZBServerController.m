@@ -195,8 +195,7 @@ static NSString *const kNZBAPIHeaderFieldUserIdKey	= @"userid";
 
 				 if ([messageDictionary isKindOfClass:[NSDictionary class]])
 				 {
-#warning У Ромы ошибка: mesage вместо message
-					 message = [NZBMessage messageWithDictionary:messageDictionary[@"mesage"]];
+					 message = [NZBMessage messageWithDictionary:messageDictionary[@"message"]];
 				 }
 				 message.boardD = messageDictionary[@"board"];
 				 return message;
