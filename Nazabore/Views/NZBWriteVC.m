@@ -62,9 +62,8 @@ static CGFloat const MaxToolbarHeight = 200.0;
 
 - (void)showBoard:(NZBBoard *)b
 {
-	if ([self.board.id isEqualToString:b.id]) {
-		return;
-	}
+	if ([self.board.id isEqualToString:b.id]) return;
+
 	NZBZaborVC *zaborVC = [[NZBZaborVC alloc] init];
 	zaborVC.board = b;
 	[self.navigationController pushViewController:zaborVC animated:YES];
@@ -80,6 +79,9 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	NZBEmojiSelectView *view = [[NZBEmojiSelectView alloc] init];
 
 	view.block = ^(NSString *emoji) {
+		@strongify(self);
+
+		[self dismissViewControllerAnimated:YES completion:nil];
 
 		[[[NZBDataProvider sharedProvider] postMessage:self.textView.text forBoard:self.board icon:emoji] subscribeNext:^(NZBMessage *m) {
 			@strongify(self);
@@ -93,16 +95,7 @@ static CGFloat const MaxToolbarHeight = 200.0;
 			[self refetchData];
 
 		} error:^(NSError *error) {
-			b.enabled = YES;
 			[[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-			[self dismissViewControllerAnimated:YES completion:nil];
-
-		} completed:^{
-			@strongify(self);
-
-			b.enabled = YES;
-			[self dismissViewControllerAnimated:YES completion:nil];
-
 		}];
 	};
 	view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -124,9 +117,7 @@ static CGFloat const MaxToolbarHeight = 200.0;
 
 - (UIView *)inputAccessoryView
 {
-	if (_toolbar) {
-		return _toolbar;
-	}
+	if (_toolbar) return _toolbar;
 
 	_toolbar = [UIToolbar new];
 	_toolbar.backgroundColor = [UIColor whiteColor];

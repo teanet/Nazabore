@@ -10,7 +10,6 @@
 
 + (instancetype)sharedProvider;
 - (void)requestData;
-- (void)fetchNearestBoard;
 
 - (RACSignal *)postMessage:(NSString *)message forBoard:(NZBBoard *)board icon:(NSString *)icon;
 - (void)fetchNearestBoards;
