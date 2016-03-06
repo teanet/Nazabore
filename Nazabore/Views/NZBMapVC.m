@@ -42,6 +42,17 @@ UIGestureRecognizerDelegate
 								   options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)
 								   context:nil];
 
+	UIButton *centerButton = [[UIButton alloc] init];
+	[centerButton setImage:[UIImage imageNamed:@"map_center_icon"] forState:UIControlStateNormal];
+	[centerButton addTarget:self action:@selector(centerTap) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:centerButton];
+	[centerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.right.equalTo(self.view).with.offset(-10.0);
+		make.width.equalTo(@44.0);
+		make.height.equalTo(@44.0);
+		make.bottom.greaterThanOrEqualTo(self.keyboardView.mas_top).with.offset(-40.0).with.priorityHigh();
+	}];
+
 	[[NZBDataProvider sharedProvider].nearestBoardsSignal subscribeNext:^(NSArray *boards) {
 		@strongify(self);
 
@@ -70,6 +81,11 @@ UIGestureRecognizerDelegate
 - (void)didBecomeActive
 {
 	[self refetchData];
+}
+
+- (void)centerTap
+{
+	[self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
