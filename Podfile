@@ -11,14 +11,20 @@ target 'Nazabore' do
 	xcodeproj 'Nazabore.xcodeproj'
 end
 
+target 'UIWrapper' do
+	pod 'NZBLibrary', :path => 'NZBLibrary/NZBLibrary.podspec'
+	xcodeproj 'Nazabore.xcodeproj'
+end
+
 target 'NZBLibraryDemo' do
 	pod 'NZBLibrary', :path => 'NZBLibrary/NZBLibrary.podspec'
 	xcodeproj 'NZBLibrary/NZBLibraryDemo/NZBLibraryDemo.xcodeproj'
 end
 
-target 'UIWrapper' do
+target 'NZBLibraryDemoTests' do
+	pod 'Kiwi'
 	pod 'NZBLibrary', :path => 'NZBLibrary/NZBLibrary.podspec'
-	xcodeproj 'Nazabore.xcodeproj'
+	xcodeproj 'NZBLibrary/NZBLibraryDemo/NZBLibraryDemo.xcodeproj'
 end
 
 target 'NazaboreTests' do
