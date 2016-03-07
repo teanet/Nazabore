@@ -2,7 +2,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-static NSString *const kNZBAPIBaseURLString			= @"http://api.nazabore.xyz";
+static NSString *const kNZBAPIBaseURLString			= @"https://api.nazabore.xyz";
 //static NSString *const kNZBAPIBaseURLString			= @"http://10.54.7.212:3000";
 static NSString *const kNZBAPIHeaderFieldUserIdKey	= @"userid";
 
