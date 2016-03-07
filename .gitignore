@@ -26,6 +26,7 @@ Podfile.lock
 
 # Nazabore
 Nazabore.xcworkspace
+Nazabore/NZBPrivateConstants.m
 
 # build
 test-reports/
