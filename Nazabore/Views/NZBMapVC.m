@@ -75,6 +75,9 @@ UIGestureRecognizerDelegate
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+
+	[self refetchData];
+
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
