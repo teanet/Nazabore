@@ -1,37 +1,83 @@
 #import "NZBBoard.h"
 
+#import "NSMutableDictionary+NZBSafeSetObject.h"
+
+static NSString *const kDefaultIconName = @"0";
+
+static NSString *const kDictionaryKeyId				= @"id";
+static NSString *const kDictionaryKeyMessagesCount	= @"messagesCount";
+static NSString *const kDictionaryKeyIconName		= @"icon";
+static NSString *const kDictionaryKeyLat			= @"lat";
+static NSString *const kDictionaryKeyLon			= @"lon";
+static NSString *const kDictionaryKeyMessages		= @"messages";
+
 @interface NZBBoard ()
 
-@property (nonatomic, copy, readonly) NSNumber *lat;
-@property (nonatomic, copy, readonly) NSNumber *lon;
-@property (nonatomic, copy, readwrite) NSArray<NSDictionary *> *messageDictionariesArray;
+@property (nonatomic, copy, readonly) NSString *iconName;
+@property (nonatomic, copy, readonly) NSArray<NSDictionary *> *messageDictionariesArray;
 
 @end
 
 @implementation NZBBoard
 
-@synthesize location = _location;
-
+@synthesize dictionary = _dictionary;
+@synthesize messageDictionariesArray = _messageDictionariesArray;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-	self = [super initWithDictionary:dictionary];
+	self = [super init];
 	if (self == nil) return nil;
 
-	NSArray *messages = dictionary[@"messages"];
-	[self setMessagesDictionaryArray:messages];
+	[self updateWithDictionary:dictionary];
 
 	return self;
 }
 
-- (CLLocation *)location
+- (void)updateWithDictionary:(NSDictionary *)dictionary
 {
-	if (!_location && self.lat && self.lon)
+	_id = dictionary[kDictionaryKeyId];
+	_messagesCount = dictionary[kDictionaryKeyMessagesCount];
+
+	NSString *iconName = dictionary[kDictionaryKeyIconName];
+	_iconName = iconName.length > 0 ? iconName : kDefaultIconName;
+
+	// [[ Location
+	NSNumber *lat = dictionary[kDictionaryKeyLat];
+	NSNumber *lon = dictionary[kDictionaryKeyLon];
+
+	if (lat != nil && lon != nil)
 	{
-		_location = [[CLLocation alloc] initWithLatitude:self.lat.doubleValue longitude:self.lon.doubleValue];
+		_location = [[CLLocation alloc] initWithLatitude:lat.doubleValue longitude:lon.doubleValue];
+	}
+	else
+	{
+		NSCAssert(NO, @"<%@> Can't reveal location in values: (lat = %@, lon = %@)", self.class, lat, lon);
+	}
+	// ]]
+
+	// [[ Messages
+	NSArray *messages = dictionary[kDictionaryKeyMessages];
+	[self setMessagesDictionaryArray:messages];
+	// ]]
+}
+
+- (NSDictionary *)dictionary
+{
+	if (!_dictionary)
+	{
+		NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
+
+		[dictionaryRepresentation nzb_safeSetObject:self.id forKey:kDictionaryKeyId];
+		[dictionaryRepresentation nzb_safeSetObject:self.messagesCount forKey:kDictionaryKeyMessagesCount];
+		[dictionaryRepresentation nzb_safeSetObject:self.iconName forKey:kDictionaryKeyIconName];
+		[dictionaryRepresentation nzb_safeSetObject:@(self.location.coordinate.latitude) forKey:kDictionaryKeyLat];
+		[dictionaryRepresentation nzb_safeSetObject:@(self.location.coordinate.longitude) forKey:kDictionaryKeyLon];
+		[dictionaryRepresentation nzb_safeSetObject:self.messageDictionariesArray forKey:kDictionaryKeyMessages];
+
+		_dictionary = dictionaryRepresentation;
 	}
 
-	return _location;
+	return _dictionary;
 }
 
 - (void)setMessagesDictionaryArray:(NSArray<NSDictionary *> *)messagesDictionaryArray
@@ -51,17 +97,14 @@
 	_messages = [messages copy];
 }
 
+- (NSArray<NSDictionary *> *)messageDictionariesArray
+{
+	return nil;
+}
+
 - (UIImage *)iconImage
 {
-	UIImage *defaultIcon = [UIImage imageNamed:@"0"];
-	if (self.icon.length > 0)
-	{
-		return ([UIImage imageNamed:self.icon]) ?: defaultIcon;
-	}
-	else
-	{
-		return defaultIcon;
-	}
+	return [UIImage imageNamed:self.iconName];
 }
 
 @end

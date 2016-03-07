@@ -49,7 +49,7 @@
 
 - (void)updateWithDictionary:(NSDictionary *)dictionary
 {
-	[super updateWithDictionary:dictionary];
+//	[super updateWithDictionary:dictionary];
 	[self.relatedView nzb_update];
 }
 

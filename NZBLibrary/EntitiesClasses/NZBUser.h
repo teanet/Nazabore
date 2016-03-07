@@ -1,6 +1,6 @@
-#import "NZBSerializable.h"
+#import "NZBSerializableProtocol.h"
 
-@interface NZBUser : NZBSerializable
+@interface NZBUser : NSObject <NZBSerializableProtocol>
 
 @property (nonatomic, copy, readonly) NSString *id;
 @property (nonatomic, assign, readonly) NSInteger power;

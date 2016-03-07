@@ -1,6 +1,6 @@
 #import <CoreLocation/CoreLocation.h>
 
-#import "NZBSerializable.h"
+#import "NZBSerializableProtocol.h"
 
 typedef NS_ENUM(NSInteger, NZBMessageType) {
 	NZBMessageTypeDefault		= 0,
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, NZBUserInteraction) {
 @end
 
 
-@interface NZBMessage : NZBSerializable
+@interface NZBMessage : NSObject <NZBSerializableProtocol>
 
 @property (nonatomic, copy, readonly) NSString *id;
 @property (nonatomic, assign, readonly) NZBMessageType messageType;
