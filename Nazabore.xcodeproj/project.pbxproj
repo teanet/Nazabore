@@ -40,6 +40,8 @@
 		731B3CD31C8C37480083BFFA /* NSDate+NZBPrettyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B39CB1C8C2FB90083BFFA /* NSDate+NZBPrettyString.m */; };
 		731B3CD41C8C37990083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3CBE1C8C33D20083BFFA /* AppDelegate.m */; };
 		731B3CD71C8C49080083BFFA /* NZBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3CD61C8C49080083BFFA /* NZBPreferences.m */; };
+		731B3D301C8DDD020083BFFA /* NZBPrivateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */; };
+		731B3D311C8DDD0F0083BFFA /* NZBPrivateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */; };
 		8AC7851D717D0E0356885BF6 /* libPods-UIWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CF1CE9B404F04EC0D1DE97 /* libPods-UIWrapper.a */; };
 		8EBBA6B2B26B9971E93E3C6C /* libPods-NazaboreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED963E3624FC716F80AB548E /* libPods-NazaboreTests.a */; };
 /* End PBXBuildFile section */
@@ -636,6 +638,7 @@
 				731B36AC1C8C1AEC0083BFFA /* NZBUserVC.m in Sources */,
 				731B39CD1C8C2FB90083BFFA /* NSDate+NZBPrettyString.m in Sources */,
 				731B3CD41C8C37990083BFFA /* AppDelegate.m in Sources */,
+				731B3D301C8DDD020083BFFA /* NZBPrivateConstants.m in Sources */,
 				731B3CB31C8C31C10083BFFA /* NSDate+NZBPrettyStringSpec.m in Sources */,
 				731B36C21C8C1BA70083BFFA /* UIColor+System.m in Sources */,
 				731B36E71C8C1CD70083BFFA /* NZBDataProvider.m in Sources */,
@@ -650,6 +653,7 @@
 			files = (
 				731B3CD31C8C37480083BFFA /* NSDate+NZBPrettyString.m in Sources */,
 				731B3CBF1C8C33D20083BFFA /* AppDelegate.m in Sources */,
+				731B3D311C8DDD0F0083BFFA /* NZBPrivateConstants.m in Sources */,
 				731B3CBC1C8C33D20083BFFA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

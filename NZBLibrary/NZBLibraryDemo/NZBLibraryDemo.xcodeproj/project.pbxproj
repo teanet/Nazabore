@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		148215BB0FADA23F2CD6A507 /* libPods-NZBLibraryDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F19FB48DD78C3E380DC7A4 /* libPods-NZBLibraryDemo.a */; };
+		6AF96E8EBF6968A848A149BB /* libPods-NZBLibraryDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8DD8F6947430A2C1BE7E2 /* libPods-NZBLibraryDemo.a */; };
 		731B3D091C8C559E0083BFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3D081C8C559E0083BFFA /* main.m */; };
 		731B3D0C1C8C559E0083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3D0B1C8C559E0083BFFA /* AppDelegate.m */; };
 		731B3D0F1C8C559E0083BFFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3D0E1C8C559E0083BFFA /* ViewController.m */; };
 		731B3D121C8C559E0083BFFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 731B3D101C8C559E0083BFFA /* Main.storyboard */; };
 		731B3D141C8C559E0083BFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 731B3D131C8C559E0083BFFA /* Assets.xcassets */; };
 		731B3D171C8C559E0083BFFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 731B3D151C8C559E0083BFFA /* LaunchScreen.storyboard */; };
-		731B3D221C8C559E0083BFFA /* NZBLibraryDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3D211C8C559E0083BFFA /* NZBLibraryDemoTests.m */; };
+		731B3D2F1C8DD9C50083BFFA /* NZBMessageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3D2E1C8DD9C50083BFFA /* NZBMessageSpec.m */; };
+		AA939D97A4D0747074DC9E86 /* libPods-NZBLibraryDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F57417BE92502BA5BDDA89 /* libPods-NZBLibraryDemoTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03F57417BE92502BA5BDDA89 /* libPods-NZBLibraryDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NZBLibraryDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FBC993E392F71D538B371A2 /* Pods-NZBLibraryDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NZBLibraryDemoTests.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-NZBLibraryDemoTests/Pods-NZBLibraryDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		311FC0062200E466830AFED8 /* Pods-NZBLibraryDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NZBLibraryDemo.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-NZBLibraryDemo/Pods-NZBLibraryDemo.release.xcconfig"; sourceTree = "<group>"; };
 		731B3D041C8C559E0083BFFA /* NZBLibraryDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NZBLibraryDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B3D081C8C559E0083BFFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		731B3D0A1C8C559E0083BFFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,11 +43,12 @@
 		731B3D161C8C559E0083BFFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		731B3D181C8C559E0083BFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		731B3D1D1C8C559E0083BFFA /* NZBLibraryDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NZBLibraryDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		731B3D211C8C559E0083BFFA /* NZBLibraryDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NZBLibraryDemoTests.m; sourceTree = "<group>"; };
 		731B3D231C8C559E0083BFFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87F19FB48DD78C3E380DC7A4 /* libPods-NZBLibraryDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NZBLibraryDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E27C343D0F2D68F00B1AFAB /* Pods-NZBLibraryDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NZBLibraryDemo.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-NZBLibraryDemo/Pods-NZBLibraryDemo.release.xcconfig"; sourceTree = "<group>"; };
-		A73F746A55F427C8D0308A00 /* Pods-NZBLibraryDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NZBLibraryDemo.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-NZBLibraryDemo/Pods-NZBLibraryDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		731B3D2E1C8DD9C50083BFFA /* NZBMessageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBMessageSpec.m; sourceTree = "<group>"; };
+		731B3D321C8DE0290083BFFA /* Prefix-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-Header.h"; sourceTree = "<group>"; };
+		ACD8DD8F6947430A2C1BE7E2 /* libPods-NZBLibraryDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NZBLibraryDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B162F739D2FEFCF64B47B25C /* Pods-NZBLibraryDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NZBLibraryDemo.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-NZBLibraryDemo/Pods-NZBLibraryDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		EEE91847E664C3CA96562145 /* Pods-NZBLibraryDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NZBLibraryDemoTests.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-NZBLibraryDemoTests/Pods-NZBLibraryDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				148215BB0FADA23F2CD6A507 /* libPods-NZBLibraryDemo.a in Frameworks */,
+				6AF96E8EBF6968A848A149BB /* libPods-NZBLibraryDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,12 +64,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA939D97A4D0747074DC9E86 /* libPods-NZBLibraryDemoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AFA8A909ECB303089C72C90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B162F739D2FEFCF64B47B25C /* Pods-NZBLibraryDemo.debug.xcconfig */,
+				311FC0062200E466830AFED8 /* Pods-NZBLibraryDemo.release.xcconfig */,
+				EEE91847E664C3CA96562145 /* Pods-NZBLibraryDemoTests.debug.xcconfig */,
+				0FBC993E392F71D538B371A2 /* Pods-NZBLibraryDemoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		731B3CFB1C8C559E0083BFFA = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +89,7 @@
 				731B3D201C8C559E0083BFFA /* NZBLibraryDemoTests */,
 				731B3D051C8C559E0083BFFA /* Products */,
 				E18F328FCC7D78E2A56438B1 /* Frameworks */,
-				C07A2884999E7F792919EA1F /* Pods */,
+				1AFA8A909ECB303089C72C90 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,25 +129,18 @@
 		731B3D201C8C559E0083BFFA /* NZBLibraryDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				731B3D211C8C559E0083BFFA /* NZBLibraryDemoTests.m */,
+				731B3D321C8DE0290083BFFA /* Prefix-Header.h */,
 				731B3D231C8C559E0083BFFA /* Info.plist */,
+				731B3D2E1C8DD9C50083BFFA /* NZBMessageSpec.m */,
 			);
 			path = NZBLibraryDemoTests;
-			sourceTree = "<group>";
-		};
-		C07A2884999E7F792919EA1F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A73F746A55F427C8D0308A00 /* Pods-NZBLibraryDemo.debug.xcconfig */,
-				8E27C343D0F2D68F00B1AFAB /* Pods-NZBLibraryDemo.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		E18F328FCC7D78E2A56438B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				87F19FB48DD78C3E380DC7A4 /* libPods-NZBLibraryDemo.a */,
+				ACD8DD8F6947430A2C1BE7E2 /* libPods-NZBLibraryDemo.a */,
+				03F57417BE92502BA5BDDA89 /* libPods-NZBLibraryDemoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 731B3D291C8C559E0083BFFA /* Build configuration list for PBXNativeTarget "NZBLibraryDemoTests" */;
 			buildPhases = (
+				691B3619C27B49694D71B7AC /* Check Pods Manifest.lock */,
 				731B3D191C8C559E0083BFFA /* Sources */,
 				731B3D1A1C8C559E0083BFFA /* Frameworks */,
 				731B3D1B1C8C559E0083BFFA /* Resources */,
+				1B1A3DCF1426F00FAADF80D0 /* Embed Pods Frameworks */,
+				809E8C5C6C73B3F32C9F0E49 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,6 +262,51 @@
 			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-NZBLibraryDemo/Pods-NZBLibraryDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1B1A3DCF1426F00FAADF80D0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-NZBLibraryDemoTests/Pods-NZBLibraryDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		691B3619C27B49694D71B7AC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		809E8C5C6C73B3F32C9F0E49 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-NZBLibraryDemoTests/Pods-NZBLibraryDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		89A01CF53708B3962FCDFC60 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,7 +334,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NZBLibraryDemo/Pods-NZBLibraryDemo-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/../../Pods/Target Support Files/Pods-NZBLibraryDemo/Pods-NZBLibraryDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -296,7 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				731B3D221C8C559E0083BFFA /* NZBLibraryDemoTests.m in Sources */,
+				731B3D2F1C8DD9C50083BFFA /* NZBMessageSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +470,7 @@
 		};
 		731B3D271C8C559E0083BFFA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A73F746A55F427C8D0308A00 /* Pods-NZBLibraryDemo.debug.xcconfig */;
+			baseConfigurationReference = B162F739D2FEFCF64B47B25C /* Pods-NZBLibraryDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NZBLibraryDemo/Info.plist;
@@ -424,7 +482,7 @@
 		};
 		731B3D281C8C559E0083BFFA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E27C343D0F2D68F00B1AFAB /* Pods-NZBLibraryDemo.release.xcconfig */;
+			baseConfigurationReference = 311FC0062200E466830AFED8 /* Pods-NZBLibraryDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NZBLibraryDemo/Info.plist;
@@ -436,8 +494,10 @@
 		};
 		731B3D2A1C8C559E0083BFFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEE91847E664C3CA96562145 /* Pods-NZBLibraryDemoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREFIX_HEADER = "NZBLibraryDemoTests/Prefix-Header.h";
 				INFOPLIST_FILE = NZBLibraryDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.NZBLibraryDemoTests;
@@ -448,8 +508,10 @@
 		};
 		731B3D2B1C8C559E0083BFFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FBC993E392F71D538B371A2 /* Pods-NZBLibraryDemoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREFIX_HEADER = "NZBLibraryDemoTests/Prefix-Header.h";
 				INFOPLIST_FILE = NZBLibraryDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.NZBLibraryDemoTests;
