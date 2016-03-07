@@ -1,8 +1,9 @@
 #import "NZBBoard.h"
 
 #import "NSMutableDictionary+NZBSafeSetObject.h"
+#import "NSMutableArray+NZBSafeAddObject.h"
 
-static NSString *const kDefaultIconName = @"0";
+static NSString *const kDefaultIconName				= @"0";
 
 static NSString *const kDictionaryKeyId				= @"id";
 static NSString *const kDictionaryKeyMessagesCount	= @"messagesCount";
@@ -22,6 +23,8 @@ static NSString *const kDictionaryKeyMessages		= @"messages";
 
 @synthesize dictionary = _dictionary;
 @synthesize messageDictionariesArray = _messageDictionariesArray;
+
+// MARK: Lifecycle and NZBSerializableProtocol
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
@@ -59,6 +62,11 @@ static NSString *const kDictionaryKeyMessages		= @"messages";
 	NSArray *messages = dictionary[kDictionaryKeyMessages];
 	[self setMessagesDictionaryArray:messages];
 	// ]]
+
+	// [[ Clear cache of representations
+	_dictionary = nil;
+	_messageDictionariesArray = nil;
+	// ]]
 }
 
 - (NSDictionary *)dictionary
@@ -80,31 +88,39 @@ static NSString *const kDictionaryKeyMessages		= @"messages";
 	return _dictionary;
 }
 
+// MARK: Public
+
+- (UIImage *)iconImage
+{
+	return [UIImage imageNamed:self.iconName];
+}
+
+// MARK: Private
+
 - (void)setMessagesDictionaryArray:(NSArray<NSDictionary *> *)messagesDictionaryArray
 {
-	_messageDictionariesArray = messagesDictionaryArray;
-
 	NSMutableArray *messages = [NSMutableArray arrayWithCapacity:messagesDictionaryArray.count];
-	for (NSDictionary *messageDictionary in messagesDictionaryArray)
-	{
+	[messagesDictionaryArray enumerateObjectsUsingBlock:^(NSDictionary *messageDictionary, NSUInteger _, BOOL *s) {
 		NZBMessage *message = [NZBMessage messageWithDictionary:messageDictionary];
-		if (message)
-		{
-			[messages addObject:message];
-		}
-	}
+		[messages nzb_safeAddObject:message];
+	}];
 
 	_messages = [messages copy];
 }
 
 - (NSArray<NSDictionary *> *)messageDictionariesArray
 {
-	return nil;
-}
+	if (!_messageDictionariesArray)
+	{
+		NSMutableArray *messageDictionariesArray = [NSMutableArray arrayWithCapacity:self.messages.count];
+		[self.messages enumerateObjectsUsingBlock:^(NZBMessage *message, NSUInteger _, BOOL *s) {
+			[messageDictionariesArray nzb_safeAddObject:message.dictionary];
+		}];
 
-- (UIImage *)iconImage
-{
-	return [UIImage imageNamed:self.iconName];
+		_messageDictionariesArray = [messageDictionariesArray copy];
+	}
+
+	return _messageDictionariesArray;
 }
 
 @end

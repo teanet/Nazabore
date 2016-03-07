@@ -11,6 +11,8 @@
 @property (nonatomic, copy, readonly) NSNumber *messagesCount;
 @property (nonatomic, copy, readonly) NSArray<NZBMessage *> *messages;
 
+- (instancetype)init NS_UNAVAILABLE;
+
 - (UIImage *)iconImage;
 
 @end

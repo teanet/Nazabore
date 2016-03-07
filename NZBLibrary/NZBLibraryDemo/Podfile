@@ -6,6 +6,6 @@ target 'NZBLibraryDemo' do
 end
 
 target 'NZBLibraryDemoTests' do
-
+	pod 'ReactiveCocoa', '~> 2.5'
 end
 

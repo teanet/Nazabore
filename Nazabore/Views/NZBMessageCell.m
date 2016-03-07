@@ -126,7 +126,7 @@
 	self.powerLabel.text = self.message.powerString;
 	self.timeLabel.text = [NSDate nzb_prettyStringFrom:self.message.timestamp * 0.001];
 	self.swipingEnabled = (self.message.rating.interaction == NZBUserInteractionNone);
-	self.iconView.image = [UIImage imageNamed:self.message.icon];
+	self.iconView.image = [UIImage imageNamed:self.message.iconName];
 }
 
 - (void)setMessage:(NZBMessage *)message

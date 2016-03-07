@@ -74,7 +74,9 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	@weakify(self);
 
 	[self.textView resignFirstResponder];
-	if (self.textView.text.length == 0) return;
+
+	NSString *textWithoutSpaces = [self.textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+	if (textWithoutSpaces.length == 0) return;
 
 	NZBEmojiSelectView *view = [[NZBEmojiSelectView alloc] init];
 

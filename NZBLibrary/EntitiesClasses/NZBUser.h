@@ -7,5 +7,6 @@
 @property (nonatomic, assign, readonly) double rating;
 
 + (instancetype)userWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end

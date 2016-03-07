@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		301554951C8DFEC4000F7E93 /* NZBBoardSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 301554941C8DFEC4000F7E93 /* NZBBoardSpec.m */; };
+		3015577D1C8E100F000F7E93 /* NZBTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3015577C1C8E100F000F7E93 /* NZBTestHelper.m */; };
+		3015577F1C8E2E5B000F7E93 /* NZBUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3015577E1C8E2E5B000F7E93 /* NZBUserSpec.m */; };
 		6AF96E8EBF6968A848A149BB /* libPods-NZBLibraryDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8DD8F6947430A2C1BE7E2 /* libPods-NZBLibraryDemo.a */; };
 		731B3D091C8C559E0083BFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3D081C8C559E0083BFFA /* main.m */; };
 		731B3D0C1C8C559E0083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3D0B1C8C559E0083BFFA /* AppDelegate.m */; };
@@ -33,6 +35,9 @@
 		03F57417BE92502BA5BDDA89 /* libPods-NZBLibraryDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NZBLibraryDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBC993E392F71D538B371A2 /* Pods-NZBLibraryDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NZBLibraryDemoTests.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-NZBLibraryDemoTests/Pods-NZBLibraryDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		301554941C8DFEC4000F7E93 /* NZBBoardSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBBoardSpec.m; sourceTree = "<group>"; };
+		3015577B1C8E100F000F7E93 /* NZBTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBTestHelper.h; sourceTree = "<group>"; };
+		3015577C1C8E100F000F7E93 /* NZBTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBTestHelper.m; sourceTree = "<group>"; };
+		3015577E1C8E2E5B000F7E93 /* NZBUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBUserSpec.m; sourceTree = "<group>"; };
 		311FC0062200E466830AFED8 /* Pods-NZBLibraryDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NZBLibraryDemo.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-NZBLibraryDemo/Pods-NZBLibraryDemo.release.xcconfig"; sourceTree = "<group>"; };
 		731B3D041C8C559E0083BFFA /* NZBLibraryDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NZBLibraryDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B3D081C8C559E0083BFFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,6 +94,7 @@
 			children = (
 				731B3D2E1C8DD9C50083BFFA /* NZBMessageSpec.m */,
 				301554941C8DFEC4000F7E93 /* NZBBoardSpec.m */,
+				3015577E1C8E2E5B000F7E93 /* NZBUserSpec.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				3015548F1C8DFDDF000F7E93 /* Entities */,
+				3015577B1C8E100F000F7E93 /* NZBTestHelper.h */,
+				3015577C1C8E100F000F7E93 /* NZBTestHelper.m */,
 				731B3D321C8DE0290083BFFA /* Prefix-Header.h */,
 				731B3D231C8C559E0083BFFA /* Info.plist */,
 			);
@@ -365,6 +373,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3015577F1C8E2E5B000F7E93 /* NZBUserSpec.m in Sources */,
+				3015577D1C8E100F000F7E93 /* NZBTestHelper.m in Sources */,
 				301554951C8DFEC4000F7E93 /* NZBBoardSpec.m in Sources */,
 				731B3D2F1C8DD9C50083BFFA /* NZBMessageSpec.m in Sources */,
 			);
