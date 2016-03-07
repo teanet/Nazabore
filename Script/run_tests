@@ -7,6 +7,7 @@ cd "${SCRIPT_DIR}/../"
 BUILD_DIR="${SIMULATOR_BUILD_DIR}"
 WORKSPACE="Nazabore.xcworkspace"
 SCHEME="UIWrapper"
+SCHEME_LIB="NZBLibraryDemo"
 PROVISIONING_PROFILE=""
 CODE_SIGN_IDENTITY=""
 TEST_OUTPUT_SETTINGS="-ct"
@@ -80,7 +81,6 @@ while [ "$1" != "" ]; do
 done
 
 RunTests(){
-  echo "Running tests on $DESTINATION"
   xcodebuild test \
     "$@" \
     2>&1 | xcpretty "${TEST_OUTPUT_SETTINGS}"
@@ -88,5 +88,12 @@ RunTests(){
 
 XCODEBUILD_FLAGS=( -destination "${DESTINATION}" -workspace "${WORKSPACE}" -scheme "${SCHEME}" -parallelizeTargets )
 
+echo "Running tests on $DESTINATION"
+echo "Test scheme: $SCHEME"
 RunTests "${XCODEBUILD_FLAGS[@]}"
+
+XCODEBUILD_FLAGS=( -destination "${DESTINATION}" -workspace "${WORKSPACE}" -scheme "${SCHEME_LIB}" -parallelizeTargets )
+echo "Test scheme: $SCHEME_LIB"
+RunTests "${XCODEBUILD_FLAGS[@]}"
+
 cd "${CURRENT_DIR}"
