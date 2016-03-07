@@ -5,6 +5,7 @@
 static NSString *const kNZBAPIBaseURLString			= @"https://api.nazabore.xyz";
 //static NSString *const kNZBAPIBaseURLString			= @"http://10.54.7.212:3000";
 static NSString *const kNZBAPIHeaderFieldUserIdKey	= @"userid";
+extern NSString *const kNZBAPIApplicationToken;
 
 @interface NZBServerController ()
 
@@ -42,9 +43,12 @@ static NSString *const kNZBAPIHeaderFieldUserIdKey	= @"userid";
 	self = [super init];
 	if (self == nil) return nil;
 
+	NSCAssert(kNZBAPIApplicationToken.length > 0, @"You should add Application Token for correct work with Nazabore API.");
+
 	_userID = @"1";
 	_requestManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kNZBAPIBaseURLString]];
 	_requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
+	[_requestManager.requestSerializer setValue:kNZBAPIApplicationToken forHTTPHeaderField:@"X-Absolutely-Secret-Token"];
 	_requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
 	return self;
 }
