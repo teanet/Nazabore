@@ -48,17 +48,28 @@ static CGFloat const MaxToolbarHeight = 200.0;
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	[self handleKeyboard:nil];
+//	[self handleKeyboard:nil];
 }
 
 - (void)handleKeyboard:(NSNotification *)n
 {
 	CGRect frame = [n.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
 	[self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
 		make.height.equalTo(@(self.view.frame.size.height - frame.size.height));
 	}];
+
 	frame.size.height = MAX(frame.size.height, _toolbar.frame.size.height);
 	self.keyboardView.frame = frame;
+
+	static BOOL skipFirstTimeAnimation;
+	if (skipFirstTimeAnimation)
+	{
+		[UIView animateWithDuration:0.3 animations:^{
+			[self.view layoutIfNeeded];
+		}];
+	}
+	skipFirstTimeAnimation = YES;
 }
 
 - (void)showBoard:(NZBBoard *)b
@@ -148,7 +159,7 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	[_toolbar addSubview:_textView];
 
 	UILabel *placeholderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-	placeholderLabel.text = @"Че-нибудь...";
+	placeholderLabel.text = @"Чё-нибудь...";
 	placeholderLabel.font = [UIFont systemFontOfSize:14.0];
 	placeholderLabel.textColor = [UIColor nzb_lightGrayColor];
 	placeholderLabel.textAlignment = NSTextAlignmentLeft;

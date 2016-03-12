@@ -67,7 +67,7 @@ UITextViewDelegate
 	_tableView.separatorColor = [UIColor nzb_lightGrayColor];
 	[self.view addSubview:_tableView];
 	[_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(@64);
+		make.top.equalTo(@64.0);
 		make.edges.equalTo(self.view).with.priorityHigh();
 	}];
 
@@ -100,20 +100,24 @@ UITextViewDelegate
 {
 	@weakify(self);
 
-	[[[NZBServerController sharedController] fetchMessagesForBoard:self.board] subscribeNext:^(NSArray *messages) {
-		@strongify(self);
+	[[[[NZBServerController sharedController] fetchMessagesForBoard:self.board]
+		deliverOnMainThread]
+		subscribeNext:^(NSArray *messages) {
+			@strongify(self);
 
-		self.messages = messages;
-		[self.tableView reloadData];
-		[self.tableView layoutIfNeeded];
-		[self.refreshControl endRefreshing];
-	}];
+			self.messages = messages;
+			[self.tableView reloadData];
+			[self.tableView layoutIfNeeded];
+			[self.refreshControl endRefreshing];
+		}];
 }
 
 - (void)viewWillLayoutSubviews
 {
 	[super viewWillLayoutSubviews];
-	UIEdgeInsets insets = UIEdgeInsetsMake(0.0, 0.0, self.keyboardView.frame.size.height, 0.0);
+	// Костыльнём пока табличку до первого нажатия
+	CGFloat height = self.keyboardView.frame.size.height > 0 ? self.keyboardView.frame.size.height : 44.0;
+	UIEdgeInsets insets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0);
 	self.tableView.contentInset = insets;
 	self.tableView.scrollIndicatorInsets = insets;
 	NSLog(@">>%@", self.tableView);
