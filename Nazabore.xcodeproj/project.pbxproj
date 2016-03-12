@@ -10,6 +10,7 @@
 		303E09BA1C8DCF80008978D6 /* NZBPrivateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */; };
 		3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */; };
 		3075896D1C944B92007F6AFA /* UIColor+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */; };
+		307589701C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3075896F1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m */; };
 		3FC765296288BBDD36F90C36 /* libPods-Nazabore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2F50143F83066885507381 /* libPods-Nazabore.a */; };
 		731B365C1C8C05EF0083BFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365B1C8C05EF0083BFFA /* main.m */; };
 		731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365E1C8C05EF0083BFFA /* AppDelegate.m */; };
@@ -73,6 +74,8 @@
 		307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NZBMessageCell.m"; sourceTree = "<group>"; };
 		3075896B1C944B92007F6AFA /* UIColor+NZBMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NZBMessageCell.h"; sourceTree = "<group>"; };
 		3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NZBMessageCell.m"; sourceTree = "<group>"; };
+		3075896E1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+NZBBarButtonItem.h"; sourceTree = "<group>"; };
+		3075896F1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+NZBBarButtonItem.m"; sourceTree = "<group>"; };
 		30CF1CE9B404F04EC0D1DE97 /* libPods-UIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIWrapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B36571C8C05EF0083BFFA /* Nazabore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nazabore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B365B1C8C05EF0083BFFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 				307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */,
 				3075896B1C944B92007F6AFA /* UIColor+NZBMessageCell.h */,
 				3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */,
+				3075896E1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.h */,
+				3075896F1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -625,6 +630,7 @@
 				731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */,
 				731B36D71C8C1BF30083BFFA /* NZBMessageCell.m in Sources */,
 				731B36C91C8C1BE10083BFFA /* RDRGrowingTextView.m in Sources */,
+				307589701C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m in Sources */,
 				3075896D1C944B92007F6AFA /* UIColor+NZBMessageCell.m in Sources */,
 				731B36B81C8C1B790083BFFA /* NZBWriteVC.m in Sources */,
 				731B36B61C8C1B790083BFFA /* NZBZaborVC.m in Sources */,

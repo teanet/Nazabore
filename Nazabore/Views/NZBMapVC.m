@@ -70,6 +70,13 @@ UIGestureRecognizerDelegate
 	UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
 	[panRec setDelegate:self];
 	[self.mapView addGestureRecognizer:panRec];
+
+	// [[ Configure UINavigationBar
+	[[UINavigationBar appearance] setBarTintColor:[UIColor nzb_brightGrayColor]];
+	[[UINavigationBar appearance] setTintColor:[UIColor nzb_santasGrayColor]];
+	[[UINavigationBar appearance] setTranslucent:YES];
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+	// ]]
 }
 
 - (void)viewWillAppear:(BOOL)animated

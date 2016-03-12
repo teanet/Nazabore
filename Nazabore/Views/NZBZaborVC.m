@@ -8,6 +8,7 @@
 #import "RDRGrowingTextView.h"
 #import "NZBEmojiSelectView.h"
 #import "NZBAdsCell.h"
+#import "UIBarButtonItem+NZBBarButtonItem.h"
 
 @interface NZBZaborVC ()
 <
@@ -36,6 +37,8 @@ UITextViewDelegate
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+
+	@weakify(self);
 
 	UIScreenEdgePanGestureRecognizer *recognizer =
 		[[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
@@ -75,6 +78,20 @@ UITextViewDelegate
 	tableViewController.refreshControl = _refreshControl;
 	[_refreshControl addTarget:self action:@selector(refetchData) forControlEvents:UIControlEventValueChanged];
 //	[_tableView addSubview:_refreshControl];
+
+	// [[ Configure navigation bar
+	UIBarButtonItem *backButton = [UIBarButtonItem nzb_backBarButtonItem];
+
+	backButton.rac_command =
+		[[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
+			@strongify(self);
+
+			[self.navigationController popViewControllerAnimated:YES];
+			return [RACSignal empty];
+		}];
+
+	self.navigationItem.leftBarButtonItem = backButton;
+	// ]]
 
 	[self refetchData];
 }
