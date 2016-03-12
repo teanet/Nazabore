@@ -37,6 +37,11 @@ UITextViewDelegate
 {
 	[super viewDidLoad];
 
+	UIScreenEdgePanGestureRecognizer *recognizer =
+		[[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+	recognizer.edges = UIRectEdgeLeft;
+	[self.view addGestureRecognizer:recognizer];
+
 	self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 	self.view.backgroundColor = [UIColor whiteColor];
 	UIImageView *v = [[UIImageView alloc] initWithImage:self.board.iconImage];
@@ -53,6 +58,10 @@ UITextViewDelegate
 	_tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
 	_tableView.delegate = self;
 	_tableView.dataSource = self;
+	UIEdgeInsets tableSeparatorInsets = UIEdgeInsetsMake(0.f, 16.f, 0.f, 16.f);
+	[_tableView setSeparatorInset:tableSeparatorInsets];
+	[_tableView setLayoutMargins:tableSeparatorInsets];
+	_tableView.separatorColor = [UIColor nzb_lightGrayColor];
 	[self.view addSubview:_tableView];
 	[_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(@64);
@@ -91,6 +100,14 @@ UITextViewDelegate
 	self.tableView.contentInset = insets;
 	self.tableView.scrollIndicatorInsets = insets;
 	NSLog(@">>%@", self.tableView);
+}
+
+- (void)didSwipe:(UIScreenEdgePanGestureRecognizer *)recognizer
+{
+	if (recognizer.state == UIGestureRecognizerStateBegan)
+	{
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 #pragma mark WCSessionDelegate
