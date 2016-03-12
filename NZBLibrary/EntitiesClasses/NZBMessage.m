@@ -1,6 +1,6 @@
 #import "NZBMessage.h"
 
-#import "NSMutableDictionary+NZBSafeSetObject.h"
+#import "NSDictionary+CLLocation.h"
 
 static NSString *const kDefaultIconName				= @"0";
 
@@ -10,8 +10,6 @@ static NSString *const kDictionaryKeyDbObject		= @"dbobject";
 static NSString *const kDictionaryKeyIconName		= @"icon";
 static NSString *const kDictionaryKeyId				= @"id";
 static NSString *const kDictionaryKeyKarma			= @"karma";
-static NSString *const kDictionaryKeyLat			= @"lat";
-static NSString *const kDictionaryKeyLon			= @"lon";
 static NSString *const kDictionaryKeyPhone			= @"phone";
 static NSString *const kDictionaryKeyPower			= @"power";
 static NSString *const kDictionaryKeyBoardId		= @"pylon";
@@ -97,6 +95,7 @@ static NSString *const kMessageTypeAdvert			= @"advert";
 
 	NSString *iconName = dictionary[kDictionaryKeyIconName];
 	_iconName = iconName.length > 0 ? iconName : kDefaultIconName;
+	_location = [dictionary nzb_location];
 
 	// [[ Timestamp
 	NSNumber *timestampNumber = dictionary[kDictionaryKeyTimestamp];
@@ -129,20 +128,6 @@ static NSString *const kMessageTypeAdvert			= @"advert";
 	}
 	// ]]
 
-	// [[ Location
-	NSNumber *lat = dictionary[kDictionaryKeyLat];
-	NSNumber *lon = dictionary[kDictionaryKeyLon];
-
-	if (lat != nil && lon != nil)
-	{
-		_location = [[CLLocation alloc] initWithLatitude:lat.doubleValue longitude:lon.doubleValue];
-	}
-	else
-	{
-		NSCAssert(NO, @"<%@> Can't reveal location in values: (lat = %@, lon = %@)", self.class, lat, lon);
-	}
-	// ]]
-
 	_rating = [[NZBRating alloc] initWithPower:self.power.integerValue
 								   interaction:self.interaction.integerValue];
 
@@ -159,23 +144,22 @@ static NSString *const kMessageTypeAdvert			= @"advert";
 	{
 		NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
 
-		[dictionaryRepresentation nzb_safeSetObject:self.body forKey:kDictionaryKeyBody];
-		[dictionaryRepresentation nzb_safeSetObject:self.title forKey:kDictionaryKeyTitle];
-		[dictionaryRepresentation nzb_safeSetObject:self.dbObjectIdentifier forKey:kDictionaryKeyDbObject];
-		[dictionaryRepresentation nzb_safeSetObject:self.id forKey:kDictionaryKeyId];
-		[dictionaryRepresentation nzb_safeSetObject:self.karma forKey:kDictionaryKeyKarma];
-		[dictionaryRepresentation nzb_safeSetObject:self.phone forKey:kDictionaryKeyPhone];
-		[dictionaryRepresentation nzb_safeSetObject:self.userid forKey:kDictionaryKeyUserId];
-		[dictionaryRepresentation nzb_safeSetObject:self.boardId forKey:kDictionaryKeyBoardId];
-		[dictionaryRepresentation nzb_safeSetObject:self.iconName forKey:kDictionaryKeyIconName];
-		[dictionaryRepresentation nzb_safeSetObject:@(self.timestamp) forKey:kDictionaryKeyTimestamp];
-		[dictionaryRepresentation nzb_safeSetObject:self.messageTypeString forKey:kDictionaryKeyType];
-		[dictionaryRepresentation nzb_safeSetObject:@(self.location.coordinate.latitude) forKey:kDictionaryKeyLat];
-		[dictionaryRepresentation nzb_safeSetObject:@(self.location.coordinate.longitude) forKey:kDictionaryKeyLon];
-		[dictionaryRepresentation nzb_safeSetObject:self.power forKey:kDictionaryKeyPower];
-		[dictionaryRepresentation nzb_safeSetObject:self.interaction forKey:kDictionaryKeyInteraction];
+		[dictionaryRepresentation setValue:self.body forKey:kDictionaryKeyBody];
+		[dictionaryRepresentation setValue:self.title forKey:kDictionaryKeyTitle];
+		[dictionaryRepresentation setValue:self.dbObjectIdentifier forKey:kDictionaryKeyDbObject];
+		[dictionaryRepresentation setValue:self.id forKey:kDictionaryKeyId];
+		[dictionaryRepresentation setValue:self.karma forKey:kDictionaryKeyKarma];
+		[dictionaryRepresentation setValue:self.phone forKey:kDictionaryKeyPhone];
+		[dictionaryRepresentation setValue:self.userid forKey:kDictionaryKeyUserId];
+		[dictionaryRepresentation setValue:self.boardId forKey:kDictionaryKeyBoardId];
+		[dictionaryRepresentation setValue:self.iconName forKey:kDictionaryKeyIconName];
+		[dictionaryRepresentation setValue:@(self.timestamp) forKey:kDictionaryKeyTimestamp];
+		[dictionaryRepresentation setValue:self.messageTypeString forKey:kDictionaryKeyType];
+		[dictionaryRepresentation setValue:self.power forKey:kDictionaryKeyPower];
+		[dictionaryRepresentation setValue:self.interaction forKey:kDictionaryKeyInteraction];
+		[dictionaryRepresentation addEntriesFromDictionary:[NSDictionary nzb_dictionaryWithLocation:self.location]];
 
-		_dictionary = dictionaryRepresentation;
+		_dictionary = [dictionaryRepresentation copy];
 	}
 
 	return _dictionary;

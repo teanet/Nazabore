@@ -1,7 +1,5 @@
 #import "NZBUser.h"
 
-#import "NSMutableDictionary+NZBSafeSetObject.h"
-
 static NSString *const kDictionaryKeyId			= @"id";
 static NSString *const kDictionaryKeyPower		= @"power";
 static NSString *const kDictionaryKeyRating		= @"rating";
@@ -44,9 +42,9 @@ static NSString *const kDictionaryKeyRating		= @"rating";
 	{
 		NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
 
-		[dictionaryRepresentation nzb_safeSetObject:self.id forKey:kDictionaryKeyId];
-		[dictionaryRepresentation nzb_safeSetObject:@(self.power) forKey:kDictionaryKeyPower];
-		[dictionaryRepresentation nzb_safeSetObject:@(self.rating) forKey:kDictionaryKeyRating];
+		[dictionaryRepresentation setValue:self.id forKey:kDictionaryKeyId];
+		[dictionaryRepresentation setValue:@(self.power) forKey:kDictionaryKeyPower];
+		[dictionaryRepresentation setValue:@(self.rating) forKey:kDictionaryKeyRating];
 
 		_dictionary = dictionaryRepresentation;
 	}

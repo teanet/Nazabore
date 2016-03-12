@@ -1,15 +1,13 @@
 #import "NZBBoard.h"
 
-#import "NSMutableDictionary+NZBSafeSetObject.h"
 #import "NSMutableArray+NZBSafeAddObject.h"
+#import "NSDictionary+CLLocation.h"
 
 static NSString *const kDefaultIconName				= @"0";
 
 static NSString *const kDictionaryKeyId				= @"id";
 static NSString *const kDictionaryKeyMessagesCount	= @"messagesCount";
 static NSString *const kDictionaryKeyIconName		= @"icon";
-static NSString *const kDictionaryKeyLat			= @"lat";
-static NSString *const kDictionaryKeyLon			= @"lon";
 static NSString *const kDictionaryKeyMessages		= @"messages";
 
 @interface NZBBoard ()
@@ -43,20 +41,7 @@ static NSString *const kDictionaryKeyMessages		= @"messages";
 
 	NSString *iconName = dictionary[kDictionaryKeyIconName];
 	_iconName = iconName.length > 0 ? iconName : kDefaultIconName;
-
-	// [[ Location
-	NSNumber *lat = dictionary[kDictionaryKeyLat];
-	NSNumber *lon = dictionary[kDictionaryKeyLon];
-
-	if (lat != nil && lon != nil)
-	{
-		_location = [[CLLocation alloc] initWithLatitude:lat.doubleValue longitude:lon.doubleValue];
-	}
-	else
-	{
-		NSCAssert(NO, @"<%@> Can't reveal location in values: (lat = %@, lon = %@)", self.class, lat, lon);
-	}
-	// ]]
+	_location = [dictionary nzb_location];
 
 	// [[ Messages
 	NSArray *messages = dictionary[kDictionaryKeyMessages];
@@ -75,14 +60,13 @@ static NSString *const kDictionaryKeyMessages		= @"messages";
 	{
 		NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
 
-		[dictionaryRepresentation nzb_safeSetObject:self.id forKey:kDictionaryKeyId];
-		[dictionaryRepresentation nzb_safeSetObject:self.messagesCount forKey:kDictionaryKeyMessagesCount];
-		[dictionaryRepresentation nzb_safeSetObject:self.iconName forKey:kDictionaryKeyIconName];
-		[dictionaryRepresentation nzb_safeSetObject:@(self.location.coordinate.latitude) forKey:kDictionaryKeyLat];
-		[dictionaryRepresentation nzb_safeSetObject:@(self.location.coordinate.longitude) forKey:kDictionaryKeyLon];
-		[dictionaryRepresentation nzb_safeSetObject:self.messageDictionariesArray forKey:kDictionaryKeyMessages];
+		[dictionaryRepresentation setValue:self.id forKey:kDictionaryKeyId];
+		[dictionaryRepresentation setValue:self.messagesCount forKey:kDictionaryKeyMessagesCount];
+		[dictionaryRepresentation setValue:self.iconName forKey:kDictionaryKeyIconName];
+		[dictionaryRepresentation setValue:self.messageDictionariesArray forKey:kDictionaryKeyMessages];
+		[dictionaryRepresentation addEntriesFromDictionary:[NSDictionary nzb_dictionaryWithLocation:self.location]];
 
-		_dictionary = dictionaryRepresentation;
+		_dictionary = [dictionaryRepresentation copy];
 	}
 
 	return _dictionary;
