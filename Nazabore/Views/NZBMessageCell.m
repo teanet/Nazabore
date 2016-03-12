@@ -64,13 +64,27 @@
 	[self.contentView addSubview:_powerLabel];
 
 	dislikeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 90)];
-	dislikeButton.backgroundColor = [UIColor darkGrayColor];
-	[dislikeButton setImage:[UIImage imageNamed:@"dislike_icon"] forState:UIControlStateNormal];
+	dislikeButton.backgroundColor = [UIColor nzb_brightGrayColor];
+
+	UIImageView *dislikeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dislike_icon"]];
+	[dislikeButton addSubview:dislikeImageView];
+	[dislikeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.left.equalTo(dislikeButton);
+		make.centerY.equalTo(dislikeButton);
+	}];
+
 	[self addLeftView:dislikeButton];
 
 	likeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 90)];
-	likeButton.backgroundColor = [UIColor darkGrayColor];
-	[likeButton setImage:[UIImage imageNamed:@"like_icon"] forState:UIControlStateNormal];
+	likeButton.backgroundColor = [UIColor nzb_brightGrayColor];
+
+	UIImageView *likeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"like_icon"]];
+	[likeButton addSubview:likeImageView];
+	[likeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.right.equalTo(likeButton);
+		make.centerY.equalTo(likeButton);
+	}];
+
 	[self addRightView:likeButton];
 
 	[_myMessageLabel setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
