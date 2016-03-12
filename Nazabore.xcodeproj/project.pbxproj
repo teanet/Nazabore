@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		303E09BA1C8DCF80008978D6 /* NZBPrivateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */; };
+		3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */; };
+		3075896D1C944B92007F6AFA /* UIColor+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */; };
 		3FC765296288BBDD36F90C36 /* libPods-Nazabore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2F50143F83066885507381 /* libPods-Nazabore.a */; };
 		731B365C1C8C05EF0083BFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365B1C8C05EF0083BFFA /* main.m */; };
 		731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365E1C8C05EF0083BFFA /* AppDelegate.m */; };
@@ -67,6 +69,10 @@
 		18521C37996ED3B0E2E0C78E /* Pods-UIWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIWrapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIWrapper/Pods-UIWrapper.debug.xcconfig"; sourceTree = "<group>"; };
 		2154723B3AC6E9F866EF8E15 /* Pods-NazaboreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.release.xcconfig"; sourceTree = "<group>"; };
 		303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBPrivateConstants.m; sourceTree = "<group>"; };
+		307589681C944B76007F6AFA /* NSString+NZBMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NZBMessageCell.h"; sourceTree = "<group>"; };
+		307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NZBMessageCell.m"; sourceTree = "<group>"; };
+		3075896B1C944B92007F6AFA /* UIColor+NZBMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NZBMessageCell.h"; sourceTree = "<group>"; };
+		3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NZBMessageCell.m"; sourceTree = "<group>"; };
 		30CF1CE9B404F04EC0D1DE97 /* libPods-UIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIWrapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B36571C8C05EF0083BFFA /* Nazabore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nazabore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B365B1C8C05EF0083BFFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -242,6 +248,10 @@
 				731B36BE1C8C1BA70083BFFA /* UIColor+System.m */,
 				731B39CA1C8C2FB90083BFFA /* NSDate+NZBPrettyString.h */,
 				731B39CB1C8C2FB90083BFFA /* NSDate+NZBPrettyString.m */,
+				307589681C944B76007F6AFA /* NSString+NZBMessageCell.h */,
+				307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */,
+				3075896B1C944B92007F6AFA /* UIColor+NZBMessageCell.h */,
+				3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -615,6 +625,7 @@
 				731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */,
 				731B36D71C8C1BF30083BFFA /* NZBMessageCell.m in Sources */,
 				731B36C91C8C1BE10083BFFA /* RDRGrowingTextView.m in Sources */,
+				3075896D1C944B92007F6AFA /* UIColor+NZBMessageCell.m in Sources */,
 				731B36B81C8C1B790083BFFA /* NZBWriteVC.m in Sources */,
 				731B36B61C8C1B790083BFFA /* NZBZaborVC.m in Sources */,
 				731B36DD1C8C1BF30083BFFA /* NZBEmojiCell.m in Sources */,
@@ -628,6 +639,7 @@
 				731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectView.m in Sources */,
 				731B36BF1C8C1BA70083BFFA /* UIFont+System.m in Sources */,
 				731B36DB1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */,
+				3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
