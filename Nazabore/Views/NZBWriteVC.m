@@ -3,6 +3,7 @@
 #import "NZBEmojiSelectView.h"
 #import "NZBDataProvider.h"
 #import "NZBZaborVC.h"
+#import "UIColor+System.h"
 
 static CGFloat const MaxToolbarHeight = 200.0;
 
@@ -122,32 +123,47 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	if (_toolbar) return _toolbar;
 
 	_toolbar = [UIToolbar new];
-	_toolbar.backgroundColor = [UIColor whiteColor];
+	_toolbar.backgroundColor = [UIColor nzb_toolBarColor];
 
 	UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
 	[b addTarget:self action:@selector(sendTap:) forControlEvents:UIControlEventTouchUpInside];
 	[b setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[b setContentEdgeInsets:UIEdgeInsetsMake(2.0, 5.0, 2.0, 5.0)];
+	[b setContentEdgeInsets:UIEdgeInsetsMake(2.0, 4.0, 2.0, 4.0)];
 	[b setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
 	[b setTitle:@"Написать" forState:UIControlStateNormal];
+	b.titleLabel.font = [UIFont systemFontOfSize:14.0];
 	b.layer.masksToBounds = YES;
 	b.layer.cornerRadius = 4.0f;
-	b.backgroundColor = [UIColor colorWithRed:255/255. green:210/255. blue:70/255. alpha:1.0];
+	b.backgroundColor = [UIColor nzb_yellowColor];
 
 	[_toolbar addSubview:b];
 
-	_textView = [RDRGrowingTextView new];
-	_textView.font = [UIFont systemFontOfSize:17.0f];
+	_textView = [[RDRGrowingTextView alloc] init];
+	_textView.font = [UIFont systemFontOfSize:14.0f];
 	_textView.textContainerInset = UIEdgeInsetsMake(4.0f, 3.0f, 3.0f, 3.0f);
-	_textView.layer.borderColor = [UIColor colorWithRed:200.0f/255.0f green:200.0f/255.0f blue:205.0f/255.0f alpha:1.0f].CGColor;
+	_textView.layer.borderColor = [UIColor colorWithRed:229.0f/255.0f green:229.0f/255.0f blue:229.0f/255.0f alpha:1.0f].CGColor;
 	_textView.layer.borderWidth = 1.0f;
 	_textView.layer.masksToBounds = YES;
 	_textView.layer.cornerRadius = 4.0f;
 	[_toolbar addSubview:_textView];
 
+	UILabel *placeholderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+	placeholderLabel.text = @"Че-нибудь...";
+	placeholderLabel.font = [UIFont systemFontOfSize:14.0];
+	placeholderLabel.textColor = [UIColor nzb_lightGrayColor];
+	placeholderLabel.textAlignment = NSTextAlignmentLeft;
+	[_toolbar addSubview:placeholderLabel];
+
+	RAC(placeholderLabel, alpha) = [RACObserve(_textView, text)
+		map:^NSNumber *(NSString *text) {
+			return text.length > 0 ? @0.0 : @1.0;
+		}];
+
 	[b mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.right.equalTo(_toolbar.mas_right).with.offset(-8.0);
 		make.centerY.equalTo(_toolbar.mas_bottom).with.offset(-22.0);
+		make.height.equalTo(@28.0);
+		make.width.equalTo(@96.0);
 	}];
 
 	[_textView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -155,6 +171,11 @@ static CGFloat const MaxToolbarHeight = 200.0;
 		make.top.equalTo(_toolbar).with.offset(8.0);
 		make.bottom.equalTo(_toolbar).with.offset(-8.0);
 		make.right.equalTo(b.mas_left).with.offset(-8.0);
+	}];
+
+	[placeholderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.centerY.equalTo(_textView);
+		make.left.equalTo(_textView).with.offset(8.0);
 	}];
 
 	[_toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
