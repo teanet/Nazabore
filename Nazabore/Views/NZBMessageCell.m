@@ -38,6 +38,8 @@
 	self.contentView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 
+	[self setSwipeContainerViewBackgroundColor:[UIColor nzb_brightGrayColor]];
+
 	_myMessageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	_myMessageLabel.text = @"Моё сообщение";
 	_myMessageLabel.font = [UIFont systemFontOfSize:10.0];
