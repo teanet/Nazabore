@@ -1,6 +1,6 @@
 #import <CoreLocation/CoreLocation.h>
 
-#import "NZBSerializable.h"
+#import "NZBSerializableProtocol.h"
 
 typedef NS_ENUM(NSInteger, NZBMessageType) {
 	NZBMessageTypeDefault		= 0,
@@ -15,15 +15,6 @@ typedef NS_ENUM(NSInteger, NZBUserInteraction) {
 };
 
 
-@interface NZBRating : NSObject
-
-@property (nonatomic, assign, readonly) NSInteger power;
-@property (nonatomic, assign, readonly) NZBUserInteraction interaction;
-
-+ (instancetype)ratingWithPower:(NSUInteger)power interation:(NZBUserInteraction)interaction;
-
-@end
-
 @protocol NZBUpdateProtocol <NSObject>
 
 - (void)nzb_update;
@@ -31,7 +22,17 @@ typedef NS_ENUM(NSInteger, NZBUserInteraction) {
 @end
 
 
-@interface NZBMessage : NZBSerializable
+@interface NZBRating : NSObject
+
+@property (nonatomic, assign, readonly) NSInteger power;
+@property (nonatomic, assign, readonly) NZBUserInteraction interaction;
+
++ (instancetype)ratingWithPower:(NSUInteger)power interaction:(NZBUserInteraction)interaction;
+
+@end
+
+
+@interface NZBMessage : NSObject <NZBSerializableProtocol>
 
 @property (nonatomic, copy, readonly) NSString *id;
 @property (nonatomic, assign, readonly) NZBMessageType messageType;
@@ -40,17 +41,18 @@ typedef NS_ENUM(NSInteger, NZBUserInteraction) {
 @property (nonatomic, assign, readonly) NSTimeInterval timestamp;
 @property (nonatomic, copy, readonly) NZBRating *rating;
 @property (nonatomic, copy, readonly) NSString *title;
-@property (nonatomic, copy, readonly) NSString *icon;
+@property (nonatomic, copy, readonly) NSString *iconName;
 @property (nonatomic, copy, readonly) NSString *phone;
 @property (nonatomic, copy, readonly) NSString *dbObjectIdentifier;
 @property (nonatomic, copy, readonly) NSNumber *karma;
 @property (nonatomic, copy, readonly) NSString *userid;
+@property (nonatomic, copy, readonly) NSString *boardId;
 @property (nonatomic, weak) id<NZBUpdateProtocol> relatedView;
 @property (nonatomic, strong) NSDictionary *boardD;
 
 + (instancetype)messageWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)init NS_UNAVAILABLE;
 
-- (void)updateWithDictionary:(NSDictionary *)dictionary;
 - (NSString *)messageForWatch;
 - (NSString *)timeString;
 - (NSString *)watchCellType;

@@ -1,67 +1,110 @@
 #import "NZBBoard.h"
 
+#import "NSMutableArray+NZBSafeAddObject.h"
+#import "NSDictionary+CLLocation.h"
+
+static NSString *const kDefaultIconName				= @"0";
+
+static NSString *const kDictionaryKeyId				= @"id";
+static NSString *const kDictionaryKeyMessagesCount	= @"messagesCount";
+static NSString *const kDictionaryKeyIconName		= @"icon";
+static NSString *const kDictionaryKeyMessages		= @"messages";
+
 @interface NZBBoard ()
 
-@property (nonatomic, copy, readonly) NSNumber *lat;
-@property (nonatomic, copy, readonly) NSNumber *lon;
-@property (nonatomic, copy, readwrite) NSArray<NSDictionary *> *messageDictionariesArray;
+@property (nonatomic, copy, readonly) NSString *iconName;
+@property (nonatomic, copy, readonly) NSArray<NSDictionary *> *messageDictionariesArray;
 
 @end
 
 @implementation NZBBoard
 
-@synthesize location = _location;
+@synthesize dictionary = _dictionary;
+@synthesize messageDictionariesArray = _messageDictionariesArray;
 
+// MARK: Lifecycle and NZBSerializableProtocol
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-	self = [super initWithDictionary:dictionary];
+	self = [super init];
 	if (self == nil) return nil;
 
-	NSArray *messages = dictionary[@"messages"];
-	[self setMessagesDictionaryArray:messages];
+	[self updateWithDictionary:dictionary];
 
 	return self;
 }
 
-- (CLLocation *)location
+- (void)updateWithDictionary:(NSDictionary *)dictionary
 {
-	if (!_location && self.lat && self.lon)
+	_id = dictionary[kDictionaryKeyId];
+	_messagesCount = dictionary[kDictionaryKeyMessagesCount];
+
+	NSString *iconName = dictionary[kDictionaryKeyIconName];
+	_iconName = iconName.length > 0 ? iconName : kDefaultIconName;
+	_location = [dictionary nzb_location];
+
+	// [[ Messages
+	NSArray *messages = dictionary[kDictionaryKeyMessages];
+	[self setMessagesDictionaryArray:messages];
+	// ]]
+
+	// [[ Clear cache of representations
+	_dictionary = nil;
+	_messageDictionariesArray = nil;
+	// ]]
+}
+
+- (NSDictionary *)dictionary
+{
+	if (!_dictionary)
 	{
-		_location = [[CLLocation alloc] initWithLatitude:self.lat.doubleValue longitude:self.lon.doubleValue];
+		NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
+
+		[dictionaryRepresentation setValue:self.id forKey:kDictionaryKeyId];
+		[dictionaryRepresentation setValue:self.messagesCount forKey:kDictionaryKeyMessagesCount];
+		[dictionaryRepresentation setValue:self.iconName forKey:kDictionaryKeyIconName];
+		[dictionaryRepresentation setValue:self.messageDictionariesArray forKey:kDictionaryKeyMessages];
+		[dictionaryRepresentation addEntriesFromDictionary:[NSDictionary nzb_dictionaryWithLocation:self.location]];
+
+		_dictionary = [dictionaryRepresentation copy];
 	}
 
-	return _location;
+	return _dictionary;
 }
+
+// MARK: Public
+
+- (UIImage *)iconImage
+{
+	return [UIImage imageNamed:self.iconName];
+}
+
+// MARK: Private
 
 - (void)setMessagesDictionaryArray:(NSArray<NSDictionary *> *)messagesDictionaryArray
 {
-	_messageDictionariesArray = messagesDictionaryArray;
-
 	NSMutableArray *messages = [NSMutableArray arrayWithCapacity:messagesDictionaryArray.count];
-	for (NSDictionary *messageDictionary in messagesDictionaryArray)
-	{
+	[messagesDictionaryArray enumerateObjectsUsingBlock:^(NSDictionary *messageDictionary, NSUInteger _, BOOL *s) {
 		NZBMessage *message = [NZBMessage messageWithDictionary:messageDictionary];
-		if (message)
-		{
-			[messages addObject:message];
-		}
-	}
+		[messages nzb_safeAddObject:message];
+	}];
 
 	_messages = [messages copy];
 }
 
-- (UIImage *)iconImage
+- (NSArray<NSDictionary *> *)messageDictionariesArray
 {
-	UIImage *defaultIcon = [UIImage imageNamed:@"0"];
-	if (self.icon.length > 0)
+	if (!_messageDictionariesArray)
 	{
-		return ([UIImage imageNamed:self.icon]) ?: defaultIcon;
+		NSMutableArray *messageDictionariesArray = [NSMutableArray arrayWithCapacity:self.messages.count];
+		[self.messages enumerateObjectsUsingBlock:^(NZBMessage *message, NSUInteger _, BOOL *s) {
+			[messageDictionariesArray nzb_safeAddObject:message.dictionary];
+		}];
+
+		_messageDictionariesArray = [messageDictionariesArray copy];
 	}
-	else
-	{
-		return defaultIcon;
-	}
+
+	return _messageDictionariesArray;
 }
 
 @end

@@ -1,13 +1,36 @@
 #import "NZBMessage.h"
 
+#import "NSDictionary+CLLocation.h"
+
+static NSString *const kDefaultIconName				= @"0";
+
+static NSString *const kDictionaryKeyBody			= @"body";
+static NSString *const kDictionaryKeyTitle			= @"title";
+static NSString *const kDictionaryKeyDbObject		= @"dbobject";
+static NSString *const kDictionaryKeyIconName		= @"icon";
+static NSString *const kDictionaryKeyId				= @"id";
+static NSString *const kDictionaryKeyKarma			= @"karma";
+static NSString *const kDictionaryKeyPhone			= @"phone";
+static NSString *const kDictionaryKeyPower			= @"power";
+static NSString *const kDictionaryKeyBoardId		= @"pylon";
+static NSString *const kDictionaryKeyTimestamp		= @"timestamp";
+static NSString *const kDictionaryKeyType			= @"type";
+static NSString *const kDictionaryKeyUserId			= @"userid";
+static NSString *const kDictionaryKeyInteraction	= @"interaction";
+
+static NSString *const kMessageTypeDefault			= @"default";
+static NSString *const kMessageTypeCommercial		= @"commercial";
+static NSString *const kMessageTypeAdvert			= @"advert";
+
+
 @implementation NZBRating
 
-+ (instancetype)ratingWithPower:(NSUInteger)power interation:(NZBUserInteraction)interaction
++ (instancetype)ratingWithPower:(NSUInteger)power interaction:(NZBUserInteraction)interaction
 {
-	return [[NZBRating alloc] initWithPower:power interation:interaction];
+	return [[NZBRating alloc] initWithPower:power interaction:interaction];
 }
 
-- (instancetype)initWithPower:(NSUInteger)power interation:(NZBUserInteraction)interaction
+- (instancetype)initWithPower:(NSUInteger)power interaction:(NZBUserInteraction)interaction
 {
 	self = [super init];
 	if (self == nil) return nil;
@@ -25,88 +48,139 @@
 
 @end
 
+
 @interface NZBMessage ()
 
-@property (nonatomic, copy, readonly) NSString *dbobject;
-@property (nonatomic, copy, readonly) NSString *type;
-@property (nonatomic, copy, readonly) NSNumber *lat;
-@property (nonatomic, copy, readonly) NSNumber *lon;
-@property (nonatomic, copy, readonly) NSNumber *pylon;
 @property (nonatomic, copy, readonly) NSNumber *power;
 @property (nonatomic, copy, readonly) NSNumber *interaction;
+@property (nonatomic, copy, readonly) NSString *messageTypeString;
 
 @end
 
 @implementation NZBMessage
 
-@synthesize location = _location;
-@synthesize rating = _rating;
+@synthesize dictionary = _dictionary;
+
+// MARK: Lifecycle
 
 + (instancetype)messageWithDictionary:(NSDictionary *)dictionary
 {
 	return [[NZBMessage alloc] initWithDictionary:dictionary];
 }
 
+// MARK: Lifecycle and NZBSerializableProtocol
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+	self = [super init];
+	if (self == nil) return nil;
+
+	[self updateWithDictionary:dictionary];
+
+	return self;
+}
+
 - (void)updateWithDictionary:(NSDictionary *)dictionary
 {
-	[super updateWithDictionary:dictionary];
+	_body = dictionary[kDictionaryKeyBody];
+	_title = dictionary[kDictionaryKeyTitle];
+	_dbObjectIdentifier = dictionary[kDictionaryKeyDbObject];
+	_id = dictionary[kDictionaryKeyId];
+	_karma = dictionary[kDictionaryKeyKarma];
+	_phone = dictionary[kDictionaryKeyPhone];
+	_power = dictionary[kDictionaryKeyPower];
+	_userid = dictionary[kDictionaryKeyUserId];
+	_interaction = dictionary[kDictionaryKeyInteraction];
+	_boardId = dictionary[kDictionaryKeyBoardId];
+
+	NSString *iconName = dictionary[kDictionaryKeyIconName];
+	_iconName = iconName.length > 0 ? iconName : kDefaultIconName;
+	_location = [dictionary nzb_location];
+
+	// [[ Timestamp
+	NSNumber *timestampNumber = dictionary[kDictionaryKeyTimestamp];
+
+	if (timestampNumber.doubleValue > 0.0)
+	{
+		_timestamp = timestampNumber.doubleValue;
+	}
+	else
+	{
+		NSCAssert(NO, @"<%@> Unexpected message timestamp value: %@", self.class, timestampNumber);
+	}
+	// ]]
+
+	// [[ Message type
+	_messageTypeString = dictionary[kDictionaryKeyType];
+	_messageType = NZBMessageTypeDefault;
+
+	if ([_messageTypeString isEqualToString:kMessageTypeAdvert])
+	{
+		_messageType = NZBMessageTypeAdvertisement;
+	}
+	else if ([_messageTypeString isEqualToString:kMessageTypeCommercial])
+	{
+		_messageType = NZBMessageTypeCommercial;
+	}
+	else if (![_messageTypeString isEqualToString:kMessageTypeDefault])
+	{
+		NSCAssert(NO, @"<%@> Unknown message type: %@", self.class, _messageTypeString);
+	}
+	// ]]
+
+	_rating = [[NZBRating alloc] initWithPower:self.power.integerValue
+								   interaction:self.interaction.integerValue];
+
+	// [[ Clear representation cache
+	_dictionary = nil;
+	// ]]
+
 	[self.relatedView nzb_update];
 }
 
-- (CLLocation *)location
+- (NSDictionary *)dictionary
 {
-	if (!_location && self.lat && self.lon)
+	if (!_dictionary)
 	{
-		_location = [[CLLocation alloc] initWithLatitude:self.lat.doubleValue longitude:self.lon.doubleValue];
+		NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
+
+		[dictionaryRepresentation setValue:self.body forKey:kDictionaryKeyBody];
+		[dictionaryRepresentation setValue:self.title forKey:kDictionaryKeyTitle];
+		[dictionaryRepresentation setValue:self.dbObjectIdentifier forKey:kDictionaryKeyDbObject];
+		[dictionaryRepresentation setValue:self.id forKey:kDictionaryKeyId];
+		[dictionaryRepresentation setValue:self.karma forKey:kDictionaryKeyKarma];
+		[dictionaryRepresentation setValue:self.phone forKey:kDictionaryKeyPhone];
+		[dictionaryRepresentation setValue:self.userid forKey:kDictionaryKeyUserId];
+		[dictionaryRepresentation setValue:self.boardId forKey:kDictionaryKeyBoardId];
+		[dictionaryRepresentation setValue:self.iconName forKey:kDictionaryKeyIconName];
+		[dictionaryRepresentation setValue:@(self.timestamp) forKey:kDictionaryKeyTimestamp];
+		[dictionaryRepresentation setValue:self.messageTypeString forKey:kDictionaryKeyType];
+		[dictionaryRepresentation setValue:self.power forKey:kDictionaryKeyPower];
+		[dictionaryRepresentation setValue:self.interaction forKey:kDictionaryKeyInteraction];
+		[dictionaryRepresentation addEntriesFromDictionary:[NSDictionary nzb_dictionaryWithLocation:self.location]];
+
+		_dictionary = [dictionaryRepresentation copy];
 	}
 
-	return _location;
+	return _dictionary;
 }
 
-- (NZBRating *)rating
-{
-	if (!_rating)
-	{
-		_rating = [[NZBRating alloc] initWithPower:self.power.integerValue
-										interation:self.interaction.integerValue];;
-	}
-
-	return _rating;
-}
-
-- (NZBMessageType)messageType
-{
-	NZBMessageType type = NZBMessageTypeDefault;
-
-	if ([self.type isEqualToString:@"advert"])
-	{
-		type = NZBMessageTypeAdvertisement;
-	}
-	else if ([self.type isEqualToString:@"commercial"])
-	{
-		type = NZBMessageTypeCommercial;
-	}
-
-	return type;
-}
+// Public
 
 - (NSString *)watchCellType
 {
 	NSString *watchCellType = @"DefaultMessage";
-	if ([self.type isEqualToString:@"advert"])
-	{
-		watchCellType = @"AdsCell";
-	}
-	else if ([self.type isEqualToString:@"commercial"])
-	{
-		watchCellType = @"AdsCell";
-	}
-	return watchCellType;
-}
 
-- (NSString *)dbObjectIdentifier
-{
-	return self.dbobject;
+	switch (self.messageType)
+	{
+		case NZBMessageTypeCommercial		: return @"AdsCell";
+		case NZBMessageTypeAdvertisement	: return @"AdsCell";
+		case NZBMessageTypeDefault			: return @"DefaultMessage";
+	}
+
+	NSCAssert(NO, @"<%@> Watch OS: Unexpected message type: %ld", self.class, (long)self.messageType);
+	
+	return watchCellType;
 }
 
 - (NSString *)messageForWatch
