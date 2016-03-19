@@ -41,7 +41,6 @@
 	[self setSwipeContainerViewBackgroundColor:[UIColor nzb_brightGrayColor]];
 
 	_myMessageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-	_myMessageLabel.text = @"Моё сообщение";
 	_myMessageLabel.font = [UIFont systemFontOfSize:10.0];
 	_myMessageLabel.textAlignment = NSTextAlignmentRight;
 	_myMessageLabel.textColor = [UIColor nzb_lightGrayColor];
@@ -92,7 +91,7 @@
 	[_myMessageLabel setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
 	[_myMessageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.equalTo(self.contentView).with.offset(16.0);
-		make.top.equalTo(self.contentView.mas_top).with.offset(8.0);
+		make.top.equalTo(self.contentView).with.offset(8.0);
 		make.right.equalTo(self.contentView).with.offset(-16.0);
 		make.bottom.equalTo(_messageLabel.mas_top);
 	}];
@@ -151,20 +150,8 @@
 {
 	[super layoutSubviews];
 	CGFloat h = self.bounds.size.height;
-	likeButton.frame = CGRectMake(0, 0, 100, h);
-	dislikeButton.frame = CGRectMake(0, 0, 100, h);
-}
-
-- (void)updateConstraints
-{
-	[self.myMessageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-		if (!self.isCurrentUser)
-		{
-			make.height.equalTo(@0);
-		}
-	}];
-
-	[super updateConstraints];
+	likeButton.frame = CGRectMake(0, 0, 100.0, h);
+	dislikeButton.frame = CGRectMake(0, 0, 100.0, h);
 }
 
 - (void)nzb_update
@@ -180,7 +167,8 @@
 	self.swipingEnabled = !hasUserInteraction;
 	self.iconView.image = [UIImage imageNamed:self.message.iconName];
 
-	[self updateConstraintsIfNeeded];
+	_myMessageLabel.text = self.isCurrentUser ? @"Моё сообщение" : nil;
+
 	[self layoutIfNeeded];
 }
 

@@ -29,10 +29,6 @@ UICollectionViewDelegate
 {
 	[super viewDidLoad];
 
-	UISwipeGestureRecognizer *recognozer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(close:)];
-	recognozer.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionDown;
-	[self.view addGestureRecognizer:recognozer];
-
 	UIView *contentView = [[UIView alloc] init];
 	contentView.layer.cornerRadius = 5.0;
 	contentView.layer.masksToBounds = YES;
@@ -161,11 +157,6 @@ UICollectionViewDelegate
 	{
 		self.didSelectEmojiBlock(emoji);
 	}
-}
-
-- (void)close:(UISwipeGestureRecognizer *)recognizer
-{
-	[self cancelTap];
 }
 
 #pragma mark coll
