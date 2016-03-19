@@ -20,13 +20,11 @@ UITextViewDelegate
 @property (nonatomic, strong, readonly) UITableView *tableView;
 @property (nonatomic, strong, readonly) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSArray<NZBMessage *> *messages;
+@property (nonatomic, strong, readonly) UITableViewController *tableViewController;
 
 @end
 
 @implementation NZBZaborVC
-{
-	UITableViewController *tableViewController;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -71,13 +69,12 @@ UITextViewDelegate
 		make.edges.equalTo(self.view).with.priorityHigh();
 	}];
 
-	tableViewController = [[UITableViewController alloc] init];
-	tableViewController.tableView = _tableView;
+	_tableViewController = [[UITableViewController alloc] init];
+	_tableViewController.tableView = _tableView;
 
 	_refreshControl = [[UIRefreshControl alloc] init];
-	tableViewController.refreshControl = _refreshControl;
+	_tableViewController.refreshControl = _refreshControl;
 	[_refreshControl addTarget:self action:@selector(refetchData) forControlEvents:UIControlEventValueChanged];
-//	[_tableView addSubview:_refreshControl];
 
 	// [[ Configure navigation bar
 	UIBarButtonItem *backButton = [UIBarButtonItem nzb_backBarButtonItem];
@@ -120,7 +117,6 @@ UITextViewDelegate
 	UIEdgeInsets insets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0);
 	self.tableView.contentInset = insets;
 	self.tableView.scrollIndicatorInsets = insets;
-	NSLog(@">>%@", self.tableView);
 }
 
 - (void)didSwipe:(UIScreenEdgePanGestureRecognizer *)recognizer

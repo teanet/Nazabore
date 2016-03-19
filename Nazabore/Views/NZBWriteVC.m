@@ -15,6 +15,11 @@ static CGFloat const MaxToolbarHeight = 200.0;
 
 @implementation NZBWriteVC
 
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -43,12 +48,6 @@ static CGFloat const MaxToolbarHeight = 200.0;
 											 selector:@selector(handleKeyboard:)
 												 name:UIKeyboardDidChangeFrameNotification
 											   object:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-//	[self handleKeyboard:nil];
 }
 
 - (void)handleKeyboard:(NSNotification *)n
@@ -138,18 +137,18 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	_toolbar = [UIToolbar new];
 	_toolbar.backgroundColor = [UIColor nzb_toolBarColor];
 
-	UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-	[b addTarget:self action:@selector(sendTap:) forControlEvents:UIControlEventTouchUpInside];
-	[b setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[b setContentEdgeInsets:UIEdgeInsetsMake(2.0, 4.0, 2.0, 4.0)];
-	[b setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-	[b setTitle:@"Написать" forState:UIControlStateNormal];
-	b.titleLabel.font = [UIFont systemFontOfSize:14.0];
-	b.layer.masksToBounds = YES;
-	b.layer.cornerRadius = 4.0f;
-	b.backgroundColor = [UIColor nzb_yellowColor];
+	UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[sendButton addTarget:self action:@selector(sendTap:) forControlEvents:UIControlEventTouchUpInside];
+	[sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[sendButton setContentEdgeInsets:UIEdgeInsetsMake(2.0, 4.0, 2.0, 4.0)];
+	[sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+	[sendButton setTitle:@"Написать" forState:UIControlStateNormal];
+	sendButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+	sendButton.layer.masksToBounds = YES;
+	sendButton.layer.cornerRadius = 4.0f;
+	sendButton.backgroundColor = [UIColor nzb_yellowColor];
 
-	[_toolbar addSubview:b];
+	[_toolbar addSubview:sendButton];
 
 	_textView = [[RDRGrowingTextView alloc] init];
 	_textView.font = [UIFont systemFontOfSize:14.0f];
@@ -172,7 +171,7 @@ static CGFloat const MaxToolbarHeight = 200.0;
 			return text.length > 0 ? @0.0 : @1.0;
 		}];
 
-	[b mas_makeConstraints:^(MASConstraintMaker *make) {
+	[sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.right.equalTo(_toolbar.mas_right).with.offset(-8.0);
 		make.centerY.equalTo(_toolbar.mas_bottom).with.offset(-22.0);
 		make.height.equalTo(@28.0);
@@ -183,7 +182,7 @@ static CGFloat const MaxToolbarHeight = 200.0;
 		make.left.equalTo(_toolbar).with.offset(8.0);
 		make.top.equalTo(_toolbar).with.offset(8.0);
 		make.bottom.equalTo(_toolbar).with.offset(-8.0);
-		make.right.equalTo(b.mas_left).with.offset(-8.0);
+		make.right.equalTo(sendButton.mas_left).with.offset(-8.0);
 	}];
 
 	[placeholderLabel mas_makeConstraints:^(MASConstraintMaker *make) {

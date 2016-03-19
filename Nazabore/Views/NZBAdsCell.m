@@ -91,10 +91,6 @@
 		make.centerY.equalTo(self.contentView).with.offset(-20.0);
 	}];
 
-	[self setModeWillChangeBlock:^(UITableViewCell *cell, YATableSwipeMode mode) {
-		NSLog(@">>%ld", (long)mode);
-	}];
-
 	return self;
 }
 
