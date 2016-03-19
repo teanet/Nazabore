@@ -10,6 +10,8 @@ end
 
 target 'Nazabore' do
 	import_common
+	pod 'Crashlytics'
+	pod 'Fabric'
 	pod 'Masonry'
 	pod 'YMSwipeTableViewCell'
 	pod 'NZBLibrary', :path => 'NZBLibrary/NZBLibrary.podspec'

@@ -3,12 +3,16 @@
 #import "NZBMapVC.h"
 #import "NZBPreferences.h"
 #import <NZBServerController.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[NZBServerController sharedController].userID = [NZBPreferences defaultPreferences].userId;
+	[[Fabric sharedSDK] setDebug:YES];
+	[Fabric with:@[CrashlyticsKit]];
 
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[NZBMapVC alloc] init]];
