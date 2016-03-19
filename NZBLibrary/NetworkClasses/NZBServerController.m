@@ -48,6 +48,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	_userID = @"1";
 	_requestManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kNZBAPIBaseURLString]];
 	_requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
+	_requestManager.requestSerializer.timeoutInterval = 10.0;
 	[_requestManager.requestSerializer setValue:kNZBAPIApplicationToken forHTTPHeaderField:@"X-Absolutely-Secret-Token"];
 	_requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
 	return self;
