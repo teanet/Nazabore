@@ -178,7 +178,7 @@
 	self.powerLabel.text = [self.message.powerString nzb_prettyPowerString];
 	self.timeLabel.text = [NSDate nzb_prettyStringFrom:self.message.timestamp * 0.001];
 	self.swipingEnabled = !hasUserInteraction;
-	self.iconView.image = [UIImage imageNamed:self.message.icon];
+	self.iconView.image = [UIImage imageNamed:self.message.iconName];
 
 	[self updateConstraintsIfNeeded];
 	[self layoutIfNeeded];

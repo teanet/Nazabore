@@ -26,7 +26,7 @@
 		731B36C11C8C1BA70083BFFA /* UIColor+System.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36BE1C8C1BA70083BFFA /* UIColor+System.m */; };
 		731B36C21C8C1BA70083BFFA /* UIColor+System.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36BE1C8C1BA70083BFFA /* UIColor+System.m */; };
 		731B36C91C8C1BE10083BFFA /* RDRGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36C61C8C1BE10083BFFA /* RDRGrowingTextView.m */; };
-		731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36C81C8C1BE10083BFFA /* NZBEmojiSelectView.m */; };
+		731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36C81C8C1BE10083BFFA /* NZBEmojiSelectVC.m */; };
 		731B36D71C8C1BF30083BFFA /* NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36CF1C8C1BF30083BFFA /* NZBMessageCell.m */; };
 		731B36D91C8C1BF30083BFFA /* NZBAdsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36D11C8C1BF30083BFFA /* NZBAdsCell.m */; };
 		731B36DB1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B36D41C8C1BF30083BFFA /* NZBAnnotationView.m */; };
@@ -101,8 +101,8 @@
 		731B36BE1C8C1BA70083BFFA /* UIColor+System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+System.m"; sourceTree = "<group>"; };
 		731B36C51C8C1BE10083BFFA /* RDRGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDRGrowingTextView.h; sourceTree = "<group>"; };
 		731B36C61C8C1BE10083BFFA /* RDRGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDRGrowingTextView.m; sourceTree = "<group>"; };
-		731B36C71C8C1BE10083BFFA /* NZBEmojiSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBEmojiSelectView.h; sourceTree = "<group>"; };
-		731B36C81C8C1BE10083BFFA /* NZBEmojiSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBEmojiSelectView.m; sourceTree = "<group>"; };
+		731B36C71C8C1BE10083BFFA /* NZBEmojiSelectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBEmojiSelectVC.h; sourceTree = "<group>"; };
+		731B36C81C8C1BE10083BFFA /* NZBEmojiSelectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBEmojiSelectVC.m; sourceTree = "<group>"; };
 		731B36CE1C8C1BF30083BFFA /* NZBMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBMessageCell.h; sourceTree = "<group>"; };
 		731B36CF1C8C1BF30083BFFA /* NZBMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBMessageCell.m; sourceTree = "<group>"; };
 		731B36D01C8C1BF30083BFFA /* NZBAdsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBAdsCell.h; sourceTree = "<group>"; };
@@ -281,8 +281,8 @@
 			children = (
 				731B36C51C8C1BE10083BFFA /* RDRGrowingTextView.h */,
 				731B36C61C8C1BE10083BFFA /* RDRGrowingTextView.m */,
-				731B36C71C8C1BE10083BFFA /* NZBEmojiSelectView.h */,
-				731B36C81C8C1BE10083BFFA /* NZBEmojiSelectView.m */,
+				731B36C71C8C1BE10083BFFA /* NZBEmojiSelectVC.h */,
+				731B36C81C8C1BE10083BFFA /* NZBEmojiSelectVC.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -642,7 +642,7 @@
 				731B36E61C8C1CD70083BFFA /* NZBDataProvider.m in Sources */,
 				303E09BA1C8DCF80008978D6 /* NZBPrivateConstants.m in Sources */,
 				731B36AB1C8C1AEC0083BFFA /* NZBUserVC.m in Sources */,
-				731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectView.m in Sources */,
+				731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectVC.m in Sources */,
 				731B36BF1C8C1BA70083BFFA /* UIFont+System.m in Sources */,
 				731B36DB1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */,
 				3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */,

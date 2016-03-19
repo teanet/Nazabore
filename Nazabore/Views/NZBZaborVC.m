@@ -6,7 +6,7 @@
 #import "NZBServerController.h"
 #import "NZBMessageCell.h"
 #import "RDRGrowingTextView.h"
-#import "NZBEmojiSelectView.h"
+#import "NZBEmojiSelectVC.h"
 #import "NZBAdsCell.h"
 #import "UIBarButtonItem+NZBBarButtonItem.h"
 

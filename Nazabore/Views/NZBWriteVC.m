@@ -1,6 +1,6 @@
 #import "NZBWriteVC.h"
 
-#import "NZBEmojiSelectView.h"
+#import "NZBEmojiSelectVC.h"
 #import "NZBDataProvider.h"
 #import "NZBZaborVC.h"
 #import "UIColor+System.h"
@@ -90,9 +90,8 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	NSString *textWithoutSpaces = [self.textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
 	if (textWithoutSpaces.length == 0) return;
 
-	NZBEmojiSelectView *view = [[NZBEmojiSelectView alloc] init];
-
-	view.block = ^(NSString *emoji) {
+	NZBEmojiSelectVC *emojiSelectVC = [[NZBEmojiSelectVC alloc] init];
+	emojiSelectVC.didSelectEmojiBlock = ^(NSString *emoji) {
 		@strongify(self);
 
 		[self dismissViewControllerAnimated:YES completion:nil];
@@ -112,9 +111,12 @@ static CGFloat const MaxToolbarHeight = 200.0;
 			[[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
 		}];
 	};
-	view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	view.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	[self presentViewController:view animated:YES completion:nil];
+	emojiSelectVC.didCloseBlock = ^{
+		@strongify(self);
+
+		[self dismissViewControllerAnimated:YES completion:nil];
+	};
+	[self presentViewController:emojiSelectVC animated:YES completion:nil];
 }
 
 - (void)refetchData
