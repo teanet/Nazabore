@@ -43,14 +43,16 @@ UIGestureRecognizerDelegate
 								   context:nil];
 
 	UIButton *centerButton = [[UIButton alloc] init];
-	[centerButton setImage:[UIImage imageNamed:@"map_center_icon"] forState:UIControlStateNormal];
+	[centerButton setImage:[UIImage imageNamed:@"locationButton-normal"] forState:UIControlStateNormal];
+	[centerButton setImage:[UIImage imageNamed:@"locationButton-highlighted"] forState:UIControlStateHighlighted];
 	[centerButton addTarget:self action:@selector(centerTap) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:centerButton];
+
 	[centerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.right.equalTo(self.view).with.offset(-10.0);
-		make.width.equalTo(@44.0);
-		make.height.equalTo(@44.0);
-		make.bottom.greaterThanOrEqualTo(self.keyboardView.mas_top).with.offset(-40.0).with.priorityHigh();
+		make.right.equalTo(self.view).with.offset(-16.0);
+		make.width.equalTo(@48.0);
+		make.height.equalTo(@48.0);
+		make.bottom.greaterThanOrEqualTo(self.keyboardView.mas_top).with.offset(-16.0).with.priorityHigh();
 	}];
 
 	[[NZBDataProvider sharedProvider].nearestBoardsSignal subscribeNext:^(NSArray *boards) {
@@ -70,6 +72,13 @@ UIGestureRecognizerDelegate
 	UIPanGestureRecognizer* panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragMap:)];
 	[panRec setDelegate:self];
 	[self.mapView addGestureRecognizer:panRec];
+
+	// [[ Configure UINavigationBar
+	[[UINavigationBar appearance] setBarTintColor:[UIColor nzb_brightGrayColor]];
+	[[UINavigationBar appearance] setTintColor:[UIColor nzb_santasGrayColor]];
+	[[UINavigationBar appearance] setTranslucent:YES];
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+	// ]]
 }
 
 - (void)viewWillAppear:(BOOL)animated

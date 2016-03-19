@@ -4,7 +4,12 @@ platform :ios, '8.0'
 
 workspace 'Nazabore.xcworkspace'
 
+def import_common
+	pod 'libextobjc'
+end
+
 target 'Nazabore' do
+	import_common
 	pod 'Masonry'
 	pod 'YMSwipeTableViewCell'
 	pod 'NZBLibrary', :path => 'NZBLibrary/NZBLibrary.podspec'
@@ -17,17 +22,20 @@ target 'UIWrapper' do
 end
 
 target 'NZBLibraryDemo' do
+	import_common
 	pod 'NZBLibrary', :path => 'NZBLibrary/NZBLibrary.podspec'
 	xcodeproj 'NZBLibrary/NZBLibraryDemo/NZBLibraryDemo.xcodeproj'
 end
 
 target 'NZBLibraryDemoTests' do
+	import_common
 	pod 'Kiwi'
 	pod 'NZBLibrary', :path => 'NZBLibrary/NZBLibrary.podspec'
 	xcodeproj 'NZBLibrary/NZBLibraryDemo/NZBLibraryDemo.xcodeproj'
 end
 
 target 'NazaboreTests' do
+	import_common
 	pod 'Kiwi'
 	xcodeproj 'Nazabore.xcodeproj'
 end

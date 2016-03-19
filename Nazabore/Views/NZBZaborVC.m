@@ -6,8 +6,9 @@
 #import "NZBServerController.h"
 #import "NZBMessageCell.h"
 #import "RDRGrowingTextView.h"
-#import "NZBEmojiSelectView.h"
+#import "NZBEmojiSelectVC.h"
 #import "NZBAdsCell.h"
+#import "UIBarButtonItem+NZBBarButtonItem.h"
 
 @interface NZBZaborVC ()
 <
@@ -19,13 +20,11 @@ UITextViewDelegate
 @property (nonatomic, strong, readonly) UITableView *tableView;
 @property (nonatomic, strong, readonly) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSArray<NZBMessage *> *messages;
+@property (nonatomic, strong, readonly) UITableViewController *tableViewController;
 
 @end
 
 @implementation NZBZaborVC
-{
-	UITableViewController *tableViewController;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -36,6 +35,13 @@ UITextViewDelegate
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+
+	@weakify(self);
+
+	UIScreenEdgePanGestureRecognizer *recognizer =
+		[[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+	recognizer.edges = UIRectEdgeLeft;
+	[self.view addGestureRecognizer:recognizer];
 
 	self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 	self.view.backgroundColor = [UIColor whiteColor];
@@ -53,19 +59,36 @@ UITextViewDelegate
 	_tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
 	_tableView.delegate = self;
 	_tableView.dataSource = self;
+	UIEdgeInsets tableSeparatorInsets = UIEdgeInsetsMake(0.f, 16.f, 0.f, 16.f);
+	[_tableView setSeparatorInset:tableSeparatorInsets];
+	[_tableView setLayoutMargins:tableSeparatorInsets];
+	_tableView.separatorColor = [UIColor nzb_lightGrayColor];
 	[self.view addSubview:_tableView];
 	[_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(@64);
+		make.top.equalTo(@64.0);
 		make.edges.equalTo(self.view).with.priorityHigh();
 	}];
 
-	tableViewController = [[UITableViewController alloc] init];
-	tableViewController.tableView = _tableView;
+	_tableViewController = [[UITableViewController alloc] init];
+	_tableViewController.tableView = _tableView;
 
 	_refreshControl = [[UIRefreshControl alloc] init];
-	tableViewController.refreshControl = _refreshControl;
+	_tableViewController.refreshControl = _refreshControl;
 	[_refreshControl addTarget:self action:@selector(refetchData) forControlEvents:UIControlEventValueChanged];
-//	[_tableView addSubview:_refreshControl];
+
+	// [[ Configure navigation bar
+	UIBarButtonItem *backButton = [UIBarButtonItem nzb_backBarButtonItem];
+
+	backButton.rac_command =
+		[[RACCommand alloc] initWithSignalBlock:^RACSignal *(id _) {
+			@strongify(self);
+
+			[self.navigationController popViewControllerAnimated:YES];
+			return [RACSignal empty];
+		}];
+
+	self.navigationItem.leftBarButtonItem = backButton;
+	// ]]
 
 	[self refetchData];
 }
@@ -74,23 +97,34 @@ UITextViewDelegate
 {
 	@weakify(self);
 
-	[[[NZBServerController sharedController] fetchMessagesForBoard:self.board] subscribeNext:^(NSArray *messages) {
-		@strongify(self);
+	[[[[NZBServerController sharedController] fetchMessagesForBoard:self.board]
+		deliverOnMainThread]
+		subscribeNext:^(NSArray *messages) {
+			@strongify(self);
 
-		self.messages = messages;
-		[self.tableView reloadData];
-		[self.tableView layoutIfNeeded];
-		[self.refreshControl endRefreshing];
-	}];
+			self.messages = messages;
+			[self.tableView reloadData];
+			[self.tableView layoutIfNeeded];
+			[self.refreshControl endRefreshing];
+		}];
 }
 
 - (void)viewWillLayoutSubviews
 {
 	[super viewWillLayoutSubviews];
-	UIEdgeInsets insets = UIEdgeInsetsMake(0.0, 0.0, self.keyboardView.frame.size.height, 0.0);
+	// Костыльнём пока табличку до первого нажатия
+	CGFloat height = self.keyboardView.frame.size.height > 0 ? self.keyboardView.frame.size.height : 44.0;
+	UIEdgeInsets insets = UIEdgeInsetsMake(0.0, 0.0, height, 0.0);
 	self.tableView.contentInset = insets;
 	self.tableView.scrollIndicatorInsets = insets;
-	NSLog(@">>%@", self.tableView);
+}
+
+- (void)didSwipe:(UIScreenEdgePanGestureRecognizer *)recognizer
+{
+	if (recognizer.state == UIGestureRecognizerStateBegan)
+	{
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 #pragma mark WCSessionDelegate

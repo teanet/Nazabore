@@ -1,8 +1,9 @@
 #import "NZBWriteVC.h"
 
-#import "NZBEmojiSelectView.h"
+#import "NZBEmojiSelectVC.h"
 #import "NZBDataProvider.h"
 #import "NZBZaborVC.h"
+#import "UIColor+System.h"
 
 static CGFloat const MaxToolbarHeight = 200.0;
 
@@ -13,6 +14,11 @@ static CGFloat const MaxToolbarHeight = 200.0;
 @end
 
 @implementation NZBWriteVC
+
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad
 {
@@ -44,20 +50,25 @@ static CGFloat const MaxToolbarHeight = 200.0;
 											   object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-	[self handleKeyboard:nil];
-}
-
 - (void)handleKeyboard:(NSNotification *)n
 {
 	CGRect frame = [n.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
 	[self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
 		make.height.equalTo(@(self.view.frame.size.height - frame.size.height));
 	}];
+
 	frame.size.height = MAX(frame.size.height, _toolbar.frame.size.height);
 	self.keyboardView.frame = frame;
+
+	static BOOL skipFirstTimeAnimation;
+	if (skipFirstTimeAnimation)
+	{
+		[UIView animateWithDuration:0.3 animations:^{
+			[self.view layoutIfNeeded];
+		}];
+	}
+	skipFirstTimeAnimation = YES;
 }
 
 - (void)showBoard:(NZBBoard *)b
@@ -78,9 +89,8 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	NSString *textWithoutSpaces = [self.textView.text stringByReplacingOccurrencesOfString:@" " withString:@""];
 	if (textWithoutSpaces.length == 0) return;
 
-	NZBEmojiSelectView *view = [[NZBEmojiSelectView alloc] init];
-
-	view.block = ^(NSString *emoji) {
+	NZBEmojiSelectVC *emojiSelectVC = [[NZBEmojiSelectVC alloc] init];
+	emojiSelectVC.didSelectEmojiBlock = ^(NSString *emoji) {
 		@strongify(self);
 
 		[self dismissViewControllerAnimated:YES completion:nil];
@@ -100,9 +110,12 @@ static CGFloat const MaxToolbarHeight = 200.0;
 			[[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
 		}];
 	};
-	view.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-	view.modalPresentationStyle = UIModalPresentationOverFullScreen;
-	[self presentViewController:view animated:YES completion:nil];
+	emojiSelectVC.didCloseBlock = ^{
+		@strongify(self);
+
+		[self dismissViewControllerAnimated:YES completion:nil];
+	};
+	[self presentViewController:emojiSelectVC animated:YES completion:nil];
 }
 
 - (void)refetchData
@@ -122,39 +135,59 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	if (_toolbar) return _toolbar;
 
 	_toolbar = [UIToolbar new];
-	_toolbar.backgroundColor = [UIColor whiteColor];
+	_toolbar.backgroundColor = [UIColor nzb_toolBarColor];
 
-	UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-	[b addTarget:self action:@selector(sendTap:) forControlEvents:UIControlEventTouchUpInside];
-	[b setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[b setContentEdgeInsets:UIEdgeInsetsMake(2.0, 5.0, 2.0, 5.0)];
-	[b setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-	[b setTitle:@"Написать" forState:UIControlStateNormal];
-	b.layer.masksToBounds = YES;
-	b.layer.cornerRadius = 4.0f;
-	b.backgroundColor = [UIColor colorWithRed:255/255. green:210/255. blue:70/255. alpha:1.0];
+	UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[sendButton addTarget:self action:@selector(sendTap:) forControlEvents:UIControlEventTouchUpInside];
+	[sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[sendButton setContentEdgeInsets:UIEdgeInsetsMake(2.0, 4.0, 2.0, 4.0)];
+	[sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+	[sendButton setTitle:@"Написать" forState:UIControlStateNormal];
+	sendButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+	sendButton.layer.masksToBounds = YES;
+	sendButton.layer.cornerRadius = 4.0f;
+	sendButton.backgroundColor = [UIColor nzb_yellowColor];
 
-	[_toolbar addSubview:b];
+	[_toolbar addSubview:sendButton];
 
-	_textView = [RDRGrowingTextView new];
-	_textView.font = [UIFont systemFontOfSize:17.0f];
+	_textView = [[RDRGrowingTextView alloc] init];
+	_textView.font = [UIFont systemFontOfSize:14.0f];
 	_textView.textContainerInset = UIEdgeInsetsMake(4.0f, 3.0f, 3.0f, 3.0f);
-	_textView.layer.borderColor = [UIColor colorWithRed:200.0f/255.0f green:200.0f/255.0f blue:205.0f/255.0f alpha:1.0f].CGColor;
+	_textView.layer.borderColor = [UIColor colorWithRed:229.0f/255.0f green:229.0f/255.0f blue:229.0f/255.0f alpha:1.0f].CGColor;
 	_textView.layer.borderWidth = 1.0f;
 	_textView.layer.masksToBounds = YES;
 	_textView.layer.cornerRadius = 4.0f;
 	[_toolbar addSubview:_textView];
 
-	[b mas_makeConstraints:^(MASConstraintMaker *make) {
+	UILabel *placeholderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+	placeholderLabel.text = @"Чё-нибудь...";
+	placeholderLabel.font = [UIFont systemFontOfSize:14.0];
+	placeholderLabel.textColor = [UIColor nzb_lightGrayColor];
+	placeholderLabel.textAlignment = NSTextAlignmentLeft;
+	[_toolbar addSubview:placeholderLabel];
+
+	RAC(placeholderLabel, alpha) = [RACObserve(_textView, text)
+		map:^NSNumber *(NSString *text) {
+			return text.length > 0 ? @0.0 : @1.0;
+		}];
+
+	[sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.right.equalTo(_toolbar.mas_right).with.offset(-8.0);
 		make.centerY.equalTo(_toolbar.mas_bottom).with.offset(-22.0);
+		make.height.equalTo(@28.0);
+		make.width.equalTo(@96.0);
 	}];
 
 	[_textView mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.equalTo(_toolbar).with.offset(8.0);
 		make.top.equalTo(_toolbar).with.offset(8.0);
 		make.bottom.equalTo(_toolbar).with.offset(-8.0);
-		make.right.equalTo(b.mas_left).with.offset(-8.0);
+		make.right.equalTo(sendButton.mas_left).with.offset(-8.0);
+	}];
+
+	[placeholderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.centerY.equalTo(_textView);
+		make.left.equalTo(_textView).with.offset(8.0);
 	}];
 
 	[_toolbar mas_makeConstraints:^(MASConstraintMaker *make) {

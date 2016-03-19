@@ -59,6 +59,8 @@
 
 - (void)textDidChange:(NSNotification *)notification
 {
+	[self willChangeValueForKey:@keypath(self, text)];
+	[self didChangeValueForKey:@keypath(self, text)];
     [self updateLayout];
 }
 

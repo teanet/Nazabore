@@ -1,10 +1,10 @@
-#import "NZBEmojiSelectView.h"
+#import "NZBEmojiSelectVC.h"
 
 #import "NZBEmojiCell.h"
 
 const NSInteger kEmojiCount = 20;
 
-@interface NZBEmojiSelectView ()
+@interface NZBEmojiSelectVC ()
 <
 UICollectionViewDataSource,
 UICollectionViewDelegate
@@ -12,7 +12,18 @@ UICollectionViewDelegate
 
 @end
 
-@implementation NZBEmojiSelectView
+@implementation NZBEmojiSelectVC
+
+- (instancetype)init
+{
+	self = [super init];
+	if (self == nil) return nil;
+
+	self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	self.modalPresentationStyle = UIModalPresentationOverFullScreen;
+
+	return self;
+}
 
 - (void)viewDidLoad
 {
@@ -56,18 +67,21 @@ UICollectionViewDelegate
 	label2.font = [UIFont nzb_systemFontWithSize:15.0];
 	[actionsContentView addSubview:label2];
 
-	UIButton *button = [[UIButton alloc] init];
-	button.layer.cornerRadius = 5.0;
-	button.layer.masksToBounds = YES;
-	button.backgroundColor = [UIColor greenColor];
-	[button setTitle:@"Давай любую" forState:UIControlStateNormal];
-	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	button.titleLabel.font = [UIFont nzb_boldFontWithSize:14];
-	[button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-	button.backgroundColor = [UIColor colorWithRed:1 green:210/255. blue:70/255. alpha:1.0];
-	[button addTarget:self action:@selector(buttonTap) forControlEvents:UIControlEventTouchUpInside];
-	[button setContentEdgeInsets:UIEdgeInsetsMake(5.0, 20.0, 5.0, 20.0)];
-	[actionsContentView addSubview:button];
+	UIButton *sendButton = [self newButton];
+	[sendButton setTitle:@"Давай любую" forState:UIControlStateNormal];
+	[sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+	sendButton.backgroundColor = [UIColor nzb_yellowColor];
+	[sendButton addTarget:self action:@checkselector0(self, sendTap) forControlEvents:UIControlEventTouchUpInside];
+	[actionsContentView addSubview:sendButton];
+
+	UIButton *closeButton = [self newButton];
+	[closeButton setTitle:@"Отмена" forState:UIControlStateNormal];
+	[closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[closeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+	closeButton.backgroundColor = [UIColor nzb_lightGrayColor];
+	[closeButton addTarget:self action:@checkselector0(self, cancelTap) forControlEvents:UIControlEventTouchUpInside];
+	[actionsContentView addSubview:closeButton];
 
 	[contentView mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(25.0, 10.0, 25.0, 10.0));
@@ -98,25 +112,50 @@ UICollectionViewDelegate
 		make.top.equalTo(label1.mas_bottom).with.offset(8.0);
 	}];
 
-	[button mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.centerX.equalTo(actionsContentView);
-		make.height.equalTo(@44);
-		make.width.equalTo(@250);
+	[closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.left.equalTo(actionsContentView).with.offset(16.0);
+		make.height.equalTo(@44.0);
 		make.top.equalTo(label2.mas_bottom).with.offset(8.0);
 		make.bottom.equalTo(actionsContentView).with.offset(-10.0);
 	}];
+
+	[sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.left.equalTo(closeButton.mas_right).with.offset(8.0);
+		make.height.equalTo(@44.0);
+		make.right.equalTo(actionsContentView).with.offset(-16.0);
+		make.centerY.equalTo(closeButton);
+		make.width.equalTo(closeButton).with.multipliedBy(2.0);
+	}];
 }
 
-- (void)buttonTap
+- (UIButton *)newButton
+{
+	UIButton *newButton = [[UIButton alloc] init];
+	newButton.layer.cornerRadius = 5.0;
+	newButton.layer.masksToBounds = YES;
+	newButton.titleLabel.font = [UIFont nzb_boldFontWithSize:14];
+	[newButton setContentEdgeInsets:UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0)];
+	return newButton;
+}
+
+- (void)sendTap
 {
 	[self selectEmoji:[@(arc4random()%kEmojiCount) description]];
 }
 
+- (void)cancelTap
+{
+	if (self.didCloseBlock)
+	{
+		self.didCloseBlock();
+	}
+}
+
 - (void)selectEmoji:(NSString *)emoji
 {
-	if (self.block)
+	if (self.didSelectEmojiBlock)
 	{
-		self.block(emoji);
+		self.didSelectEmojiBlock(emoji);
 	}
 }
 
