@@ -429,6 +429,7 @@
 				TargetAttributes = {
 					731B36561C8C05EF0083BFFA = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = HJ648XXPWE;
 					};
 					731B366F1C8C05EF0083BFFA = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -795,6 +796,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Nazabore/Prefix-Header.h";
 				INFOPLIST_FILE = Nazabore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -806,6 +809,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.Nazabore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -815,6 +819,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Nazabore/Prefix-Header.h";
 				INFOPLIST_FILE = Nazabore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -826,6 +832,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.Nazabore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -926,6 +933,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Nazabore/Prefix-Header.h";
 				INFOPLIST_FILE = Nazabore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -937,6 +946,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.Nazabore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = AppStore;
 		};

@@ -11,6 +11,7 @@ end
 target 'Nazabore' do
 	import_common
 	pod 'Crashlytics'
+	pod 'SSKeychain'
 	pod 'Fabric'
 	pod 'Masonry'
 	pod 'YMSwipeTableViewCell'
