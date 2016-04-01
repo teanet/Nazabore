@@ -5,11 +5,13 @@
 #import <NZBServerController.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <SSKeychain.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[SSKeychain setAccessibilityType:kSecAttrAccessibleAlwaysThisDeviceOnly];
 	[NZBServerController sharedController].userID = [NZBPreferences defaultPreferences].userId;
 	[[Fabric sharedSDK] setDebug:YES];
 	[Fabric with:@[CrashlyticsKit]];

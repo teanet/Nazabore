@@ -1,5 +1,7 @@
 #import "NZBPreferences.h"
 
+#import <SSKeychain.h>
+
 static NSString *const kPreferencesUserId = @"userId";
 
 @implementation NZBPreferences
@@ -15,18 +17,31 @@ static NSString *const kPreferencesUserId = @"userId";
 	return preferences;
 }
 
++ (NSString *)appName
+{
+	return [NSBundle bundleForClass:self.class].infoDictionary[@"CFBundleName"];
+}
+
 - (NSString *)userId
 {
-	NSString *userId = [[NSUserDefaults standardUserDefaults] stringForKey:kPreferencesUserId];
+	NSString *appName = [self.class appName];
+	//Check if we have UUID already
+	NSString *retrieveuuid = [SSKeychain passwordForService:appName account:kPreferencesUserId];
+	if (retrieveuuid.length > 0) return retrieveuuid;
 
-	if (!userId.length)
+	retrieveuuid = [[NSUserDefaults standardUserDefaults] stringForKey:kPreferencesUserId];
+	if (retrieveuuid.length == 0)
 	{
-		userId = [NSUUID UUID].UUIDString;
-		[[NSUserDefaults standardUserDefaults] setObject:userId forKey:kPreferencesUserId];
-		[[NSUserDefaults standardUserDefaults] synchronize];
-	}
+		//Create new key for this app/device
+		CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+		retrieveuuid = (__bridge_transfer NSString*)CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+		CFRelease(newUniqueId);
 
-	return userId;
+	}
+	//Save key to Keychain
+	[SSKeychain setPassword:retrieveuuid forService:appName account:kPreferencesUserId];
+
+	return retrieveuuid;
 }
 
 @end
