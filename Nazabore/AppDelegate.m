@@ -16,11 +16,20 @@
 	[[Fabric sharedSDK] setDebug:YES];
 	[Fabric with:@[[Crashlytics class], [Answers class]]];
 
+	[self configureWindow];
+	return YES;
+}
+
+- (void)configureWindow
+{
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[NZBMapVC alloc] init]];
 	[self.window makeKeyAndVisible];
 
-	return YES;
+	[[UINavigationBar appearance] setBarTintColor:[UIColor nzb_brightGrayColor]];
+	[[UINavigationBar appearance] setTintColor:[UIColor nzb_santasGrayColor]];
+	[[UINavigationBar appearance] setTranslucent:YES];
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
 }
 
 @end

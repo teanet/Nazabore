@@ -1,11 +1,15 @@
 #import "NZBServerController.h"
 
 #import <AFNetworking/AFNetworking.h>
+#import <UIDevice-Hardware.h>
 
 static NSString *const kNZBAPIBaseURLString			= @"https://api.nazabore.xyz";
 //static NSString *const kNZBAPIBaseURLString			= @"http://10.54.7.212:3000";
 static NSString *const kNZBAPIHeaderFieldUserIdKey	= @"userid";
 extern NSString *const kNZBAPIApplicationToken;
+
+#define CURRENT_VERSION ([[NSBundle bundleForClass:self.class] objectForInfoDictionaryKey:@"CFBundleShortVersionString"])
+#define CURRENT_BUILD ([[NSBundle bundleForClass:self.class] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey])
 
 @interface NZBServerController ()
 
@@ -49,15 +53,33 @@ extern NSString *const kNZBAPIApplicationToken;
 	_requestManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kNZBAPIBaseURLString]];
 	_requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
 	_requestManager.requestSerializer.timeoutInterval = 10.0;
-	[_requestManager.requestSerializer setValue:kNZBAPIApplicationToken forHTTPHeaderField:@"X-Absolutely-Secret-Token"];
+	NSDictionary *headers =
+	@{
+	  @"X-Current-App-Build" : CURRENT_BUILD,
+	  @"X-Current-App-Version" : CURRENT_VERSION,
+	  @"X-Mobile-Vendor" : @"Apple",
+	  @"X-Mobile-Platform" : @"iOS",
+	  @"X-Mobile-Os-Version" : [[UIDevice currentDevice] systemVersion],
+	  @"X-Mobile-Model": [[UIDevice currentDevice] modelName],
+	  @"X-Absolutely-Secret-Token": kNZBAPIApplicationToken,
+	  };
+	[headers enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+		[_requestManager.requestSerializer setValue:value forHTTPHeaderField:key];
+	}];
 	_requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
 	return self;
 }
 
-- (RACSignal *)getObjectForURLString:(NSString *)urlString params:(NSDictionary *)params
+- (void)setUserID:(NSString *)userID
+{
+	NSCParameterAssert(userID);
+	_userID = userID;
+	[_requestManager.requestSerializer setValue:userID forHTTPHeaderField:@"X-User-Id"];
+}
+
+- (RACSignal *)GET:(NSString *)method params:(NSDictionary *)params
 {
 	@weakify(self);
-
 	return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
 		@strongify(self);
 
@@ -74,7 +96,7 @@ extern NSString *const kNZBAPIApplicationToken;
 			[subscriber sendError:error];
 		};
 
-		AFHTTPRequestOperation *op = [self.requestManager GET:urlString parameters:params success:successBlock failure:failBlock];
+		AFHTTPRequestOperation *op = [self.requestManager GET:method parameters:params success:successBlock failure:failBlock];
 
 		return [RACDisposable disposableWithBlock:^{
 			[op cancel];
@@ -82,7 +104,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	}];
 }
 
-- (RACSignal *)postObjectForURLString:(NSString *)urlString params:(NSDictionary *)params
+- (RACSignal *)POST:(NSString *)method params:(NSDictionary *)params
 {
 	@weakify(self);
 
@@ -103,7 +125,7 @@ extern NSString *const kNZBAPIApplicationToken;
 			[subscriber sendError:error];
 		};
 
-		AFHTTPRequestOperation *op = [self.requestManager POST:urlString parameters:params success:successBlock failure:failBlock];
+		AFHTTPRequestOperation *op = [self.requestManager POST:method parameters:params success:successBlock failure:failBlock];
 		return [RACDisposable disposableWithBlock:^{
 			[op cancel];
 		}];
@@ -122,7 +144,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	  @"limit": @"100"
 	  };
 
-	return [[self getObjectForURLString:@"boards" params:params]
+	return [[self GET:@"boards" params:params]
 		map:^NSArray *(NSArray *responseArray) {
 			NSMutableArray<NZBBoard *> *boardsArray = nil;
 			if ([responseArray isKindOfClass:[NSArray class]])
@@ -166,8 +188,8 @@ extern NSString *const kNZBAPIApplicationToken;
 	  @"userid": self.userID,
 	  @"id": boardID ?: @""
 	  };
-	return [[self getObjectForURLString:@"board" params:params]
-		map:^id(NSDictionary *boardDictionary) {
+	return [[self GET:@"board" params:params]
+		map:^NZBBoard *(NSDictionary *boardDictionary) {
 			NZBBoard *board = nil;
 
 			NSLog(@"fetchBoardForLocalion>>%@", boardDictionary);
@@ -197,7 +219,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	  @"board": board.id ?: @"",
 	  @"icon": icon ?: @"0"
 	  };
-	return [[self postObjectForURLString:@"message" params:params]
+	return [[self POST:@"message" params:params]
 		map:^id(NSDictionary *messageDictionary) {
 			NZBMessage *message = nil;
 
@@ -219,7 +241,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	  @"power": [@(interaction) description],
 	  @"user": self.userID
 	  };
-	return [[self postObjectForURLString:@"ratemessage" params:params]
+	return [[self POST:@"ratemessage" params:params]
 		map:^id(NSDictionary *messageDictionary) {
 			NZBMessage *message = nil;
 
@@ -231,15 +253,29 @@ extern NSString *const kNZBAPIApplicationToken;
 		}];
 }
 
+- (RACSignal *)getCurrentUser
+{
+	return [self getUser:self.userID];
+}
+
+- (RACSignal *)getUser:(NSString *)id
+{
+	NSDictionary *params = @{@"id": id ?: @""};
+	return [[self GET:@"user" params:params]
+		map:^NZBUser *(NSDictionary *response) {
+			return [[NZBUser alloc] initWithDictionary:response];
+		}];
+}
+
 - (void)setPushToken:(NSData *)pushToken
 {
 	if (pushToken.length == 0) return;
 
 	NSString *tokenString = [NSString stringWithUTF8String:pushToken.bytes];
-	[[[self postObjectForURLString:@"addtoken" params:@{
-													  @"token" : tokenString,
-													  @"userid" : self.userID,
-													  }] publish] connect];
+	[[[self POST:@"addtoken" params:@{
+									  @"token" : tokenString,
+									  @"userid" : self.userID,
+									  }] publish] connect];
 }
 
 @end

@@ -12,6 +12,7 @@ UIGestureRecognizerDelegate
 
 @property (nonatomic, strong, readonly) MKMapView *mapView;
 @property (nonatomic, strong) NSArray *annotations;
+@property (nonatomic, strong) MKCircle *userCircle;
 
 @end
 
@@ -60,7 +61,7 @@ UIGestureRecognizerDelegate
 
 		[self.mapView removeAnnotations:self.annotations];
 		self.annotations = [[[boards rac_sequence]
-			map:^id(id value) {
+			map:^MZBBoardAnnotation *(id value) {
 				return [[MZBBoardAnnotation alloc] initWithBoard:value];
 			}] array];
 
@@ -73,12 +74,20 @@ UIGestureRecognizerDelegate
 	[panRec setDelegate:self];
 	[self.mapView addGestureRecognizer:panRec];
 
-	// [[ Configure UINavigationBar
-	[[UINavigationBar appearance] setBarTintColor:[UIColor nzb_brightGrayColor]];
-	[[UINavigationBar appearance] setTintColor:[UIColor nzb_santasGrayColor]];
-	[[UINavigationBar appearance] setTranslucent:YES];
-	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-	// ]]
+	RACSignal *locationSignal = [[[RACObserve([NZBDataProvider sharedProvider], currentLocation)
+		takeUntil:self.rac_willDeallocSignal]
+		ignore:nil]
+		deliverOnMainThread];
+
+	[locationSignal subscribeNext:^(CLLocation *location) {
+		@strongify(self);
+
+		[self.mapView removeOverlay:self.userCircle];
+#warning Подтягивать радиус из пользователя
+		self.userCircle = [MKCircle circleWithCenterCoordinate:location.coordinate
+														radius:2000];
+		[self.mapView addOverlay:self.userCircle];
+	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,7 +95,6 @@ UIGestureRecognizerDelegate
 	[super viewWillAppear:animated];
 
 	[self refetchData];
-
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
@@ -106,7 +114,6 @@ UIGestureRecognizerDelegate
 
 	MKCoordinateRegion region;
 	region.center = self.mapView.userLocation.coordinate;
-
 	MKCoordinateSpan span;
 	span.latitudeDelta  = 0.01;
 	span.longitudeDelta = 0.01;
@@ -125,6 +132,15 @@ UIGestureRecognizerDelegate
 }
 
 #pragma mark MKMapViewDelegate
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+	MKCircleRenderer *c = [[MKCircleRenderer alloc] initWithCircle:overlay];
+	c.fillColor = [[UIColor nzb_darkGreenColor] colorWithAlphaComponent:0.05];
+	c.strokeColor = [[UIColor nzb_darkGreenColor] colorWithAlphaComponent:0.3];
+	c.lineWidth = 1.0 / [UIScreen mainScreen].scale;
+	return c;
+}
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(nonnull MKAnnotationView *)view
 {
@@ -159,6 +175,7 @@ UIGestureRecognizerDelegate
 		view = [[NZBAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
 	}
 	view.annotation = annotation;
+	
 	return view;
 }
 
