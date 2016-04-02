@@ -65,7 +65,6 @@ extern NSString *const kNZBAPIApplicationToken;
 			NSLog(@"<NZBServerController> Request did successfully complete: %@", operation.request);
 
 			responseObject = [responseObject withot_Null];
-
 			[subscriber sendNext:responseObject];
 			[subscriber sendCompleted];
 		};
@@ -115,32 +114,32 @@ extern NSString *const kNZBAPIApplicationToken;
 
 - (RACSignal *)fetchBoardsForLocalion:(CLLocation *)location
 {
-	if (!location) return nil;
+	NSDictionary *params =
+	@{
+	  @"lat": @(location.coordinate.latitude),
+	  @"lon": @(location.coordinate.longitude),
+	  @"userid": self.userID,
+	  @"limit": @"100"
+	  };
 
-	return [[self getObjectForURLString:@"boards" params:@{
-												   @"lat": @(location.coordinate.latitude),
-												   @"lon": @(location.coordinate.longitude),
-												   @"userid": self.userID,
-												   @"limit": @"100"
-												   }]
-			map:^id(NSArray *responseArray) {
-				NSMutableArray<NZBBoard *> *boardsArray = nil;
-				if ([responseArray isKindOfClass:[NSArray class]])
+	return [[self getObjectForURLString:@"boards" params:params]
+		map:^NSArray *(NSArray *responseArray) {
+			NSMutableArray<NZBBoard *> *boardsArray = nil;
+			if ([responseArray isKindOfClass:[NSArray class]])
+			{
+				boardsArray = [NSMutableArray arrayWithCapacity:responseArray.count];
+
+				for (NSDictionary *boardDictionary in responseArray)
 				{
-					boardsArray = [NSMutableArray arrayWithCapacity:responseArray.count];
-
-					for (NSDictionary *boardDictionary in responseArray)
+					NZBBoard *board = [[NZBBoard alloc] initWithDictionary:boardDictionary];
+					if (board)
 					{
-						NZBBoard *board = [[NZBBoard alloc] initWithDictionary:boardDictionary];
-						if (board)
-						{
-							[boardsArray addObject:board];
-						}
+						[boardsArray addObject:board];
 					}
 				}
-
-				return [boardsArray copy];
-			}];
+			}
+			return [boardsArray copy];
+		}];
 }
 
 - (RACSignal *)fetchMessagesForBoard:(NZBBoard *)board
@@ -148,9 +147,9 @@ extern NSString *const kNZBAPIApplicationToken;
 	if (!board.location) return nil;
 
 	return [[self fetchBoardForLocalion:board.location boardID:board.id]
-			map:^NSArray<NZBMessage *> *(NZBBoard *board) {
-				return board.messages;
-			}];
+		map:^NSArray<NZBMessage *> *(NZBBoard *board) {
+			return board.messages;
+		}];
 }
 
 - (RACSignal *)fetchBoardForLocalion:(CLLocation *)location
@@ -160,14 +159,14 @@ extern NSString *const kNZBAPIApplicationToken;
 
 - (RACSignal *)fetchBoardForLocalion:(CLLocation *)location boardID:(NSString *)boardID
 {
-	if (!location) return nil;
-
-	return [[self getObjectForURLString:@"board" params:@{
-												   @"lat": @(location.coordinate.latitude),
-												   @"lon": @(location.coordinate.longitude),
-												   @"userid": self.userID,
-												   @"id": boardID ?: @""
-												   }]
+	NSDictionary *params =
+	@{
+	  @"lat": @(location.coordinate.latitude),
+	  @"lon": @(location.coordinate.longitude),
+	  @"userid": self.userID,
+	  @"id": boardID ?: @""
+	  };
+	return [[self getObjectForURLString:@"board" params:params]
 		map:^id(NSDictionary *boardDictionary) {
 			NZBBoard *board = nil;
 
@@ -189,42 +188,47 @@ extern NSString *const kNZBAPIApplicationToken;
 								board:(NZBBoard *)board
 								 icon:(NSString *)icon
 {
-	return [[self postObjectForURLString:@"message" params:@{@"body": body ?: @"",
-															 @"lat": @(location.coordinate.latitude),
-															 @"lon": @(location.coordinate.longitude),
-															 @"userid": self.userID,
-															 @"board": board.id ?: @"",
-															 @"icon": icon ?: @"0"}]
-			 map:^id(NSDictionary *messageDictionary) {
-				 NZBMessage *message = nil;
+	NSDictionary *params =
+	@{
+	  @"body": body ?: @"",
+	  @"lat": @(location.coordinate.latitude),
+	  @"lon": @(location.coordinate.longitude),
+	  @"userid": self.userID,
+	  @"board": board.id ?: @"",
+	  @"icon": icon ?: @"0"
+	  };
+	return [[self postObjectForURLString:@"message" params:params]
+		map:^id(NSDictionary *messageDictionary) {
+			NZBMessage *message = nil;
 
-				 if ([messageDictionary isKindOfClass:[NSDictionary class]])
-				 {
-					 message = [NZBMessage messageWithDictionary:messageDictionary[@"message"]];
-				 }
-				 message.boardD = messageDictionary[@"board"];
-				 return message;
-			 }];
+			if ([messageDictionary isKindOfClass:[NSDictionary class]])
+			{
+				message = [NZBMessage messageWithDictionary:messageDictionary[@"message"]];
+			}
+			message.boardD = messageDictionary[@"board"];
+			return message;
+		}];
 }
 
 - (RACSignal *)rateMessage:(NZBMessage *)message withInteraction:(NZBUserInteraction)interaction
 {
 	if (!message.id) return nil;
-
-	return [[self postObjectForURLString:@"ratemessage" params:@{
-														 @"message": message.id,
-														 @"power": [@(interaction) description],
-														 @"user": self.userID
-														 }]
-	 map:^id(NSDictionary *messageDictionary) {
-		 NZBMessage *message = nil;
+	NSDictionary *params =
+	@{
+	  @"message": message.id,
+	  @"power": [@(interaction) description],
+	  @"user": self.userID
+	  };
+	return [[self postObjectForURLString:@"ratemessage" params:params]
+		map:^id(NSDictionary *messageDictionary) {
+			NZBMessage *message = nil;
 
 			if ([messageDictionary[@"message"] isKindOfClass:[NSDictionary class]])
 			{
 				message = [NZBMessage messageWithDictionary:messageDictionary[@"message"]];
 			}
 			return message;
-	 }];
+		}];
 }
 
 - (void)setPushToken:(NSData *)pushToken

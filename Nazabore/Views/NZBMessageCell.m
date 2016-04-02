@@ -6,6 +6,7 @@
 #import "NZBPreferences.h"
 #import "UIColor+NZBMessageCell.h"
 #import "NSString+NZBMessageCell.h"
+#import "NZBAnalytics.h"
 
 @interface NZBMessageCell ()
 
@@ -131,7 +132,7 @@
 		[[[NZBServerController sharedController] rateMessage:self.message withInteraction:interaction] subscribeNext:^(NZBMessage *message) {
 
 			self.message = message;
-			
+			[NZBAnalytics logEvent:NZBARateMessage parameters:@{NZBAInteraction: @(interaction)}];
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 				[self resetSwipe:^(BOOL finished) {
 

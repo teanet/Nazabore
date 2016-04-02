@@ -9,6 +9,7 @@
 #import "NZBEmojiSelectVC.h"
 #import "NZBAdsCell.h"
 #import "UIBarButtonItem+NZBBarButtonItem.h"
+#import "NZBAnalytics.h"
 
 @interface NZBZaborVC ()
 <
@@ -36,8 +37,9 @@ UITextViewDelegate
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-
 	@weakify(self);
+
+	[NZBAnalytics logEvent:NZBAOpenBoardEvent parameters:@{NZBABoard: self.board.id ?: @""}];
 
 	UIScreenEdgePanGestureRecognizer *recognizer =
 		[[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
@@ -196,7 +198,6 @@ UITextViewDelegate
 	NZBMessage *message = self.messages[indexPath.row];
 	UITableViewCell <NZBCellProtocol> *cell = nil;
 	switch (message.messageType) {
-
 		case NZBMessageTypeDefault: {
 			cell = [tableView dequeueReusableCellWithIdentifier:@"NZBMessageCell"];
 		} break;
