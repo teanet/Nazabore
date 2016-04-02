@@ -140,7 +140,7 @@ UICollectionViewDelegate
 
 - (void)sendTap
 {
-	[self selectEmoji:[@(arc4random()%kEmojiCount) description]];
+	[self selectEmoji:[@(arc4random()%kEmojiCount) description] random:YES];
 }
 
 - (void)cancelTap
@@ -151,11 +151,11 @@ UICollectionViewDelegate
 	}
 }
 
-- (void)selectEmoji:(NSString *)emoji
+- (void)selectEmoji:(NSString *)emoji random:(BOOL)random
 {
 	if (self.didSelectEmojiBlock)
 	{
-		self.didSelectEmojiBlock(emoji);
+		self.didSelectEmojiBlock(emoji, random);
 	}
 }
 
@@ -176,7 +176,7 @@ UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	[collectionView deselectItemAtIndexPath:indexPath animated:YES];
-	[self selectEmoji:[@(indexPath.row) description]];
+	[self selectEmoji:[@(indexPath.row) description] random:NO];
 }
 
 @end

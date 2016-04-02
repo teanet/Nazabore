@@ -4,6 +4,7 @@
 #import "NZBDataProvider.h"
 #import "NZBZaborVC.h"
 #import "UIColor+System.h"
+#import "NZBAnalytics.h"
 
 static CGFloat const MaxToolbarHeight = 200.0;
 
@@ -90,11 +91,11 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	if (textWithoutSpaces.length == 0) return;
 
 	NZBEmojiSelectVC *emojiSelectVC = [[NZBEmojiSelectVC alloc] init];
-	emojiSelectVC.didSelectEmojiBlock = ^(NSString *emoji) {
+	emojiSelectVC.didSelectEmojiBlock = ^(NSString *emoji, BOOL random) {
 		@strongify(self);
 
 		[self dismissViewControllerAnimated:YES completion:nil];
-
+		NSString *smile = random ? @"random" : emoji;
 		[[[NZBDataProvider sharedProvider] postMessage:self.textView.text forBoard:self.board icon:emoji] subscribeNext:^(NZBMessage *m) {
 			@strongify(self);
 
@@ -105,8 +106,11 @@ static CGFloat const MaxToolbarHeight = 200.0;
 
 			self.textView.text = @"";
 			[self refetchData];
-
+			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @YES,
+																	 NZBASmile: smile}];
 		} error:^(NSError *error) {
+			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @NO,
+																	 NZBASmile: smile}];
 			[[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
 		}];
 	};

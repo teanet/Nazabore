@@ -14,7 +14,7 @@
 	[SSKeychain setAccessibilityType:kSecAttrAccessibleAlwaysThisDeviceOnly];
 	[NZBServerController sharedController].userID = [NZBPreferences defaultPreferences].userId;
 	[[Fabric sharedSDK] setDebug:YES];
-	[Fabric with:@[CrashlyticsKit]];
+	[Fabric with:@[[Crashlytics class], [Answers class]]];
 
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[NZBMapVC alloc] init]];

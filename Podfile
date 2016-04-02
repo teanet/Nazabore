@@ -10,9 +10,9 @@ end
 
 target 'Nazabore' do
 	import_common
+	pod 'Fabric'
 	pod 'Crashlytics'
 	pod 'SSKeychain'
-	pod 'Fabric'
 	pod 'Masonry'
 	pod 'YMSwipeTableViewCell'
 	pod 'NZBLibrary', :path => 'NZBLibrary/NZBLibrary.podspec'
@@ -42,4 +42,3 @@ target 'NazaboreTests' do
 	pod 'Kiwi'
 	xcodeproj 'Nazabore.xcodeproj'
 end
-

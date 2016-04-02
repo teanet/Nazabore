@@ -1,4 +1,4 @@
-typedef void(^NZBDidSelectEmojiBlock)(NSString *emoji);
+typedef void(^NZBDidSelectEmojiBlock)(NSString *emoji, BOOL random);
 
 @interface NZBEmojiSelectVC : UIViewController
 
