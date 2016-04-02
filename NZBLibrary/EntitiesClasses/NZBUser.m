@@ -1,12 +1,11 @@
 #import "NZBUser.h"
 
-static NSString *const kDictionaryKeyId			= @"id";
-static NSString *const kDictionaryKeyPower		= @"power";
-static NSString *const kDictionaryKeyRating		= @"rating";
+static NSString *const kDictionaryKeyId				= @"id";
+static NSString *const kDictionaryKeyPower			= @"power";
+static NSString *const kDictionaryKeyRating			= @"rating";
+static NSString *const kDictionaryKeyVisibleRange	= @"visibleRange";
 
 @implementation NZBUser
-
-@synthesize dictionary = _dictionary;
 
 // MARK: Lifecycle
 
@@ -32,24 +31,17 @@ static NSString *const kDictionaryKeyRating		= @"rating";
 	_id = dictionary[kDictionaryKeyId];
 	_power = [dictionary[kDictionaryKeyPower] integerValue];
 	_rating = [dictionary[kDictionaryKeyRating] doubleValue];
-
-	_dictionary = nil;
+	_visibleRange = [dictionary[kDictionaryKeyVisibleRange] doubleValue];
 }
 
 - (NSDictionary *)dictionary
 {
-	if (!_dictionary)
-	{
-		NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
-
-		[dictionaryRepresentation setValue:self.id forKey:kDictionaryKeyId];
-		[dictionaryRepresentation setValue:@(self.power) forKey:kDictionaryKeyPower];
-		[dictionaryRepresentation setValue:@(self.rating) forKey:kDictionaryKeyRating];
-
-		_dictionary = dictionaryRepresentation;
-	}
-
-	return _dictionary;
+	NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
+	[dictionaryRepresentation setValue:self.id forKey:kDictionaryKeyId];
+	[dictionaryRepresentation setValue:@(self.power) forKey:kDictionaryKeyPower];
+	[dictionaryRepresentation setValue:@(self.rating) forKey:kDictionaryKeyRating];
+	[dictionaryRepresentation setValue:@(self.visibleRange) forKey:kDictionaryKeyVisibleRange];
+	return dictionaryRepresentation;
 }
 
 @end

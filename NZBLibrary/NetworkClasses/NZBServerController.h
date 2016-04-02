@@ -2,6 +2,7 @@
 
 #import "NZBBoard.h"
 #import "NZBMessage.h"
+#import "NZBUser.h"
 
 @protocol NZBAPIControllerProtocol <NSObject>
 
@@ -25,6 +26,9 @@
 
 /*! Безусловно ищет (заводит) пользователя и ассоциирует его с токеном */
 - (void)setPushToken:(NSData *)pushToken;
+
+- (RACSignal *)getCurrentUser;
+- (RACSignal *)getUser:(NSString *)id;
 
 @end
 

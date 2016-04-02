@@ -7,6 +7,7 @@
 
 @property (nonatomic, strong, readonly) RACSignal *nearestBoardsSignal;
 @property (nonatomic, strong, readonly) NSMutableArray<NZBMessage *> *rows;
+@property (nonatomic, strong, readonly) CLLocation *currentLocation;
 
 + (instancetype)sharedProvider;
 - (void)requestData;

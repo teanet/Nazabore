@@ -10,7 +10,7 @@ CLLocationManagerDelegate
 
 @property (nonatomic, strong, readonly) RACSubject *nearestBoardsSubject;
 @property (nonatomic, strong, readonly) CLLocationManager *clm;
-@property (nonatomic, strong) CLLocation *currentLocation;
+@property (nonatomic, strong, readwrite) CLLocation *currentLocation;
 
 @end
 

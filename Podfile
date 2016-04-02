@@ -6,6 +6,7 @@ workspace 'Nazabore.xcworkspace'
 
 def import_common
 	pod 'libextobjc'
+	pod 'UIDevice-Hardware'
 end
 
 target 'Nazabore' do
