@@ -11,6 +11,7 @@
 		3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */; };
 		3075896D1C944B92007F6AFA /* UIColor+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */; };
 		307589701C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3075896F1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m */; };
+		30F9A8E51CB0296A00446DFE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30F9A8E71CB0296A00446DFE /* Localizable.strings */; };
 		3FC765296288BBDD36F90C36 /* libPods-Nazabore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2F50143F83066885507381 /* libPods-Nazabore.a */; };
 		731B365C1C8C05EF0083BFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365B1C8C05EF0083BFFA /* main.m */; };
 		731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365E1C8C05EF0083BFFA /* AppDelegate.m */; };
@@ -79,6 +80,8 @@
 		3075896E1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+NZBBarButtonItem.h"; sourceTree = "<group>"; };
 		3075896F1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+NZBBarButtonItem.m"; sourceTree = "<group>"; };
 		30CF1CE9B404F04EC0D1DE97 /* libPods-UIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIWrapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F9A8E91CB029BD00446DFE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		30F9A8EB1CB02AF100446DFE /* NZBLocalizableConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NZBLocalizableConstants.h; sourceTree = "<group>"; };
 		36891F096927A4A3B08B00AB /* Pods-Nazabore.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.appstore.xcconfig"; sourceTree = "<group>"; };
 		5DA112AF91DDAFB9AA73739B /* Pods-Nazabore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.debug.xcconfig"; sourceTree = "<group>"; };
 		731B36571C8C05EF0083BFFA /* Nazabore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nazabore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +136,7 @@
 		731B3CD61C8C49080083BFFA /* NZBPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBPreferences.m; sourceTree = "<group>"; };
 		7334FE391CAFEA5D00333668 /* NZBAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBAnalytics.h; sourceTree = "<group>"; };
 		7334FE3A1CAFEA5D00333668 /* NZBAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBAnalytics.m; sourceTree = "<group>"; };
+		7334FE441CB0C98000333668 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8437A0E72BC35ECE302BBBD6 /* Pods-Nazabore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.release.xcconfig"; sourceTree = "<group>"; };
 		938103E6A3FEBD4A8AC45756 /* Pods-NazaboreTests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.appstore.xcconfig"; sourceTree = "<group>"; };
 		9E2F50143F83066885507381 /* libPods-Nazabore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nazabore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +227,8 @@
 				731B36AD1C8C1B000083BFFA /* Prefix-Header.h */,
 				731B365B1C8C05EF0083BFFA /* main.m */,
 				303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */,
+				30F9A8E71CB0296A00446DFE /* Localizable.strings */,
+				30F9A8EB1CB02AF100446DFE /* NZBLocalizableConstants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -449,11 +455,11 @@
 			};
 			buildConfigurationList = 731B36521C8C05EF0083BFFA /* Build configuration list for PBXProject "Nazabore" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = Russian;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				ru,
 				en,
-				Base,
 			);
 			mainGroup = 731B364E1C8C05EF0083BFFA;
 			productRefGroup = 731B36581C8C05EF0083BFFA /* Products */;
@@ -473,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				731B36671C8C05EF0083BFFA /* Assets.xcassets in Resources */,
+				30F9A8E51CB0296A00446DFE /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +725,18 @@
 			targetProxy = 731B3CCF1C8C344C0083BFFA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		30F9A8E71CB0296A00446DFE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30F9A8E91CB029BD00446DFE /* ru */,
+				7334FE441CB0C98000333668 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		731B36771C8C05EF0083BFFA /* Debug */ = {

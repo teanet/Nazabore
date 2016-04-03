@@ -83,7 +83,7 @@ UIGestureRecognizerDelegate
 		@strongify(self);
 
 		[self.mapView removeOverlay:self.userCircle];
-#warning Подтягивать радиус из пользователя
+#warning Get radius from user data
 		self.userCircle = [MKCircle circleWithCenterCoordinate:location.coordinate
 														radius:2000];
 		[self.mapView addOverlay:self.userCircle];

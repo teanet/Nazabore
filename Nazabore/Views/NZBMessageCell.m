@@ -168,7 +168,7 @@
 	self.swipingEnabled = !hasUserInteraction;
 	self.iconView.image = [UIImage imageNamed:self.message.iconName];
 
-	_myMessageLabel.text = self.isCurrentUser ? @"Моё сообщение" : nil;
+	_myMessageLabel.text = self.isCurrentUser ? kNZB_MESSAGE_CELL_MY_MESSAGE_TEXT : nil;
 
 	[self layoutIfNeeded];
 }

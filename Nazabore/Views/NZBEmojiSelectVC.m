@@ -54,21 +54,21 @@ UICollectionViewDelegate
 	[contentView addSubview:actionsContentView];
 
 	UILabel *label1 = [[UILabel alloc] init];
-	label1.text = @"Выберите приколюшку";
+	label1.text = kNZB_EMOJI_PICKER_TITLE;
 	label1.font = [UIFont nzb_boldFontWithSize:15.0];
 	label1.textAlignment = NSTextAlignmentCenter;
 	[actionsContentView addSubview:label1];
 
 	UILabel *label2 = [[UILabel alloc] init];
 	label2.numberOfLines = 2;
-	label2.text = @"Она отобразится на карте\nи около надписи когда-нибудь";
+	label2.text = kNZB_EMOJI_PICKER_DESCRIPTION;
 	label2.textColor = [UIColor colorWithWhite:156/255. alpha:1.0];
 	label2.textAlignment = NSTextAlignmentCenter;
 	label2.font = [UIFont nzb_systemFontWithSize:15.0];
 	[actionsContentView addSubview:label2];
 
 	UIButton *sendButton = [self newButton];
-	[sendButton setTitle:@"Давай любую" forState:UIControlStateNormal];
+	[sendButton setTitle:kNZB_EMOJI_PICKER_ANY_EMOJI_BUTTON_TITLE forState:UIControlStateNormal];
 	[sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
 	sendButton.backgroundColor = [UIColor nzb_yellowColor];
@@ -76,7 +76,7 @@ UICollectionViewDelegate
 	[actionsContentView addSubview:sendButton];
 
 	UIButton *closeButton = [self newButton];
-	[closeButton setTitle:@"Отмена" forState:UIControlStateNormal];
+	[closeButton setTitle:kNZB_BUTTON_CANCEL_TITLE forState:UIControlStateNormal];
 	[closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[closeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
 	closeButton.backgroundColor = [UIColor nzb_lightGrayColor];

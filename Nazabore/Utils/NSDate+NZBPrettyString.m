@@ -21,7 +21,7 @@
 	NSDate *now = [NSDate date];
 	NSTimeInterval sinceNowInterval = now.timeIntervalSince1970 - interval;
 
-	if (sinceNowInterval <= 60.0) return @"Несколько секунд назад";
+	if (sinceNowInterval <= 60.0) return kNZB_DATE_FEW_SECONDS_AGO;
 
 	NSInteger minutes = ceilf(sinceNowInterval / 60.0);
 	NSInteger firstMinutes = minutes % 10;
@@ -30,11 +30,11 @@
 	{
 		if (firstMinutes < 5)
 		{
-			return [NSString stringWithFormat:@"%ld минуты назад", (long)minutes];
+			return [NSString stringWithFormat:kNZB_DATE_FEW_MINUTES_AGO, (long)minutes];
 		}
 		else
 		{
-			return [NSString stringWithFormat:@"%ld минут назад", (long)minutes];
+			return [NSString stringWithFormat:kNZB_DATE_SEVERAL_MINUTES_AGO, (long)minutes];
 		}
 	}
 

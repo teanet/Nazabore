@@ -111,7 +111,10 @@ static CGFloat const MaxToolbarHeight = 200.0;
 		} error:^(NSError *error) {
 			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @NO,
 																	 NZBASmile: smile}];
-			[[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+			[[[UIAlertView alloc] initWithTitle:kNZB_ERROR_ALERT_TITLE
+										message:error.localizedDescription
+									   delegate:nil cancelButtonTitle:kNZB_ERROR_ALERT_BUTTON_OK_TITLE
+							  otherButtonTitles:nil] show];
 		}];
 	};
 	emojiSelectVC.didCloseBlock = ^{
@@ -146,7 +149,7 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	[sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[sendButton setContentEdgeInsets:UIEdgeInsetsMake(2.0, 4.0, 2.0, 4.0)];
 	[sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-	[sendButton setTitle:@"Написать" forState:UIControlStateNormal];
+	[sendButton setTitle:kNZB_INPUT_BUTTON_TITLE forState:UIControlStateNormal];
 	sendButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
 	sendButton.layer.masksToBounds = YES;
 	sendButton.layer.cornerRadius = 4.0f;
@@ -164,7 +167,7 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	[_toolbar addSubview:_textView];
 
 	UILabel *placeholderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-	placeholderLabel.text = @"Чё-нибудь...";
+	placeholderLabel.text = kNZB_INPUT_TEXT_PLACEHOLDER;
 	placeholderLabel.font = [UIFont systemFontOfSize:14.0];
 	placeholderLabel.textColor = [UIColor nzb_lightGrayColor];
 	placeholderLabel.textAlignment = NSTextAlignmentLeft;

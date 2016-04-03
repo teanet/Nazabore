@@ -1,0 +1,36 @@
+/* Отмена */
+"button_cancel_title" = "Cancel";
+
+/* %ld минуты назад */
+"date_few_minutes_ago %ld" = "%ld minutes ago";
+
+/* Несколько секунд назад */
+"date_few_seconds_ago" = "Few seconds ago";
+
+/* %ld минут назад */
+"date_several_minutes_ago %ld" = "%ld minutes ago";
+
+/* Давай любую */
+"emoji_picker_any_emoji_button_title" = "Get any!";
+
+/* Она отобразится на карте\nи около надписи когда-нибудь */
+"emoji_picker_description" = "It will be showed on the map\nand near the message soon";
+
+/* Выберите приколюшку */
+"emoji_picker_title" = "Choose emoji";
+
+/* OK */
+"error_alert_button_ok_title" = "OK";
+
+/* Ошибка */
+"error_alert_title" = "Error";
+
+/* Написать */
+"input_button_title" = "Write";
+
+/* Чё-нибудь... */
+"input_text_placeholder" = "Something...";
+
+/* Моё сообщение */
+"message_cell_my_message_text" = "My message";
+
