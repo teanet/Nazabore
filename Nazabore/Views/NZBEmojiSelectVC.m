@@ -103,19 +103,19 @@ UICollectionViewDelegate
 	[label1 mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.equalTo(actionsContentView);
 		make.right.equalTo(actionsContentView);
-		make.top.equalTo(actionsContentView).with.offset(8.0);
+		make.top.equalTo(actionsContentView).with.offset(16.0);
 	}];
 
 	[label2 mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.equalTo(actionsContentView);
 		make.right.equalTo(actionsContentView);
-		make.top.equalTo(label1.mas_bottom).with.offset(8.0);
+		make.top.equalTo(label1.mas_bottom).with.offset(4.0);
 	}];
 
 	[closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.equalTo(actionsContentView).with.offset(16.0);
 		make.height.equalTo(@44.0);
-		make.top.equalTo(label2.mas_bottom).with.offset(8.0);
+		make.top.equalTo(label2.mas_bottom).with.offset(12.0);
 		make.bottom.equalTo(actionsContentView).with.offset(-10.0);
 	}];
 

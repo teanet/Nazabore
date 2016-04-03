@@ -14,7 +14,7 @@
 "emoji_picker_any_emoji_button_title" = "Get any!";
 
 /* Она отобразится на карте\nи около надписи когда-нибудь */
-"emoji_picker_description" = "It will be showed on the map\nand near the message soon";
+"emoji_picker_description" = "It will be showed on the map";
 
 /* Выберите приколюшку */
 "emoji_picker_title" = "Choose emoji";
