@@ -5,7 +5,6 @@
 
 static NSString *const kNZBAPIBaseURLString			= @"https://api.nazabore.xyz";
 //static NSString *const kNZBAPIBaseURLString			= @"http://10.54.7.212:3000";
-static NSString *const kNZBAPIHeaderFieldUserIdKey	= @"userid";
 extern NSString *const kNZBAPIApplicationToken;
 
 #define CURRENT_VERSION ([[NSBundle bundleForClass:self.class] objectForInfoDictionaryKey:@"CFBundleShortVersionString"])
@@ -134,14 +133,13 @@ extern NSString *const kNZBAPIApplicationToken;
 
 // MARK: NZBAPIControllerProtocol
 
-- (RACSignal *)fetchBoardsForLocalion:(CLLocation *)location
+- (RACSignal *)boardsForLocalion:(CLLocation *)location
 {
 	NSDictionary *params =
 	@{
 	  @"lat": @(location.coordinate.latitude),
 	  @"lon": @(location.coordinate.longitude),
-	  @"userid": self.userID,
-	  @"limit": @"100"
+	  @"limit": @"100",
 	  };
 
 	return [[self GET:@"boards" params:params]
@@ -164,35 +162,32 @@ extern NSString *const kNZBAPIApplicationToken;
 		}];
 }
 
-- (RACSignal *)fetchMessagesForBoard:(NZBBoard *)board
+- (RACSignal *)messagesForBoard:(NZBBoard *)board
 {
-	if (!board.location) return nil;
-
-	return [[self fetchBoardForLocalion:board.location boardID:board.id]
+	return [[self boardForLocalion:board.location boardID:board.id]
 		map:^NSArray<NZBMessage *> *(NZBBoard *board) {
 			return board.messages;
 		}];
 }
 
-- (RACSignal *)fetchBoardForLocalion:(CLLocation *)location
+- (RACSignal *)boardForLocalion:(CLLocation *)location
 {
-	return [self fetchBoardForLocalion:location boardID:nil];
+	return [self boardForLocalion:location boardID:nil];
 }
 
-- (RACSignal *)fetchBoardForLocalion:(CLLocation *)location boardID:(NSString *)boardID
+- (RACSignal *)boardForLocalion:(CLLocation *)location boardID:(NSString *)boardID
 {
 	NSDictionary *params =
 	@{
 	  @"lat": @(location.coordinate.latitude),
 	  @"lon": @(location.coordinate.longitude),
-	  @"userid": self.userID,
 	  @"id": boardID ?: @""
 	  };
 	return [[self GET:@"board" params:params]
 		map:^NZBBoard *(NSDictionary *boardDictionary) {
 			NZBBoard *board = nil;
 
-			NSLog(@"fetchBoardForLocalion>>%@", boardDictionary);
+			NSLog(@"boardForLocalion>>%@", boardDictionary);
 
 			if ([boardDictionary isKindOfClass:[NSDictionary class]])
 			{
@@ -215,7 +210,6 @@ extern NSString *const kNZBAPIApplicationToken;
 	  @"body": body ?: @"",
 	  @"lat": @(location.coordinate.latitude),
 	  @"lon": @(location.coordinate.longitude),
-	  @"userid": self.userID,
 	  @"board": board.id ?: @"",
 	  @"icon": icon ?: @"0"
 	  };
@@ -239,7 +233,6 @@ extern NSString *const kNZBAPIApplicationToken;
 	@{
 	  @"message": message.id,
 	  @"power": [@(interaction) description],
-	  @"user": self.userID
 	  };
 	return [[self POST:@"ratemessage" params:params]
 		map:^id(NSDictionary *messageDictionary) {
@@ -274,7 +267,6 @@ extern NSString *const kNZBAPIApplicationToken;
 	NSString *tokenString = [NSString stringWithUTF8String:pushToken.bytes];
 	[[[self POST:@"addtoken" params:@{
 									  @"token" : tokenString,
-									  @"userid" : self.userID,
 									  }] publish] connect];
 }
 

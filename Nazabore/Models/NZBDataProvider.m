@@ -75,28 +75,11 @@ CLLocationManagerDelegate
 - (void)fetchNearestBoards
 {
 	@weakify(self);
-	[[[NZBServerController sharedController] fetchBoardsForLocalion:self.currentLocation] subscribeNext:^(NSArray *boards) {
+	[[[NZBServerController sharedController] boardsForLocalion:self.currentLocation] subscribeNext:^(NSArray *boards) {
 		@strongify(self);
 
 		[self.nearestBoardsSubject sendNext:boards];
 	}];
-}
-
-- (void)requestData
-{
-//	[[[NZBServerController sharedController] fetchBoardForLocalion:self.currentLocation] subscribeNext:^(id x) {
-//
-//	}];
-//
-//	[[[NZBServerController sharedController] fetchBoardsForLocalion:self.currentLocation] subscribeNext:^(NSArray *boards) {
-//
-//	}];
-	//	_rows =
-	//	@[
-	//	  @{@"name":@"ремикс", @"id": @"r1.141265769433243"},
-	//	  @{@"name":@"x-fit", @"id": @"r1.141265770847007"},
-	//	  @{@"name":@"Мята?", @"id": @"r1.70000001006357294"},
-	//	  ];
 }
 
 @end

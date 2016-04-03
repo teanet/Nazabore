@@ -10,7 +10,6 @@
 @property (nonatomic, strong, readonly) CLLocation *currentLocation;
 
 + (instancetype)sharedProvider;
-- (void)requestData;
 
 - (RACSignal *)postMessage:(NSString *)message forBoard:(NZBBoard *)board icon:(NSString *)icon;
 - (void)fetchNearestBoards;

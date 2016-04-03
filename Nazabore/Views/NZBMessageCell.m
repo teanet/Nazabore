@@ -139,9 +139,7 @@
 				} withAnimation:YES];
 
 			});
-
 		}];
-
 	}];
 
 	return self;
