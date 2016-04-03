@@ -7,13 +7,13 @@
 @protocol NZBAPIControllerProtocol <NSObject>
 
 /*! \return @[NZBBoard without messages] */
-- (RACSignal *)fetchBoardsForLocalion:(CLLocation *)location;
+- (RACSignal *)boardsForLocalion:(CLLocation *)location;
 
 /*! \return NZBBoard with messages */
-- (RACSignal *)fetchBoardForLocalion:(CLLocation *)location;
+- (RACSignal *)boardForLocalion:(CLLocation *)location;
 
 /*! \return @[NZBMessage] */
-- (RACSignal *)fetchMessagesForBoard:(NZBBoard *)board;
+- (RACSignal *)messagesForBoard:(NZBBoard *)board;
 
 /*! \return posted NZBMessage */
 - (RACSignal *)postMessageForLocation:(CLLocation *)location

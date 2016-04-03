@@ -112,7 +112,7 @@ UITextViewDelegate
 	self.progress.progress = 0.02f;
 	self.progress.alpha = 1.0;
 
-	RACSignal *downloadSignal = [[NZBServerController sharedController] fetchMessagesForBoard:self.board];
+	RACSignal *downloadSignal = [[NZBServerController sharedController] messagesForBoard:self.board];
 	__block BOOL didFinish = NO;
 
 	__block float addPercent = 0.01;

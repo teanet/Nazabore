@@ -36,7 +36,6 @@ static NSString *const kPreferencesUserId = @"userId";
 		CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
 		retrieveuuid = (__bridge_transfer NSString*)CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
 		CFRelease(newUniqueId);
-
 	}
 	//Save key to Keychain
 	[SSKeychain setPassword:retrieveuuid forService:appName account:kPreferencesUserId];
