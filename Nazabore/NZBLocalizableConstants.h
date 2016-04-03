@@ -14,4 +14,6 @@
 #define kNZB_INPUT_TEXT_PLACEHOLDER ZBS(@"input_text_placeholder", @"Чё-нибудь...")
 #define kNZB_INPUT_BUTTON_TITLE ZBS(@"input_button_title", @"Написать")
 
+#define kNZB_MAP_NO_BOARDS_MESSAGE ZBS(@"map_no_boards_message", @"Похоже здесь ещё никто ничего\nне написал 😥.\nВы можете стать первым!")
+
 #define kNZB_MESSAGE_CELL_MY_MESSAGE_TEXT ZBS(@"message_cell_my_message_text", @"Моё сообщение")

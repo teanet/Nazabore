@@ -3,6 +3,7 @@
 #import "NZBDataProvider.h"
 #import "MZBBoardAnnotation.h"
 #import "NZBAnnotationView.h"
+#import "NZBNotifyView.h"
 
 @interface NZBMapVC ()
 <
@@ -58,6 +59,8 @@ UIGestureRecognizerDelegate
 
 	[[NZBDataProvider sharedProvider].nearestBoardsSignal subscribeNext:^(NSArray *boards) {
 		@strongify(self);
+
+		(boards.count == 0) ? [self showNoMessagesNotification] : [NZBNotifyView dismiss];
 
 		[self.mapView removeAnnotations:self.annotations];
 		self.annotations = [[[boards rac_sequence]
@@ -129,6 +132,16 @@ UIGestureRecognizerDelegate
 	{
 		[self.textView resignFirstResponder];
 	}
+}
+
+- (void)showNoMessagesNotification
+{
+	@weakify(self);
+	[NZBNotifyView showInView:self.view text:kNZB_MAP_NO_BOARDS_MESSAGE tapBlock:^{
+		@strongify(self);
+
+		[self becomeFirstResponder];
+	}];
 }
 
 #pragma mark MKMapViewDelegate

@@ -45,6 +45,7 @@
 		731B3CD71C8C49080083BFFA /* NZBPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B3CD61C8C49080083BFFA /* NZBPreferences.m */; };
 		731B3D301C8DDD020083BFFA /* NZBPrivateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */; };
 		731B3D311C8DDD0F0083BFFA /* NZBPrivateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */; };
+		7328B14F1CB554F90051DE0B /* NZBNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7328B14E1CB554F90051DE0B /* NZBNotifyView.m */; };
 		7334FE3B1CAFEA5D00333668 /* NZBAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 7334FE3A1CAFEA5D00333668 /* NZBAnalytics.m */; };
 		7334FE3C1CAFEA5D00333668 /* NZBAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 7334FE3A1CAFEA5D00333668 /* NZBAnalytics.m */; };
 		7334FE3D1CAFEA5D00333668 /* NZBAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 7334FE3A1CAFEA5D00333668 /* NZBAnalytics.m */; };
@@ -134,6 +135,8 @@
 		731B3CD21C8C372B0083BFFA /* Prefix-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-Header.h"; sourceTree = "<group>"; };
 		731B3CD51C8C49080083BFFA /* NZBPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBPreferences.h; sourceTree = "<group>"; };
 		731B3CD61C8C49080083BFFA /* NZBPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBPreferences.m; sourceTree = "<group>"; };
+		7328B14D1CB554F90051DE0B /* NZBNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBNotifyView.h; sourceTree = "<group>"; };
+		7328B14E1CB554F90051DE0B /* NZBNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBNotifyView.m; sourceTree = "<group>"; };
 		7334FE391CAFEA5D00333668 /* NZBAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBAnalytics.h; sourceTree = "<group>"; };
 		7334FE3A1CAFEA5D00333668 /* NZBAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBAnalytics.m; sourceTree = "<group>"; };
 		7334FE441CB0C98000333668 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				731B36C61C8C1BE10083BFFA /* RDRGrowingTextView.m */,
 				731B36C71C8C1BE10083BFFA /* NZBEmojiSelectVC.h */,
 				731B36C81C8C1BE10083BFFA /* NZBEmojiSelectVC.m */,
+				7328B14D1CB554F90051DE0B /* NZBNotifyView.h */,
+				7328B14E1CB554F90051DE0B /* NZBNotifyView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -656,6 +661,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7328B14F1CB554F90051DE0B /* NZBNotifyView.m in Sources */,
 				731B36C11C8C1BA70083BFFA /* UIColor+System.m in Sources */,
 				731B36D91C8C1BF30083BFFA /* NZBAdsCell.m in Sources */,
 				731B39CC1C8C2FB90083BFFA /* NSDate+NZBPrettyString.m in Sources */,

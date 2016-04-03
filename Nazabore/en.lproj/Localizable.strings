@@ -31,6 +31,9 @@
 /* Чё-нибудь... */
 "input_text_placeholder" = "Something...";
 
+/* Похоже здесь ещё никто ничего\nне написал 😥.\nВы можете стать первым! */
+"map_no_boards_message" = "It seems nobody has wrote here 😥.\nYou can be the first!";
+
 /* Моё сообщение */
 "message_cell_my_message_text" = "My message";
 
