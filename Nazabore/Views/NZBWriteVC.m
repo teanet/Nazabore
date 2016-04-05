@@ -91,29 +91,29 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	if (textWithoutSpaces.length == 0) return;
 
 	NZBEmojiSelectVC *emojiSelectVC = [[NZBEmojiSelectVC alloc] init];
-	emojiSelectVC.didSelectEmojiBlock = ^(NSString *emoji, BOOL random) {
+	emojiSelectVC.didSelectEmojiBlock = ^(NZBEmoji *emoji) {
 		@strongify(self);
-
+		NSCParameterAssert(emoji);
 		[self dismissViewControllerAnimated:YES completion:nil];
-		NSString *smile = random ? @"random" : emoji;
-		[[[NZBDataProvider sharedProvider] postMessage:self.textView.text forBoard:self.board icon:emoji] subscribeNext:^(NZBMessage *m) {
+		[[[NZBDataProvider sharedProvider] postMessage:self.textView.text forBoard:self.board emoji:emoji] subscribeNext:^(NZBMessage *m) {
 			@strongify(self);
 
-			if (m.boardD) {
+			if (m.boardD)
+			{
 				NZBBoard *b = [[NZBBoard alloc] initWithDictionary:m.boardD];
 				[self showBoard:b];
 			}
-
 			self.textView.text = @"";
 			[self refetchData];
 			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @YES,
-																	 NZBASmile: smile}];
+																	 NZBASmile: emoji.textForAnalytics}];
 		} error:^(NSError *error) {
 			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @NO,
-																	 NZBASmile: smile}];
+																	 NZBASmile: emoji.textForAnalytics}];
 			[[[UIAlertView alloc] initWithTitle:kNZB_ERROR_ALERT_TITLE
 										message:error.localizedDescription
-									   delegate:nil cancelButtonTitle:kNZB_ERROR_ALERT_BUTTON_OK_TITLE
+									   delegate:nil
+							  cancelButtonTitle:kNZB_ERROR_ALERT_BUTTON_OK_TITLE
 							  otherButtonTitles:nil] show];
 		}];
 	};

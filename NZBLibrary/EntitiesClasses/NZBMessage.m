@@ -96,6 +96,7 @@ static NSString *const kMessageTypeAdvert			= @"advert";
 	NSString *iconName = dictionary[kDictionaryKeyIconName];
 	_iconName = iconName.length > 0 ? iconName : kDefaultIconName;
 	_location = [dictionary nzb_location];
+	_emoji = [[NZBEmoji alloc] initWithText:_iconName];
 
 	// [[ Timestamp
 	NSNumber *timestampNumber = dictionary[kDictionaryKeyTimestamp];

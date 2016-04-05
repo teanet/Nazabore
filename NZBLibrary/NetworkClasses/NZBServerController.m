@@ -2,9 +2,9 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <UIDevice-Hardware.h>
+#import <NZBEmoji.h>
 
 static NSString *const kNZBAPIBaseURLString			= @"https://api.nazabore.xyz";
-//static NSString *const kNZBAPIBaseURLString			= @"http://10.54.7.212:3000";
 extern NSString *const kNZBAPIApplicationToken;
 
 #define CURRENT_VERSION ([[NSBundle bundleForClass:self.class] objectForInfoDictionaryKey:@"CFBundleShortVersionString"])
@@ -203,15 +203,16 @@ extern NSString *const kNZBAPIApplicationToken;
 - (RACSignal *)postMessageForLocation:(CLLocation *)location
 							 withBody:(NSString *)body
 								board:(NZBBoard *)board
-								 icon:(NSString *)icon
+								emoji:(NZBEmoji *)emoji
 {
+	NSCParameterAssert(emoji);
 	NSDictionary *params =
 	@{
 	  @"body": body ?: @"",
 	  @"lat": @(location.coordinate.latitude),
 	  @"lon": @(location.coordinate.longitude),
 	  @"board": board.id ?: @"",
-	  @"icon": icon ?: @"0"
+	  @"icon": emoji.text ? emoji.text : @"0"
 	  };
 	return [[self POST:@"message" params:params]
 		map:^id(NSDictionary *messageDictionary) {

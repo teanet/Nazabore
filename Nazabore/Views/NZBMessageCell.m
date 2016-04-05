@@ -7,12 +7,13 @@
 #import "UIColor+NZBMessageCell.h"
 #import "NSString+NZBMessageCell.h"
 #import "NZBAnalytics.h"
+#import "NZBEmojiView.h"
 
 @interface NZBMessageCell ()
 
 @property (nonatomic, strong, readonly) UILabel *messageLabel;
 @property (nonatomic, strong, readonly) UILabel *timeLabel;
-@property (nonatomic, strong, readonly) UIImageView *iconView;
+@property (nonatomic, strong, readonly) NZBEmojiView *iconView;
 @property (nonatomic, strong, readonly) UILabel *powerLabel;
 @property (nonatomic, strong, readonly) UILabel *myMessageLabel;
 
@@ -56,8 +57,7 @@
 	_timeLabel.font = [UIFont systemFontOfSize:14.0];
 	[self.contentView addSubview:_timeLabel];
 
-	_iconView = [[UIImageView alloc] init];
-	_iconView.contentMode = UIViewContentModeScaleAspectFit;
+	_iconView = [[NZBEmojiView alloc] init];
 	[self.contentView addSubview:_iconView];
 
 	_powerLabel = [[UILabel alloc] init];
@@ -164,7 +164,7 @@
 	self.powerLabel.text = [self.message.powerString nzb_prettyPowerString];
 	self.timeLabel.text = [NSDate nzb_prettyStringFrom:self.message.timestamp * 0.001];
 	self.swipingEnabled = !hasUserInteraction;
-	self.iconView.image = [UIImage imageNamed:self.message.iconName];
+	self.iconView.emoji = self.message.emoji;
 
 	_myMessageLabel.text = self.isCurrentUser ? kNZB_MESSAGE_CELL_MY_MESSAGE_TEXT : nil;
 

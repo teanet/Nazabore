@@ -3,6 +3,8 @@
 #import "NZBMessage.h"
 #import "NZBBoard.h"
 
+@class NZBEmoji;
+
 @interface NZBDataProvider : NSObject
 
 @property (nonatomic, strong, readonly) RACSignal *nearestBoardsSignal;
@@ -11,7 +13,7 @@
 
 + (instancetype)sharedProvider;
 
-- (RACSignal *)postMessage:(NSString *)message forBoard:(NZBBoard *)board icon:(NSString *)icon;
+- (RACSignal *)postMessage:(NSString *)message forBoard:(NZBBoard *)board emoji:(NZBEmoji *)emoji;
 - (void)fetchNearestBoards;
 
 @end
