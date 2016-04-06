@@ -2,6 +2,7 @@
 
 #import "NZBMessage.h"
 #import "NZBServerController.h"
+#import "NZBLocationManager.h"
 
 static NSString *const kUserKey = @"user";
 
@@ -11,7 +12,7 @@ CLLocationManagerDelegate
 >
 
 @property (nonatomic, strong, readonly) RACSubject *nearestBoardsSubject;
-@property (nonatomic, strong, readonly) CLLocationManager *clm;
+@property (nonatomic, strong, readonly) NZBLocationManager *clm;
 @property (nonatomic, strong, readwrite) CLLocation *currentLocation;
 @property (nonatomic, strong, readwrite) NZBUser *user;
 
@@ -38,26 +39,44 @@ CLLocationManagerDelegate
 	_nearestBoardsSignal = _nearestBoardsSubject;
 
 	_user = [[NZBUser alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:kUserKey]];
-	_clm = [[CLLocationManager alloc] init];
-	_clm.delegate = self;
-	[_clm requestWhenInUseAuthorization];
-	[_clm startUpdatingLocation];
-	_currentLocation = _clm.location;
 
 	[[[NZBServerController sharedController] getCurrentUser] subscribeNext:^(NZBUser *user) {
 		@strongify(self);
 		self.user = user;
 	}];
+	_clm = [[NZBLocationManager alloc] init];
+	[self configureLocationManager];
 
 	return self;
 }
 
-- (RACSignal *)postMessage:(NSString *)message forBoard:(NZBBoard *)board emoji:(NZBEmoji *)emoji
+- (void)configureLocationManager
 {
-	return [[NZBServerController sharedController] postMessageForLocation:self.currentLocation
-																 withBody:message
-																	board:board
-																	emoji:emoji];
+	@weakify(self);
+
+	[self.clm.locationSignal
+		subscribeNext:^(CLLocation *location) {
+			@strongify(self);
+
+			// Деаем здесь так, а не RAC = RACObserve, потому что locationSignal может вернуть NSError и все упадет
+			self.currentLocation = location;
+		}];
+
+	[[[self.clm.locationSignal
+		ignore:nil]
+		take:1]
+		subscribeNext:^(id x) {
+			@strongify(self);
+
+			[self fetchNearestBoards];
+		}];
+
+	[self.clm start];
+}
+
+- (RACSignal *)currentLocationSignal
+{
+	return [self.clm.locationSignal ignore:nil];
 }
 
 - (void)setUser:(NZBUser *)user

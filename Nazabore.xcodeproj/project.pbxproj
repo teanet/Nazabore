@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3021D3741CB54452004863A7 /* NZBLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021D3731CB54452004863A7 /* NZBLocationManager.m */; };
 		303E09BA1C8DCF80008978D6 /* NZBPrivateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */; };
 		3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */; };
 		3075896D1C944B92007F6AFA /* UIColor+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */; };
@@ -82,6 +83,8 @@
 /* Begin PBXFileReference section */
 		048DA4054D1466A2281274B5 /* Pods-NazaboreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.release.xcconfig"; sourceTree = "<group>"; };
 		06544F704E4842E499F22CB0 /* Pods-NazaboreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3021D3721CB54452004863A7 /* NZBLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBLocationManager.h; sourceTree = "<group>"; };
+		3021D3731CB54452004863A7 /* NZBLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBLocationManager.m; sourceTree = "<group>"; };
 		303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBPrivateConstants.m; sourceTree = "<group>"; };
 		307589681C944B76007F6AFA /* NSString+NZBMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NZBMessageCell.h"; sourceTree = "<group>"; };
 		307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NZBMessageCell.m"; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 				731B36E11C8C1CD70083BFFA /* MZBBoardAnnotation.m */,
 				731B36E21C8C1CD70083BFFA /* NZBDataProvider.h */,
 				731B36E31C8C1CD70083BFFA /* NZBDataProvider.m */,
+				3021D3721CB54452004863A7 /* NZBLocationManager.h */,
+				3021D3731CB54452004863A7 /* NZBLocationManager.m */,
 				731B3CD51C8C49080083BFFA /* NZBPreferences.h */,
 				731B3CD61C8C49080083BFFA /* NZBPreferences.m */,
 			);
@@ -737,6 +742,7 @@
 				7328B42C1CB91E900051DE0B /* UIViewController+DGSAdditions.m in Sources */,
 				731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectVC.m in Sources */,
 				731B36BF1C8C1BA70083BFFA /* UIFont+System.m in Sources */,
+				3021D3741CB54452004863A7 /* NZBLocationManager.m in Sources */,
 				731B36DB1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */,
 				3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */,
 			);

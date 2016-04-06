@@ -38,11 +38,6 @@ UIGestureRecognizerDelegate
 		make.edges.equalTo(self.view);
 	}];
 
-	[self.mapView.userLocation addObserver:self
-								forKeyPath:@"location"
-								   options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)
-								   context:nil];
-
 	UIButton *centerButton = [[UIButton alloc] init];
 	[centerButton setImage:[UIImage imageNamed:@"locationButton-normal"] forState:UIControlStateNormal];
 	[centerButton setImage:[UIImage imageNamed:@"locationButton-highlighted"] forState:UIControlStateHighlighted];
@@ -76,9 +71,8 @@ UIGestureRecognizerDelegate
 	[panRec setDelegate:self];
 	[self.mapView addGestureRecognizer:panRec];
 
-	RACSignal *locationSignal = [[[RACObserve([NZBDataProvider sharedProvider], currentLocation)
+	RACSignal *locationSignal = [[[NZBDataProvider sharedProvider].currentLocationSignal
 		takeUntil:self.rac_willDeallocSignal]
-		ignore:nil]
 		deliverOnMainThread];
 
 	[locationSignal subscribeNext:^(CLLocation *location) {
@@ -89,6 +83,23 @@ UIGestureRecognizerDelegate
 														radius:[NZBDataProvider sharedProvider].visibleRadius];
 		[self.mapView addOverlay:self.userCircle];
 	}];
+
+	// [[ Бросаем пользователя на карту
+	[[locationSignal
+		take:1]
+		subscribeNext:^(CLLocation *startLocation) {
+			@strongify(self);
+
+			MKCoordinateRegion region;
+			region.center = startLocation.coordinate;
+			MKCoordinateSpan span;
+			span.latitudeDelta  = 0.01;
+			span.longitudeDelta = 0.01;
+			region.span = span;
+
+			[self.mapView setRegion:region animated:YES];
+		}];
+	// ]]
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -106,22 +117,8 @@ UIGestureRecognizerDelegate
 
 - (void)centerTap
 {
+	[self refetchData];
 	[self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if (self.mapView.userLocation == nil) return;
-
-	MKCoordinateRegion region;
-	region.center = self.mapView.userLocation.coordinate;
-	MKCoordinateSpan span;
-	span.latitudeDelta  = 0.01;
-	span.longitudeDelta = 0.01;
-	region.span = span;
-
-	[self.mapView setRegion:region animated:YES];
-	[self.mapView.userLocation removeObserver:self forKeyPath:@"location"];
 }
 
 - (void)didDragMap:(UIGestureRecognizer*)gestureRecognizer
