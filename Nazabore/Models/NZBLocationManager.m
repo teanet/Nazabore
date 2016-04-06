@@ -1,5 +1,7 @@
 #import "NZBLocationManager.h"
 
+#import <Crashlytics/Crashlytics.h>
+
 @interface NZBLocationManager () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong, readonly) CLLocationManager *locationManager;
@@ -34,9 +36,18 @@ static BOOL statusIsValidForUserChoiceAboutLocation(CLAuthorizationStatus status
 
 	_authorizationStatusSubject = [RACReplaySubject replaySubjectWithCapacity:1];
 
-	_didRecieveUserChoiceAboutLocationSignal = [[_authorizationStatusSubject
+	_didRecieveUserChoiceAboutLocationSignal = [[[_authorizationStatusSubject
 		filter:^BOOL(NSNumber *authStatus) {
 			return statusIsValidForUserChoiceAboutLocation((CLAuthorizationStatus)authStatus.integerValue);
+		}]
+		doNext:^(NSNumber *authStatus) {
+			CLAuthorizationStatus status = (CLAuthorizationStatus)authStatus.integerValue;
+
+			NSString *statusDescription = [NZBLocationManager statusDescriptionForAuthorizationStatus:status];
+			[Answers logCustomEventWithName:@"UserDidChoiceLocationAuthorizationStatus"
+						   customAttributes:@{
+											  @"authorizationStatus" : statusDescription,
+											  }];
 		}]
 		take:1];
 
@@ -45,7 +56,7 @@ static BOOL statusIsValidForUserChoiceAboutLocation(CLAuthorizationStatus status
 	// Standard UIAlertView has gone, we need to request access again
 	[[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification
 															object:nil]
-	  takeUntil:self.didRecieveUserChoiceAboutLocationSignal]
+		takeUntil:self.didRecieveUserChoiceAboutLocationSignal]
 		subscribeNext:^(id _) {
 			@strongify(self);
 
@@ -126,5 +137,18 @@ static BOOL statusIsValidForUserChoiceAboutLocation(CLAuthorizationStatus status
 //	[self.locationManager stopUpdatingLocation];
 }
 
++ (NSString *)statusDescriptionForAuthorizationStatus:(CLAuthorizationStatus)status
+{
+	switch (status)
+	{
+		case kCLAuthorizationStatusNotDetermined		: return @"NotDetermined";
+		case kCLAuthorizationStatusRestricted			: return @"Restricted";
+		case kCLAuthorizationStatusDenied				: return @"Denied";
+		case kCLAuthorizationStatusAuthorizedAlways		: return @"AuthorizedAlways";
+		case kCLAuthorizationStatusAuthorizedWhenInUse	: return @"AuthorizedWhenInUse";
+	}
+
+	return @"NotDetermined";
+}
 
 @end
