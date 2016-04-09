@@ -65,7 +65,7 @@ describe(@"NZBBoard", ^{
 	context(@"Updating", ^{
 
 		__block NZBMessage *message = nil;
-
+		
 		beforeEach(^{
 
 			boardDictionary = @{ kDictionaryKeyId : @"newId",

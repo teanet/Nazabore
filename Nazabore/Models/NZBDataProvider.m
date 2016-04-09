@@ -44,12 +44,12 @@ CLLocationManagerDelegate
 	return self;
 }
 
-- (RACSignal *)postMessage:(NSString *)message forBoard:(NZBBoard *)board icon:(NSString *)icon
+- (RACSignal *)postMessage:(NSString *)message forBoard:(NZBBoard *)board emoji:(NZBEmoji *)emoji
 {
 	return [[NZBServerController sharedController] postMessageForLocation:self.currentLocation
 																 withBody:message
 																	board:board
-																	 icon:icon];
+																	emoji:emoji];
 }
 
 #pragma mark CLLocationManagerDelegate

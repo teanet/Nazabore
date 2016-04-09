@@ -10,7 +10,7 @@
 	if (self)
 	{
 		MZBBoardAnnotation *a = annotation;
-		self.image = a.board.iconImage;
+		self.image = a.board.emoji.image;
 	}
 	return self;
 }
@@ -19,7 +19,7 @@
 {
 	[super setAnnotation:annotation];
 	MZBBoardAnnotation *a = annotation;
-	self.image = a.board.iconImage;
+	self.image = a.board.emoji.image;
 }
 
 @end

@@ -1,14 +1,19 @@
 #import "NZBEmojiSelectVC.h"
 
-#import "NZBEmojiCell.h"
-
-const NSInteger kEmojiCount = 20;
+#import "NZBEmojiSelectVM.h"
+#import "NZBEmojiPageVC.h"
+#import "UIViewController+DGSAdditions.h"
 
 @interface NZBEmojiSelectVC ()
 <
-UICollectionViewDataSource,
-UICollectionViewDelegate
+UIPageViewControllerDataSource,
+UIPageViewControllerDelegate
 >
+
+@property (nonatomic, strong, readonly) NZBEmojiSelectVM *viewModel;
+@property (nonatomic, copy, readonly) NSMutableDictionary<NSString *, NZBEmojiPageVC *> *pageVCs;
+@property (nonatomic, strong, readonly) UIPageViewController *pageViewController;
+@property (nonatomic, strong, readonly) UIPageControl *pageControl;
 
 @end
 
@@ -21,6 +26,8 @@ UICollectionViewDelegate
 
 	self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	self.modalPresentationStyle = UIModalPresentationOverFullScreen;
+	_viewModel = [[NZBEmojiSelectVM alloc] init];
+	_pageVCs = [NSMutableDictionary dictionary];
 
 	return self;
 }
@@ -28,26 +35,31 @@ UICollectionViewDelegate
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	@weakify(self);
 
+	[self createInterface];
+
+	[self.pageViewController setViewControllers:@[[self pageVCWithVM:self.viewModel.currentPageVM]]
+									  direction:UIPageViewControllerNavigationDirectionForward
+									   animated:NO
+									 completion:nil];
+
+	[self.viewModel.didSelectEmojiSignal subscribeNext:^(NZBEmoji *emoji) {
+		@strongify(self);
+		if (self.didSelectEmojiBlock)
+		{
+			self.didSelectEmojiBlock(emoji);
+		}
+	}];
+}
+
+- (void)createInterface
+{
+	self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
 	UIView *contentView = [[UIView alloc] init];
 	contentView.layer.cornerRadius = 5.0;
 	contentView.layer.masksToBounds = YES;
-	contentView.backgroundColor = [UIColor colorWithWhite:247/255. alpha:1.0];
 	[self.view addSubview:contentView];
-
-	UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-
-	flowLayout.itemSize = CGSizeMake(40, 40);
-	flowLayout.minimumInteritemSpacing = 35.0;
-	flowLayout.minimumLineSpacing = 35.0;
-	flowLayout.sectionInset = UIEdgeInsetsMake(28.0, 17.0, 8.0, 17.0);
-
-	UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-	collectionView.delegate = self;
-	collectionView.dataSource = self;
-	collectionView.backgroundColor = [UIColor colorWithWhite:247/255. alpha:1.0];
-	[collectionView registerClass:[NZBEmojiCell class] forCellWithReuseIdentifier:@"NZBEmojiCell"];
-	[contentView addSubview:collectionView];
 
 	UIView *actionsContentView = [[UIView alloc] init];
 	actionsContentView.backgroundColor = [UIColor whiteColor];
@@ -72,8 +84,16 @@ UICollectionViewDelegate
 	[sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
 	sendButton.backgroundColor = [UIColor nzb_yellowColor];
-	[sendButton addTarget:self action:@checkselector0(self, sendTap) forControlEvents:UIControlEventTouchUpInside];
+	[sendButton addTarget:self.viewModel action:@checkselector0(self.viewModel, selectRandomEmoji) forControlEvents:UIControlEventTouchUpInside];
 	[actionsContentView addSubview:sendButton];
+
+	_pageControl = [[UIPageControl alloc] init];
+	_pageControl.pageIndicatorTintColor = [[UIColor nzb_lightGrayColor] colorWithAlphaComponent:0.3];
+	_pageControl.currentPageIndicatorTintColor = [UIColor nzb_darkGreenColor];
+	_pageControl.numberOfPages = self.viewModel.pagesCount;
+	_pageControl.userInteractionEnabled = NO; // Disable taps so we dont need to process them.
+	_pageControl.hidesForSinglePage = YES;
+	[contentView addSubview:_pageControl];
 
 	UIButton *closeButton = [self newButton];
 	[closeButton setTitle:kNZB_BUTTON_CANCEL_TITLE forState:UIControlStateNormal];
@@ -83,15 +103,20 @@ UICollectionViewDelegate
 	[closeButton addTarget:self action:@checkselector0(self, cancelTap) forControlEvents:UIControlEventTouchUpInside];
 	[actionsContentView addSubview:closeButton];
 
-	[contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(25.0, 10.0, 25.0, 10.0));
-	}];
-
-	[collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+	_pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+														  navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+																		options:nil];
+	_pageViewController.dataSource = self;
+	_pageViewController.delegate = self;
+	[self dgs_showViewController:_pageViewController inView:contentView constraints:^(MASConstraintMaker *make) {
 		make.left.equalTo(contentView);
 		make.right.equalTo(contentView);
 		make.top.equalTo(contentView);
 		make.bottom.equalTo(actionsContentView.mas_top);
+	}];
+
+	[contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(25.0, 10.0, 25.0, 10.0));
 	}];
 
 	[actionsContentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -126,6 +151,12 @@ UICollectionViewDelegate
 		make.centerY.equalTo(closeButton);
 		make.width.equalTo(closeButton).with.multipliedBy(2.0);
 	}];
+
+	[_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.centerX.equalTo(self.view);
+		make.top.equalTo(_pageViewController.view.mas_bottom);
+		make.height.equalTo(@20.0);
+	}];
 }
 
 - (UIButton *)newButton
@@ -138,11 +169,6 @@ UICollectionViewDelegate
 	return newButton;
 }
 
-- (void)sendTap
-{
-	[self selectEmoji:[@(arc4random()%kEmojiCount) description] random:YES];
-}
-
 - (void)cancelTap
 {
 	if (self.didCloseBlock)
@@ -151,32 +177,45 @@ UICollectionViewDelegate
 	}
 }
 
-- (void)selectEmoji:(NSString *)emoji random:(BOOL)random
+// MARK: UIPageViewControllerDataSource
+
+- (NZBEmojiPageVC *)pageVCWithVM:(NZBEmojiPageVM *)pageVM
 {
-	if (self.didSelectEmojiBlock)
+	NZBEmojiPageVC *pageVC = self.pageVCs[pageVM.key];
+	if (pageVC == nil)
 	{
-		self.didSelectEmojiBlock(emoji, random);
+		pageVC = [[NZBEmojiPageVC alloc] initWithVM:pageVM];
+		self.pageVCs[pageVM.key] = pageVC;
 	}
+	return pageVC;
 }
 
-#pragma mark coll
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+	  viewControllerBeforeViewController:(NZBEmojiPageVC *)emojiPageVC
 {
-	return kEmojiCount;
+	return [self pageVCWithVM:[self.viewModel pageBeforePage:emojiPageVC.viewModel]];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+	   viewControllerAfterViewController:(NZBEmojiPageVC *)emojiPageVC
 {
-	NZBEmojiCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NZBEmojiCell" forIndexPath:indexPath];
-	cell.imageView.image = [UIImage imageNamed:[@(indexPath.row) description]];
-	return cell;
+	return [self pageVCWithVM:[self.viewModel pageAfterPage:emojiPageVC.viewModel]];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+// MARK: UIPageViewControllerDelegate
+
+- (void)pageViewController:(UIPageViewController *)pageViewController
+		didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray *)previousViewControllers
+	   transitionCompleted:(BOOL)completed
 {
-	[collectionView deselectItemAtIndexPath:indexPath animated:YES];
-	[self selectEmoji:[@(indexPath.row) description] random:NO];
+	NZBEmojiPageVC *nextPanelVC = [pageViewController.viewControllers firstObject];
+	NSInteger currentPageIndex = [self.viewModel indexOfPage:nextPanelVC.viewModel];
+	if (currentPageIndex != NSNotFound)
+	{
+		self.viewModel.currentPageIndex = currentPageIndex;
+		self.pageControl.currentPage = currentPageIndex;
+	}
 }
 
 @end

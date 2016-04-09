@@ -49,6 +49,7 @@ describe(@"NZBUser", ^{
 			userDictionary = @{ kDictionaryKeyId : @"newId",
 								kDictionaryKeyPower : @100,
 								kDictionaryKeyRating : @10.5,
+								@"visibleRange": @1000,
 								};
 			
 		});

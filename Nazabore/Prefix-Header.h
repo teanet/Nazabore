@@ -1,7 +1,5 @@
 #ifdef __OBJC__
 
-#define ZBS(__KEY__, __COMMENT__) NSLocalizedString((__KEY__), (__COMMENT__))
-
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <Masonry/Masonry.h>

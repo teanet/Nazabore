@@ -1,5 +1,7 @@
+@class NZBEmoji;
+
 @interface NZBEmojiCell : UICollectionViewCell
 
-@property (nonatomic, strong, readonly) UIImageView *imageView;
+@property (nonatomic, strong) NZBEmoji *emoji;
 
 @end

@@ -48,7 +48,7 @@ UITextViewDelegate
 
 	self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 	self.view.backgroundColor = [UIColor whiteColor];
-	UIImageView *v = [[UIImageView alloc] initWithImage:self.board.iconImage];
+	UIImageView *v = [[UIImageView alloc] initWithImage:self.board.emoji.image];
 	v.contentMode = UIViewContentModeScaleAspectFit;
 	v.transform = CGAffineTransformMakeScale(0.7, 0.7);
 	self.navigationItem.titleView = v;

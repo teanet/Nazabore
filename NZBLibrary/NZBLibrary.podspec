@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Entities' do |entities|
-    entities.source_files = 'EntitiesClasses/*.{h,m}'
+    entities.source_files = 'EntitiesClasses/*.{h,m}', 'EntitiesClasses/Emoji/'
     entities.frameworks   = 'Foundation', 'CoreLocation'
   end
 

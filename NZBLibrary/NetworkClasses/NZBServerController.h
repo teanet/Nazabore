@@ -3,6 +3,7 @@
 #import "NZBBoard.h"
 #import "NZBMessage.h"
 #import "NZBUser.h"
+@class NZBEmoji;
 
 @protocol NZBAPIControllerProtocol <NSObject>
 
@@ -19,7 +20,7 @@
 - (RACSignal *)postMessageForLocation:(CLLocation *)location
 							 withBody:(NSString *)body
 								board:(NZBBoard *)board
-								 icon:(NSString *)icon;
+								emoji:(NZBEmoji *)emoji;
 
 /*! \return @(new power for message) - НЕ РАБОТАЕТ (`error = "you're wrong"`) */
 - (RACSignal *)rateMessage:(NZBMessage *)message withInteraction:(NZBUserInteraction)interaction;

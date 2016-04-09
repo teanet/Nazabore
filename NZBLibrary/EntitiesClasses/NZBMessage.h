@@ -1,6 +1,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "NZBSerializableProtocol.h"
+#import "NZBEmoji.h"
 
 typedef NS_ENUM(NSInteger, NZBMessageType) {
 	NZBMessageTypeDefault		= 0,
@@ -49,6 +50,7 @@ typedef NS_ENUM(NSInteger, NZBUserInteraction) {
 @property (nonatomic, copy, readonly) NSString *boardId;
 @property (nonatomic, weak) id<NZBUpdateProtocol> relatedView;
 @property (nonatomic, strong) NSDictionary *boardD;
+@property (nonatomic, strong, readonly) NZBEmoji *emoji;
 
 + (instancetype)messageWithDictionary:(NSDictionary *)dictionary;
 - (instancetype)init NS_UNAVAILABLE;

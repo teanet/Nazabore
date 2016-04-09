@@ -10,9 +10,8 @@
 @property (nonatomic, copy, readonly) CLLocation *location;
 @property (nonatomic, copy, readonly) NSNumber *messagesCount;
 @property (nonatomic, copy, readonly) NSArray<NZBMessage *> *messages;
+@property (nonatomic, strong, readonly) NZBEmoji *emoji;
 
 - (instancetype)init NS_UNAVAILABLE;
-
-- (UIImage *)iconImage;
 
 @end

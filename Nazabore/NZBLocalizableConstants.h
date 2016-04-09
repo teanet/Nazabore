@@ -1,3 +1,5 @@
+#define ZBS(__KEY__, __COMMENT__) NSLocalizedString((__KEY__), (__COMMENT__))
+
 #define kNZB_BUTTON_CANCEL_TITLE ZBS(@"button_cancel_title", @"Отмена")
 
 #define kNZB_DATE_FEW_SECONDS_AGO ZBS(@"date_few_seconds_ago", @"Несколько секунд назад")
