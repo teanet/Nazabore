@@ -92,10 +92,8 @@ UIGestureRecognizerDelegate
 
 			MKCoordinateRegion region;
 			region.center = startLocation.coordinate;
-			MKCoordinateSpan span;
-			span.latitudeDelta  = 0.01;
-			span.longitudeDelta = 0.01;
-			region.span = span;
+			region.span.latitudeDelta  = 0.01;
+			region.span.longitudeDelta = 0.01;
 
 			[self.mapView setRegion:region animated:YES];
 		}];

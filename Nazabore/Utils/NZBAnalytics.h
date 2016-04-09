@@ -3,6 +3,7 @@ NS_ASSUME_NONNULL_BEGIN
 extern NSString *const NZBAPostMessageEvent;
 extern NSString *const NZBAOpenBoardEvent;
 extern NSString *const NZBARateMessage;
+extern NSString *const NZBAUserDidChoiceLocationAuthorizationStatus;
 
 extern NSString *const NZBAStatus;
 extern NSString *const NZBASmile;

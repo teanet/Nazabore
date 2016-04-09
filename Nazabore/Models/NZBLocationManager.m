@@ -1,6 +1,7 @@
 #import "NZBLocationManager.h"
 
-#import <Crashlytics/Crashlytics.h>
+#import "NZBPreferences.h"
+#import "NZBAnalytics.h"
 
 @interface NZBLocationManager () <CLLocationManagerDelegate>
 
@@ -35,19 +36,9 @@ static BOOL statusIsValidForUserChoiceAboutLocation(CLAuthorizationStatus status
 	_locationSignal = _locationSubject;
 
 	_authorizationStatusSubject = [RACReplaySubject replaySubjectWithCapacity:1];
-
-	_didRecieveUserChoiceAboutLocationSignal = [[[_authorizationStatusSubject
+	_didRecieveUserChoiceAboutLocationSignal = [[_authorizationStatusSubject
 		filter:^BOOL(NSNumber *authStatus) {
 			return statusIsValidForUserChoiceAboutLocation((CLAuthorizationStatus)authStatus.integerValue);
-		}]
-		doNext:^(NSNumber *authStatus) {
-			CLAuthorizationStatus status = (CLAuthorizationStatus)authStatus.integerValue;
-
-			NSString *statusDescription = [NZBLocationManager statusDescriptionForAuthorizationStatus:status];
-			[Answers logCustomEventWithName:@"UserDidChoiceLocationAuthorizationStatus"
-						   customAttributes:@{
-											  @"authorizationStatus" : statusDescription,
-											  }];
 		}]
 		take:1];
 
@@ -64,9 +55,13 @@ static BOOL statusIsValidForUserChoiceAboutLocation(CLAuthorizationStatus status
 		}];
 
 	// перезапрашиваем позицию когда мы получаем разрешение на использование геолокации
-	[[_authorizationStatusSubject
+	[[[_authorizationStatusSubject
 		filter:^BOOL(NSNumber *authStatus) {
 			return statusIsValidForLocationReqest((CLAuthorizationStatus)authStatus.intValue);
+		}]
+		doNext:^(NSNumber *authStatus) {
+			CLAuthorizationStatus status = (CLAuthorizationStatus)authStatus.integerValue;
+			[NZBLocationManager logUserDidAuthorizationStatusIfNeeded:status];
 		}]
 		subscribeNext:^(id _) {
 			@strongify(self);
@@ -87,8 +82,8 @@ static BOOL statusIsValidForUserChoiceAboutLocation(CLAuthorizationStatus status
 	if (_locationManager == nil)
 	{
 		_locationManager = [[CLLocationManager alloc] init];
-		_locationManager.activityType = CLActivityTypeAutomotiveNavigation;
-		_locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+		_locationManager.activityType = CLActivityTypeFitness;
+		_locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
 		_locationManager.pausesLocationUpdatesAutomatically = YES;
 		_locationManager.delegate = self;
 	}
@@ -133,22 +128,17 @@ static BOOL statusIsValidForUserChoiceAboutLocation(CLAuthorizationStatus status
 	if (error.code == kCLErrorLocationUnknown) return;
 
 	[self.locationSubject sendError:error];
-	// А на фига его здесь стопать, пусть работает
-//	[self.locationManager stopUpdatingLocation];
 }
 
-+ (NSString *)statusDescriptionForAuthorizationStatus:(CLAuthorizationStatus)status
++ (void)logUserDidAuthorizationStatusIfNeeded:(CLAuthorizationStatus)status
 {
-	switch (status)
+	if (![NZBPreferences defaultPreferences].userDidSelectAuthorizationStatus &&
+		statusIsValidForLocationReqest(status))
 	{
-		case kCLAuthorizationStatusNotDetermined		: return @"NotDetermined";
-		case kCLAuthorizationStatusRestricted			: return @"Restricted";
-		case kCLAuthorizationStatusDenied				: return @"Denied";
-		case kCLAuthorizationStatusAuthorizedAlways		: return @"AuthorizedAlways";
-		case kCLAuthorizationStatusAuthorizedWhenInUse	: return @"AuthorizedWhenInUse";
+		[NZBAnalytics logEvent:NZBAUserDidChoiceLocationAuthorizationStatus
+					parameters:@{NZBAStatus: @YES}];
+		[NZBPreferences defaultPreferences].userDidSelectAuthorizationStatus = YES;
 	}
-
-	return @"NotDetermined";
 }
 
 @end

@@ -5,6 +5,7 @@
 NSString *const NZBAPostMessageEvent = @"PostMessage";
 NSString *const NZBAOpenBoardEvent = @"OpenBoard";
 NSString *const NZBARateMessage = @"RateMessage";
+NSString *const NZBAUserDidChoiceLocationAuthorizationStatus = @"UserDidChoiceLocationAuthorizationStatus";
 
 NSString *const NZBAStatus = @"Status";
 NSString *const NZBASmile = @"Smile";
