@@ -75,7 +75,8 @@ static NSCache *_imageCache = nil;
 	static NSString *imageDir = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		imageDir = [NSTemporaryDirectory() stringByAppendingPathComponent:@"icons"];
+		NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+		imageDir = [cacheDir stringByAppendingPathComponent:@"icons"];
 		if (![[NSFileManager defaultManager] fileExistsAtPath:imageDir])
 		{
 			[[NSFileManager defaultManager] createDirectoryAtPath:imageDir withIntermediateDirectories:YES attributes:@{} error:nil];
