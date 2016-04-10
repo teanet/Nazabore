@@ -21,7 +21,6 @@ UIGestureRecognizerDelegate
 
 - (void)dealloc
 {
-	[self.mapView removeFromSuperview];
 	self.mapView.delegate = nil;
 }
 
@@ -86,9 +85,8 @@ UIGestureRecognizerDelegate
 		@strongify(self);
 
 		[self.mapView removeOverlay:self.userCircle];
-#warning Get radius from user data
 		self.userCircle = [MKCircle circleWithCenterCoordinate:location.coordinate
-														radius:2000];
+														radius:[NZBDataProvider sharedProvider].visibleRadius];
 		[self.mapView addOverlay:self.userCircle];
 	}];
 }
@@ -150,7 +148,7 @@ UIGestureRecognizerDelegate
 {
 	MKCircleRenderer *c = [[MKCircleRenderer alloc] initWithCircle:overlay];
 	c.fillColor = [[UIColor nzb_darkGreenColor] colorWithAlphaComponent:0.05];
-	c.strokeColor = [[UIColor nzb_darkGreenColor] colorWithAlphaComponent:0.3];
+	c.strokeColor = [[UIColor nzb_darkGreenColor] colorWithAlphaComponent:0.5];
 	c.lineWidth = 1.0 / [UIScreen mainScreen].scale;
 	return c;
 }

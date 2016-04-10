@@ -144,21 +144,11 @@ extern NSString *const kNZBAPIApplicationToken;
 
 	return [[self GET:@"boards" params:params]
 		map:^NSArray *(NSArray *responseArray) {
-			NSMutableArray<NZBBoard *> *boardsArray = nil;
-			if ([responseArray isKindOfClass:[NSArray class]])
-			{
-				boardsArray = [NSMutableArray arrayWithCapacity:responseArray.count];
+			if (![responseArray isKindOfClass:[NSArray class]]) return nil;
 
-				for (NSDictionary *boardDictionary in responseArray)
-				{
-					NZBBoard *board = [[NZBBoard alloc] initWithDictionary:boardDictionary];
-					if (board)
-					{
-						[boardsArray addObject:board];
-					}
-				}
-			}
-			return [boardsArray copy];
+			return [responseArray.rac_sequence map:^NZBBoard *(NSDictionary *boardDictionary) {
+				return [[NZBBoard alloc] initWithDictionary:boardDictionary];
+			}].array;
 		}];
 }
 
@@ -215,7 +205,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	  @"icon": emoji.text ? emoji.text : @"0"
 	  };
 	return [[self POST:@"message" params:params]
-		map:^id(NSDictionary *messageDictionary) {
+		map:^NZBMessage *(NSDictionary *messageDictionary) {
 			NZBMessage *message = nil;
 
 			if ([messageDictionary isKindOfClass:[NSDictionary class]])
@@ -229,6 +219,7 @@ extern NSString *const kNZBAPIApplicationToken;
 
 - (RACSignal *)rateMessage:(NZBMessage *)message withInteraction:(NZBUserInteraction)interaction
 {
+	NSCParameterAssert(message.id);
 	if (!message.id) return nil;
 	NSDictionary *params =
 	@{
@@ -236,7 +227,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	  @"power": [@(interaction) description],
 	  };
 	return [[self POST:@"ratemessage" params:params]
-		map:^id(NSDictionary *messageDictionary) {
+		map:^NZBMessage *(NSDictionary *messageDictionary) {
 			NZBMessage *message = nil;
 
 			if ([messageDictionary[@"message"] isKindOfClass:[NSDictionary class]])
@@ -257,7 +248,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	NSDictionary *params = @{@"id": id ?: @""};
 	return [[self GET:@"user" params:params]
 		map:^NZBUser *(NSDictionary *response) {
-			return [[NZBUser alloc] initWithDictionary:response];
+			return [[NZBUser alloc] initWithDictionary:response[@"user"]];
 		}];
 }
 
