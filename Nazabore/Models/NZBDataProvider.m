@@ -3,6 +3,8 @@
 #import "NZBMessage.h"
 #import "NZBServerController.h"
 
+static NSString *const kUserKey = @"user";
+
 @interface NZBDataProvider ()
 <
 CLLocationManagerDelegate
@@ -11,6 +13,7 @@ CLLocationManagerDelegate
 @property (nonatomic, strong, readonly) RACSubject *nearestBoardsSubject;
 @property (nonatomic, strong, readonly) CLLocationManager *clm;
 @property (nonatomic, strong, readwrite) CLLocation *currentLocation;
+@property (nonatomic, strong, readwrite) NZBUser *user;
 
 @end
 
@@ -29,17 +32,22 @@ CLLocationManagerDelegate
 {
 	self = [super init];
 	if (self == nil) return nil;
+	@weakify(self);
 
 	_nearestBoardsSubject = [RACSubject subject];
 	_nearestBoardsSignal = _nearestBoardsSubject;
-	_rows = [NSMutableArray array];
 
+	_user = [[NZBUser alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:kUserKey]];
 	_clm = [[CLLocationManager alloc] init];
 	_clm.delegate = self;
 	[_clm requestWhenInUseAuthorization];
 	[_clm startUpdatingLocation];
 	_currentLocation = _clm.location;
-	[self fetchNearestBoards];
+
+	[[[NZBServerController sharedController] getCurrentUser] subscribeNext:^(NZBUser *user) {
+		@strongify(self);
+		self.user = user;
+	}];
 
 	return self;
 }
@@ -50,6 +58,13 @@ CLLocationManagerDelegate
 																 withBody:message
 																	board:board
 																	emoji:emoji];
+}
+
+- (void)setUser:(NZBUser *)user
+{
+	_user = user;
+	[[NSUserDefaults standardUserDefaults] setValue:user.dictionary forKey:kUserKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark CLLocationManagerDelegate
@@ -77,9 +92,13 @@ CLLocationManagerDelegate
 	@weakify(self);
 	[[[NZBServerController sharedController] boardsForLocalion:self.currentLocation] subscribeNext:^(NSArray *boards) {
 		@strongify(self);
-
 		[self.nearestBoardsSubject sendNext:boards];
 	}];
+}
+
+- (double)visibleRadius
+{
+	return self.user.visibleRadius;
 }
 
 @end

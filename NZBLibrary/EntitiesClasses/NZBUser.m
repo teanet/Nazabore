@@ -2,8 +2,13 @@
 
 static NSString *const kDictionaryKeyId				= @"id";
 static NSString *const kDictionaryKeyPower			= @"power";
+static NSString *const kDictionaryKeyKarma			= @"karma";
 static NSString *const kDictionaryKeyRating			= @"rating";
-static NSString *const kDictionaryKeyVisibleRange	= @"visibleRange";
+static NSString *const kDictionaryKeyVisibleRadius	= @"visibleRadius";
+static NSString *const kDictionaryKeyMessagesCount	= @"messagesCount";
+
+static double const kMinimumVisibleRadius = 50.0;
+static double const kDefaultVisibleRadius = 2000.0;
 
 @implementation NZBUser
 
@@ -30,8 +35,10 @@ static NSString *const kDictionaryKeyVisibleRange	= @"visibleRange";
 {
 	_id = dictionary[kDictionaryKeyId];
 	_power = [dictionary[kDictionaryKeyPower] integerValue];
-	_rating = [dictionary[kDictionaryKeyRating] doubleValue];
-	_visibleRange = [dictionary[kDictionaryKeyVisibleRange] doubleValue];
+	_karma = [dictionary[kDictionaryKeyKarma] integerValue];
+	_messagesCount = [dictionary[kDictionaryKeyMessagesCount] integerValue];
+	double visibleRadius = [dictionary[kDictionaryKeyVisibleRadius] doubleValue];
+	_visibleRadius = visibleRadius > kMinimumVisibleRadius ? visibleRadius : kDefaultVisibleRadius;
 }
 
 - (NSDictionary *)dictionary
@@ -39,8 +46,9 @@ static NSString *const kDictionaryKeyVisibleRange	= @"visibleRange";
 	NSMutableDictionary *dictionaryRepresentation = [NSMutableDictionary dictionary];
 	[dictionaryRepresentation setValue:self.id forKey:kDictionaryKeyId];
 	[dictionaryRepresentation setValue:@(self.power) forKey:kDictionaryKeyPower];
-	[dictionaryRepresentation setValue:@(self.rating) forKey:kDictionaryKeyRating];
-	[dictionaryRepresentation setValue:@(self.visibleRange) forKey:kDictionaryKeyVisibleRange];
+	[dictionaryRepresentation setValue:@(self.karma) forKey:kDictionaryKeyKarma];
+	[dictionaryRepresentation setValue:@(self.messagesCount) forKey:kDictionaryKeyMessagesCount];
+	[dictionaryRepresentation setValue:@(self.visibleRadius) forKey:kDictionaryKeyVisibleRadius];
 	return dictionaryRepresentation;
 }
 

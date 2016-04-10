@@ -13,6 +13,7 @@
 {
 	[SSKeychain setAccessibilityType:kSecAttrAccessibleAlwaysThisDeviceOnly];
 	[NZBServerController sharedController].userID = [NZBPreferences defaultPreferences].userId;
+
 	[[Fabric sharedSDK] setDebug:YES];
 	[Fabric with:@[[Crashlytics class], [Answers class]]];
 
