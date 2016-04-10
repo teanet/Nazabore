@@ -3,6 +3,7 @@
 #import <SSKeychain.h>
 
 static NSString *const kPreferencesUserId = @"userId";
+static NSString *const kPreferencesUserDidSelectAuthorizationStatus = @"userDidSelectAuthorizationStatus";
 
 @implementation NZBPreferences
 
@@ -41,6 +42,18 @@ static NSString *const kPreferencesUserId = @"userId";
 	[SSKeychain setPassword:retrieveuuid forService:appName account:kPreferencesUserId];
 
 	return retrieveuuid;
+}
+
+- (BOOL)userDidSelectAuthorizationStatus
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:kPreferencesUserDidSelectAuthorizationStatus];
+}
+
+- (void)setUserDidSelectAuthorizationStatus:(BOOL)userDidSelectAuthorizationStatus
+{
+	[[NSUserDefaults standardUserDefaults] setBool:userDidSelectAuthorizationStatus
+											forKey:kPreferencesUserDidSelectAuthorizationStatus];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

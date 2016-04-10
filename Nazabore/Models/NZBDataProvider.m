@@ -2,8 +2,10 @@
 
 #import "NZBMessage.h"
 #import "NZBServerController.h"
+#import "NZBLocationManager.h"
 
 static NSString *const kUserKey = @"user";
+static double const kDistanceToRefetchBoards = 100.0;
 
 @interface NZBDataProvider ()
 <
@@ -11,8 +13,9 @@ CLLocationManagerDelegate
 >
 
 @property (nonatomic, strong, readonly) RACSubject *nearestBoardsSubject;
-@property (nonatomic, strong, readonly) CLLocationManager *clm;
+@property (nonatomic, strong, readonly) NZBLocationManager *clm;
 @property (nonatomic, strong, readwrite) CLLocation *currentLocation;
+@property (nonatomic, strong, readwrite) CLLocation *lastFetchLocation;
 @property (nonatomic, strong, readwrite) NZBUser *user;
 
 @end
@@ -38,17 +41,33 @@ CLLocationManagerDelegate
 	_nearestBoardsSignal = _nearestBoardsSubject;
 
 	_user = [[NZBUser alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:kUserKey]];
-	_clm = [[CLLocationManager alloc] init];
-	_clm.delegate = self;
-	[_clm requestWhenInUseAuthorization];
-	[_clm startUpdatingLocation];
-	_currentLocation = _clm.location;
 
 	[[[NZBServerController sharedController] getCurrentUser] subscribeNext:^(NZBUser *user) {
 		@strongify(self);
 		self.user = user;
 	}];
+	_clm = [[NZBLocationManager alloc] init];
+	_currentLocationSignal = [_clm.locationSignal ignore:nil];
+	[[[[_currentLocationSignal
+		doNext:^(CLLocation *location) {
+			@strongify(self)
 
+			self.currentLocation = location;
+		}]
+		throttle:0.5]
+		filter:^BOOL(CLLocation *location) {
+			CLLocationDistance distance =
+				MKMetersBetweenMapPoints(MKMapPointForCoordinate(self.lastFetchLocation.coordinate),
+										 MKMapPointForCoordinate(location.coordinate));
+			return (self.lastFetchLocation == nil || distance > kDistanceToRefetchBoards);
+		}]
+		subscribeNext:^(id _) {
+			@strongify(self);
+
+			[self fetchNearestBoards];
+		}];
+	[_clm start];
+	
 	return self;
 }
 
@@ -67,31 +86,14 @@ CLLocationManagerDelegate
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-#pragma mark CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-	NSLog(@"locationManager,didFailWithError>>%@", error);
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
-{
-	CLLocation *location = locations.firstObject;
-	CLLocationDistance distance =
-		MKMetersBetweenMapPoints(MKMapPointForCoordinate(self.currentLocation.coordinate),
-								 MKMapPointForCoordinate(location.coordinate));
-	if (self.currentLocation == nil || distance > 200.0)
-	{
-		self.currentLocation = location;
-		[self fetchNearestBoards];
-	}
-}
-
 - (void)fetchNearestBoards
 {
 	@weakify(self);
-	[[[NZBServerController sharedController] boardsForLocalion:self.currentLocation] subscribeNext:^(NSArray *boards) {
+	CLLocation *fetchLocation = self.currentLocation;
+	[[[NZBServerController sharedController] boardsForLocalion:fetchLocation] subscribeNext:^(NSArray *boards) {
 		@strongify(self);
+
+		self.lastFetchLocation = fetchLocation;
 		[self.nearestBoardsSubject sendNext:boards];
 	}];
 }
