@@ -17,10 +17,14 @@ static NSString *const kDictionaryKeyTimestamp		= @"timestamp";
 static NSString *const kDictionaryKeyType			= @"type";
 static NSString *const kDictionaryKeyUserId			= @"userid";
 static NSString *const kDictionaryKeyInteraction	= @"interaction";
+static NSString *const kDictionaryKeyPoi			= @"poi";
+static NSString *const kDictionaryKeyPoiName		= @"name";
+static NSString *const kDictionaryKeyPoiPhoto		= @"photo";
 
 static NSString *const kMessageTypeDefault			= @"default";
 static NSString *const kMessageTypeCommercial		= @"commercial";
 static NSString *const kMessageTypeAdvert			= @"advert";
+static NSString *const kMessageTypePoi				= @"poi";
 
 
 @implementation NZBRating
@@ -123,10 +127,21 @@ static NSString *const kMessageTypeAdvert			= @"advert";
 	{
 		_messageType = NZBMessageTypeCommercial;
 	}
+	else if ([_messageTypeString isEqualToString:kMessageTypePoi])
+	{
+		_messageType = NZBMessageTypePoi;
+	}
 	else if (![_messageTypeString isEqualToString:kMessageTypeDefault])
 	{
 		NSCAssert(NO, @"<%@> Unknown message type: %@", self.class, _messageTypeString);
 	}
+	// ]]
+
+	// [[ Points Of Interest
+	NSDictionary *poi = dictionary[kDictionaryKeyPoi];
+
+	_poiName = poi[kDictionaryKeyPoiName];
+	_poiImageUrlString = poi[kDictionaryKeyPoiPhoto];
 	// ]]
 
 	_rating = [[NZBRating alloc] initWithPower:self.power.integerValue
@@ -177,6 +192,7 @@ static NSString *const kMessageTypeAdvert			= @"advert";
 		case NZBMessageTypeCommercial		: return @"AdsCell";
 		case NZBMessageTypeAdvertisement	: return @"AdsCell";
 		case NZBMessageTypeDefault			: return @"DefaultMessage";
+		case NZBMessageTypePoi				: return @"Poi";
 	}
 
 	NSCAssert(NO, @"<%@> Watch OS: Unexpected message type: %ld", self.class, (long)self.messageType);
@@ -186,7 +202,7 @@ static NSString *const kMessageTypeAdvert			= @"advert";
 
 - (NSString *)messageForWatch
 {
-	return self.body.length ? self.body : @"Х...Й";
+	return self.body.length ? self.body : @"Что-то пошло не так =(";
 }
 
 - (NSString *)timeString
@@ -205,56 +221,6 @@ static NSString *const kMessageTypeAdvert			= @"advert";
 {
 	return self.power ? [self.power description] : @"0";
 }
-
-//- (UIColor *)powerColor
-//{
-//	if (self.power.integerValue == 0) {
-//		return [UIColor colorWithWhite:205/255. alpha:1.0];
-//	}
-//	else if (self.power.integerValue > 0) {
-//		return [UIColor nzb_darkGreenColor];
-//	}
-//	else {
-//		return [UIColor nzb_redColor];
-//	}
-//}
-//- (NSAttributedString *)watchPowerString
-//{
-//	return [[NSAttributedString alloc] initWithString:[self powerString]
-//										   attributes:@{
-//														NSFontAttributeName: [UIFont systemFontOfSize:15.0],
-//														NSForegroundColorAttributeName : self.powerColor,
-//														}];
-//}
-//
-//- (NSAttributedString *)phonePowerString
-//{
-//	return [[NSAttributedString alloc] initWithString:[self powerString]
-//										   attributes:@{
-//														NSFontAttributeName: [UIFont nzb_systemFontWithSize:14.0],
-//														NSForegroundColorAttributeName : self.powerColor,
-//														}];
-//}
-//
-//- (UIFont *)messageFont
-//{
-//	if (self.karma.integerValue > 5) {
-//		return [UIFont nzb_boldFontWithSize:15.0];
-//	}
-//	else {
-//		return [UIFont nzb_systemFontWithSize:15.0];
-//	}
-//}
-//
-//- (UIColor *)messageColor
-//{
-//	if (self.karma.integerValue > 0) {
-//		return [UIColor blackColor];
-//	}
-//	else {
-//		return [UIColor nzb_lightGrayColor];
-//	}
-//}
 
 - (NSString *)description
 {
