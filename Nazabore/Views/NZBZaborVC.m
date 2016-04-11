@@ -4,29 +4,34 @@
 #import "NZBServerController.h"
 #import "MZBBoardAnnotation.h"
 #import "NZBServerController.h"
-#import "NZBMessageCell.h"
 #import "RDRGrowingTextView.h"
 #import "NZBEmojiSelectVC.h"
-#import "NZBAdsCell.h"
 #import "UIBarButtonItem+NZBBarButtonItem.h"
 #import "NZBAnalytics.h"
+#import "NZBZaborVM.h"
 
 @interface NZBZaborVC ()
-<
-UITableViewDataSource,
-UITableViewDelegate,
-UITextViewDelegate
->
 
 @property (nonatomic, strong, readonly) UITableView *tableView;
 @property (nonatomic, strong, readonly) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSArray<NZBMessage *> *messages;
 @property (nonatomic, strong, readonly) UITableViewController *tableViewController;
 @property (nonatomic, strong, readonly) UIProgressView *progress;
+@property (nonatomic, strong, readonly) NZBZaborVM *viewModel;
 
 @end
 
 @implementation NZBZaborVC
+
+- (instancetype)init
+{
+	self = [super init];
+	if (self == nil) return nil;
+
+	_viewModel = [[NZBZaborVM alloc] init];
+
+	return self;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -54,14 +59,10 @@ UITextViewDelegate
 	self.navigationItem.titleView = v;
 
 	_tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-	[_tableView registerClass:[NZBMessageCell class] forCellReuseIdentifier:@"NZBMessageCell"];
-	[_tableView registerClass:[NZBAdsCell class] forCellReuseIdentifier:@"NZBAdsCell"];
 	_tableView.tableFooterView = [UIView new];
 	_tableView.rowHeight = UITableViewAutomaticDimension;
 	_tableView.estimatedRowHeight = 80.0;
 	_tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
-	_tableView.delegate = self;
-	_tableView.dataSource = self;
 	UIEdgeInsets tableSeparatorInsets = UIEdgeInsetsMake(0.f, 16.f, 0.f, 16.f);
 	[_tableView setSeparatorInset:tableSeparatorInsets];
 	[_tableView setLayoutMargins:tableSeparatorInsets];
@@ -71,7 +72,8 @@ UITextViewDelegate
 		make.top.equalTo(@64.0);
 		make.edges.equalTo(self.view).with.priorityHigh();
 	}];
-
+	[self.viewModel registerTableView:_tableView];
+	
 	_tableViewController = [[UITableViewController alloc] init];
 	_tableViewController.tableView = _tableView;
 
@@ -157,7 +159,7 @@ UITextViewDelegate
 
 - (void)didLoadMessages:(NSArray *)messages
 {
-	self.messages = messages;
+	self.viewModel.messages = messages;
 	[self.tableView reloadData];
 	[self.tableView layoutIfNeeded];
 	[self.refreshControl endRefreshing];
@@ -179,37 +181,6 @@ UITextViewDelegate
 	{
 		[self.navigationController popViewControllerAnimated:YES];
 	}
-}
-
-#pragma mark WCSessionDelegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-	return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-	return self.messages.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	NZBMessage *message = self.messages[indexPath.row];
-	UITableViewCell <NZBCellProtocol> *cell = nil;
-	switch (message.messageType) {
-		case NZBMessageTypeDefault: {
-			cell = [tableView dequeueReusableCellWithIdentifier:@"NZBMessageCell"];
-		} break;
-		case NZBMessageTypeAdvertisement: {
-			cell = [tableView dequeueReusableCellWithIdentifier:@"NZBAdsCell"];
-		} break;
-		case NZBMessageTypeCommercial: {
-			cell = [tableView dequeueReusableCellWithIdentifier:@"NZBAdsCell"];
-		} break;
-	}
-	cell.message = message;
-	return cell;
 }
 
 @end

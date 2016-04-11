@@ -7,6 +7,7 @@ typedef NS_ENUM(NSInteger, NZBMessageType) {
 	NZBMessageTypeDefault		= 0,
 	NZBMessageTypeAdvertisement = 1,
 	NZBMessageTypeCommercial	= 2,
+	NZBMessageTypePoi			= 3,
 };
 
 typedef NS_ENUM(NSInteger, NZBUserInteraction) {
@@ -48,6 +49,8 @@ typedef NS_ENUM(NSInteger, NZBUserInteraction) {
 @property (nonatomic, copy, readonly) NSNumber *karma;
 @property (nonatomic, copy, readonly) NSString *userid;
 @property (nonatomic, copy, readonly) NSString *boardId;
+@property (nonatomic, copy, readonly) NSString *poiName;
+@property (nonatomic, copy, readonly) NSString *poiImageUrlString;
 @property (nonatomic, weak) id<NZBUpdateProtocol> relatedView;
 @property (nonatomic, strong) NSDictionary *boardD;
 @property (nonatomic, strong, readonly) NZBEmoji *emoji;
@@ -59,11 +62,5 @@ typedef NS_ENUM(NSInteger, NZBUserInteraction) {
 - (NSString *)timeString;
 - (NSString *)watchCellType;
 - (NSString *)powerString;
-
-//- (NSAttributedString *)watchPowerString;
-//- (NSAttributedString *)phonePowerString;
-//
-//- (UIFont *)messageFont;
-//- (UIColor *)messageColor;
 
 @end
