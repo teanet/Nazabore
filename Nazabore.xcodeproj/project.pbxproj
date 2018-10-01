@@ -12,9 +12,11 @@
 		3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 307589691C944B76007F6AFA /* NSString+NZBMessageCell.m */; };
 		3075896D1C944B92007F6AFA /* UIColor+NZBMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */; };
 		307589701C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3075896F1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m */; };
+		30E803ED1DA18C0ED1F8F776 /* libPods-Nazabore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9C00BAD252C811EAFB53842 /* libPods-Nazabore.a */; };
 		30F4CD991CB923D200C1E103 /* NZBPoiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F4CD981CB923D200C1E103 /* NZBPoiCell.m */; };
 		30F9A8E51CB0296A00446DFE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30F9A8E71CB0296A00446DFE /* Localizable.strings */; };
-		3FC765296288BBDD36F90C36 /* libPods-Nazabore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2F50143F83066885507381 /* libPods-Nazabore.a */; };
+		730E149B21626DC000E4EC08 /* ZaborVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E149A21626DC000E4EC08 /* ZaborVC.swift */; };
+		730E149D21626F1900E4EC08 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E149C21626F1900E4EC08 /* Router.swift */; };
 		731B365C1C8C05EF0083BFFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365B1C8C05EF0083BFFA /* main.m */; };
 		731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 731B365E1C8C05EF0083BFFA /* AppDelegate.m */; };
 		731B36671C8C05EF0083BFFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 731B36661C8C05EF0083BFFA /* Assets.xcassets */; };
@@ -62,8 +64,22 @@
 		734653001CB36317004571D7 /* NZBEmojiSelectVMSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 734652FF1CB36317004571D7 /* NZBEmojiSelectVMSpec.m */; };
 		734B0F201CBBF58200F35E81 /* NZBZaborVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 734B0F1F1CBBF58200F35E81 /* NZBZaborVM.m */; };
 		734B0F211CBBF58300F35E81 /* NZBZaborVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 734B0F1F1CBBF58200F35E81 /* NZBZaborVM.m */; };
-		8AC7851D717D0E0356885BF6 /* libPods-UIWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CF1CE9B404F04EC0D1DE97 /* libPods-UIWrapper.a */; };
-		8EBBA6B2B26B9971E93E3C6C /* libPods-NazaboreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED963E3624FC716F80AB548E /* libPods-NazaboreTests.a */; };
+		73C457ED2160DEA5004E71C9 /* FrameObservingInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C457EC2160DEA5004E71C9 /* FrameObservingInputAccessoryView.swift */; };
+		73C457F32160EF4B004E71C9 /* protocol.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C457F22160EF4B004E71C9 /* protocol.pb.swift */; };
+		73C457F62160F247004E71C9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C457F52160F247004E71C9 /* APIService.swift */; };
+		73C457F82160F435004E71C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C457F72160F435004E71C9 /* Constants.swift */; };
+		73C457FA2160F47D004E71C9 /* UIDevice-Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C457F92160F47D004E71C9 /* UIDevice-Hardware.swift */; };
+		73C457FC2160F4F5004E71C9 /* CashbackError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C457FB2160F4F5004E71C9 /* CashbackError.swift */; };
+		73C457FE2160F516004E71C9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C457FD2160F516004E71C9 /* Result.swift */; };
+		73C458002160F5B9004E71C9 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C457FF2160F5B9004E71C9 /* Localization.swift */; };
+		73C458022160F6EF004E71C9 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C458012160F6EF004E71C9 /* Logger.swift */; };
+		73C458052160F7B6004E71C9 /* FileManager+ApplicationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C458042160F7B6004E71C9 /* FileManager+ApplicationSettings.swift */; };
+		73C458072160F7FE004E71C9 /* JSONDecoder+Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C458062160F7FE004E71C9 /* JSONDecoder+Static.swift */; };
+		73C458092160F81D004E71C9 /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C458082160F81D004E71C9 /* Aliases.swift */; };
+		73C4580B2160F856004E71C9 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C4580A2160F856004E71C9 /* ErrorResponse.swift */; };
+		73C4580F2160FB49004E71C9 /* BoardAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C4580E2160FB49004E71C9 /* BoardAnnotation.swift */; };
+		B7B35939EFE626188325A665 /* libPods-UIWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64439F2C4A6137D09DED59B6 /* libPods-UIWrapper.a */; };
+		EB50F43A91185C49AA835A07 /* libPods-NazaboreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F036605BC02E91AD3EA2A190 /* libPods-NazaboreTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,8 +100,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		048DA4054D1466A2281274B5 /* Pods-NazaboreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.release.xcconfig"; sourceTree = "<group>"; };
-		06544F704E4842E499F22CB0 /* Pods-NazaboreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		24F0E766C75BC1D8796E4274 /* Pods-UIWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIWrapper.release.xcconfig"; path = "Target Support Files/Pods-UIWrapper/Pods-UIWrapper.release.xcconfig"; sourceTree = "<group>"; };
+		262B99413256D3D6FD282363 /* Pods-UIWrapper.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIWrapper.appstore.xcconfig"; path = "Target Support Files/Pods-UIWrapper/Pods-UIWrapper.appstore.xcconfig"; sourceTree = "<group>"; };
 		3021D3721CB54452004863A7 /* NZBLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBLocationManager.h; sourceTree = "<group>"; };
 		3021D3731CB54452004863A7 /* NZBLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBLocationManager.m; sourceTree = "<group>"; };
 		303E09B91C8DCF80008978D6 /* NZBPrivateConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBPrivateConstants.m; sourceTree = "<group>"; };
@@ -95,13 +111,16 @@
 		3075896C1C944B92007F6AFA /* UIColor+NZBMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NZBMessageCell.m"; sourceTree = "<group>"; };
 		3075896E1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+NZBBarButtonItem.h"; sourceTree = "<group>"; };
 		3075896F1C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+NZBBarButtonItem.m"; sourceTree = "<group>"; };
-		30CF1CE9B404F04EC0D1DE97 /* libPods-UIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIWrapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F4CD971CB923D200C1E103 /* NZBPoiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBPoiCell.h; sourceTree = "<group>"; };
 		30F4CD981CB923D200C1E103 /* NZBPoiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBPoiCell.m; sourceTree = "<group>"; };
 		30F9A8E91CB029BD00446DFE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		30F9A8EB1CB02AF100446DFE /* NZBLocalizableConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NZBLocalizableConstants.h; sourceTree = "<group>"; };
-		36891F096927A4A3B08B00AB /* Pods-Nazabore.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.appstore.xcconfig"; sourceTree = "<group>"; };
-		5DA112AF91DDAFB9AA73739B /* Pods-Nazabore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.debug.xcconfig"; sourceTree = "<group>"; };
+		3A2ADA7E1895E2677373275F /* Pods-UIWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIWrapper.debug.xcconfig"; path = "Target Support Files/Pods-UIWrapper/Pods-UIWrapper.debug.xcconfig"; sourceTree = "<group>"; };
+		53D6359C7E4F19257487119F /* Pods-Nazabore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.release.xcconfig"; path = "Target Support Files/Pods-Nazabore/Pods-Nazabore.release.xcconfig"; sourceTree = "<group>"; };
+		64439F2C4A6137D09DED59B6 /* libPods-UIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UIWrapper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6F6CDCD30F6D22B03A1C71 /* Pods-Nazabore.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.appstore.xcconfig"; path = "Target Support Files/Pods-Nazabore/Pods-Nazabore.appstore.xcconfig"; sourceTree = "<group>"; };
+		730E149A21626DC000E4EC08 /* ZaborVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZaborVC.swift; sourceTree = "<group>"; };
+		730E149C21626F1900E4EC08 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		731B36571C8C05EF0083BFFA /* Nazabore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nazabore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		731B365B1C8C05EF0083BFFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		731B365D1C8C05EF0083BFFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -170,13 +189,28 @@
 		734652FF1CB36317004571D7 /* NZBEmojiSelectVMSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBEmojiSelectVMSpec.m; sourceTree = "<group>"; };
 		734B0F1E1CBBF58200F35E81 /* NZBZaborVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZBZaborVM.h; sourceTree = "<group>"; };
 		734B0F1F1CBBF58200F35E81 /* NZBZaborVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZBZaborVM.m; sourceTree = "<group>"; };
-		8437A0E72BC35ECE302BBBD6 /* Pods-Nazabore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore.release.xcconfig"; sourceTree = "<group>"; };
-		938103E6A3FEBD4A8AC45756 /* Pods-NazaboreTests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.appstore.xcconfig"; sourceTree = "<group>"; };
-		9E2F50143F83066885507381 /* libPods-Nazabore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nazabore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C90F443D1D1F7B417D45AC7C /* Pods-UIWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIWrapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIWrapper/Pods-UIWrapper.release.xcconfig"; sourceTree = "<group>"; };
-		E88514312F09F17C3BD02B9F /* Pods-UIWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIWrapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIWrapper/Pods-UIWrapper.debug.xcconfig"; sourceTree = "<group>"; };
-		ED963E3624FC716F80AB548E /* libPods-NazaboreTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NazaboreTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA52470841BA493A73C16CD6 /* Pods-UIWrapper.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIWrapper.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-UIWrapper/Pods-UIWrapper.appstore.xcconfig"; sourceTree = "<group>"; };
+		73C457EB2160DEA5004E71C9 /* Nazabore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nazabore-Bridging-Header.h"; sourceTree = "<group>"; };
+		73C457EC2160DEA5004E71C9 /* FrameObservingInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameObservingInputAccessoryView.swift; sourceTree = "<group>"; };
+		73C457F22160EF4B004E71C9 /* protocol.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = protocol.pb.swift; sourceTree = "<group>"; };
+		73C457F52160F247004E71C9 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		73C457F72160F435004E71C9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		73C457F92160F47D004E71C9 /* UIDevice-Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice-Hardware.swift"; sourceTree = "<group>"; };
+		73C457FB2160F4F5004E71C9 /* CashbackError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashbackError.swift; sourceTree = "<group>"; };
+		73C457FD2160F516004E71C9 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		73C457FF2160F5B9004E71C9 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		73C458012160F6EF004E71C9 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		73C458042160F7B6004E71C9 /* FileManager+ApplicationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+ApplicationSettings.swift"; sourceTree = "<group>"; };
+		73C458062160F7FE004E71C9 /* JSONDecoder+Static.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Static.swift"; sourceTree = "<group>"; };
+		73C458082160F81D004E71C9 /* Aliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
+		73C4580A2160F856004E71C9 /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		73C4580C2160F8D8004E71C9 /* protocol.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.protobuf; name = protocol.proto; path = ProtoModels/protocol.proto; sourceTree = SOURCE_ROOT; };
+		73C4580E2160FB49004E71C9 /* BoardAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardAnnotation.swift; sourceTree = "<group>"; };
+		7567B220F33F268734041EB8 /* Pods-NazaboreTests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.appstore.xcconfig"; path = "Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.appstore.xcconfig"; sourceTree = "<group>"; };
+		A2127FBF57B065C9A165AC55 /* Pods-NazaboreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.release.xcconfig"; path = "Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.release.xcconfig"; sourceTree = "<group>"; };
+		CED05A1F99A4062CB0C9AAFC /* Pods-Nazabore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nazabore.debug.xcconfig"; path = "Target Support Files/Pods-Nazabore/Pods-Nazabore.debug.xcconfig"; sourceTree = "<group>"; };
+		D35FA1A7F642E3CBD15993CE /* Pods-NazaboreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NazaboreTests.debug.xcconfig"; path = "Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F036605BC02E91AD3EA2A190 /* libPods-NazaboreTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NazaboreTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C00BAD252C811EAFB53842 /* libPods-Nazabore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nazabore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FC765296288BBDD36F90C36 /* libPods-Nazabore.a in Frameworks */,
+				30E803ED1DA18C0ED1F8F776 /* libPods-Nazabore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EBBA6B2B26B9971E93E3C6C /* libPods-NazaboreTests.a in Frameworks */,
+				EB50F43A91185C49AA835A07 /* libPods-NazaboreTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,21 +234,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AC7851D717D0E0356885BF6 /* libPods-UIWrapper.a in Frameworks */,
+				B7B35939EFE626188325A665 /* libPods-UIWrapper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0FABD671D9A02A5281E869AA /* Frameworks */ = {
+		37D4ED553500936EB4439CDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9E2F50143F83066885507381 /* libPods-Nazabore.a */,
-				ED963E3624FC716F80AB548E /* libPods-NazaboreTests.a */,
-				30CF1CE9B404F04EC0D1DE97 /* libPods-UIWrapper.a */,
+				F9C00BAD252C811EAFB53842 /* libPods-Nazabore.a */,
+				F036605BC02E91AD3EA2A190 /* libPods-NazaboreTests.a */,
+				64439F2C4A6137D09DED59B6 /* libPods-UIWrapper.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A268A96A62A036015018A68 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CED05A1F99A4062CB0C9AAFC /* Pods-Nazabore.debug.xcconfig */,
+				53D6359C7E4F19257487119F /* Pods-Nazabore.release.xcconfig */,
+				6D6F6CDCD30F6D22B03A1C71 /* Pods-Nazabore.appstore.xcconfig */,
+				D35FA1A7F642E3CBD15993CE /* Pods-NazaboreTests.debug.xcconfig */,
+				A2127FBF57B065C9A165AC55 /* Pods-NazaboreTests.release.xcconfig */,
+				7567B220F33F268734041EB8 /* Pods-NazaboreTests.appstore.xcconfig */,
+				3A2ADA7E1895E2677373275F /* Pods-UIWrapper.debug.xcconfig */,
+				24F0E766C75BC1D8796E4274 /* Pods-UIWrapper.release.xcconfig */,
+				262B99413256D3D6FD282363 /* Pods-UIWrapper.appstore.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		731B364E1C8C05EF0083BFFA = {
@@ -224,8 +274,8 @@
 				731B36731C8C05EF0083BFFA /* NazaboreTests */,
 				731B3CB91C8C33D20083BFFA /* UIWrapper */,
 				731B36581C8C05EF0083BFFA /* Products */,
-				F603CB45C9202F7A3A47C66E /* Pods */,
-				0FABD671D9A02A5281E869AA /* Frameworks */,
+				5A268A96A62A036015018A68 /* Pods */,
+				37D4ED553500936EB4439CDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,8 +292,13 @@
 		731B36591C8C05EF0083BFFA /* Nazabore */ = {
 			isa = PBXGroup;
 			children = (
+				73C4580C2160F8D8004E71C9 /* protocol.proto */,
 				731B365D1C8C05EF0083BFFA /* AppDelegate.h */,
 				731B365E1C8C05EF0083BFFA /* AppDelegate.m */,
+				73C457F72160F435004E71C9 /* Constants.swift */,
+				73C457EB2160DEA5004E71C9 /* Nazabore-Bridging-Header.h */,
+				73C457F42160F239004E71C9 /* Services */,
+				73C457F12160EF4B004E71C9 /* ProtoModels */,
 				731B36DF1C8C1CC80083BFFA /* Models */,
 				731B36BA1C8C1B9B0083BFFA /* Utils */,
 				731B36A81C8C1AD30083BFFA /* Views */,
@@ -290,6 +345,14 @@
 		731B36BA1C8C1B9B0083BFFA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				73C4580A2160F856004E71C9 /* ErrorResponse.swift */,
+				73C458082160F81D004E71C9 /* Aliases.swift */,
+				73C458062160F7FE004E71C9 /* JSONDecoder+Static.swift */,
+				73C458042160F7B6004E71C9 /* FileManager+ApplicationSettings.swift */,
+				73C458012160F6EF004E71C9 /* Logger.swift */,
+				73C457FF2160F5B9004E71C9 /* Localization.swift */,
+				73C457FB2160F4F5004E71C9 /* CashbackError.swift */,
+				73C457F92160F47D004E71C9 /* UIDevice-Hardware.swift */,
 				731B36BB1C8C1BA70083BFFA /* UIFont+System.h */,
 				731B36BC1C8C1BA70083BFFA /* UIFont+System.m */,
 				731B36BD1C8C1BA70083BFFA /* UIColor+System.h */,
@@ -318,6 +381,7 @@
 				731B36AF1C8C1B790083BFFA /* NZBMapVC.m */,
 				731B36B01C8C1B790083BFFA /* NZBZaborVC.h */,
 				731B36B11C8C1B790083BFFA /* NZBZaborVC.m */,
+				730E149A21626DC000E4EC08 /* ZaborVC.swift */,
 				731B36B21C8C1B790083BFFA /* NZBWriteVC.h */,
 				731B36B31C8C1B790083BFFA /* NZBWriteVC.m */,
 				731B36A91C8C1AEC0083BFFA /* NZBUserVC.h */,
@@ -335,6 +399,7 @@
 				7328B14E1CB554F90051DE0B /* NZBNotifyView.m */,
 				734650121CB17C37004571D7 /* NZBEmojiView.h */,
 				734650131CB17C37004571D7 /* NZBEmojiView.m */,
+				73C457EC2160DEA5004E71C9 /* FrameObservingInputAccessoryView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -360,8 +425,10 @@
 		731B36DF1C8C1CC80083BFFA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				73C457FD2160F516004E71C9 /* Result.swift */,
 				734650081CB15D31004571D7 /* Emoji */,
 				731B36E01C8C1CD70083BFFA /* MZBBoardAnnotation.h */,
+				73C4580E2160FB49004E71C9 /* BoardAnnotation.swift */,
 				731B36E11C8C1CD70083BFFA /* MZBBoardAnnotation.m */,
 				731B36E21C8C1CD70083BFFA /* NZBDataProvider.h */,
 				731B36E31C8C1CD70083BFFA /* NZBDataProvider.m */,
@@ -371,6 +438,7 @@
 				731B3CD61C8C49080083BFFA /* NZBPreferences.m */,
 				734B0F1E1CBBF58200F35E81 /* NZBZaborVM.h */,
 				734B0F1F1CBBF58200F35E81 /* NZBZaborVM.m */,
+				730E149C21626F1900E4EC08 /* Router.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -417,20 +485,20 @@
 			name = Emoji;
 			sourceTree = "<group>";
 		};
-		F603CB45C9202F7A3A47C66E /* Pods */ = {
+		73C457F12160EF4B004E71C9 /* ProtoModels */ = {
 			isa = PBXGroup;
 			children = (
-				5DA112AF91DDAFB9AA73739B /* Pods-Nazabore.debug.xcconfig */,
-				8437A0E72BC35ECE302BBBD6 /* Pods-Nazabore.release.xcconfig */,
-				36891F096927A4A3B08B00AB /* Pods-Nazabore.appstore.xcconfig */,
-				06544F704E4842E499F22CB0 /* Pods-NazaboreTests.debug.xcconfig */,
-				048DA4054D1466A2281274B5 /* Pods-NazaboreTests.release.xcconfig */,
-				938103E6A3FEBD4A8AC45756 /* Pods-NazaboreTests.appstore.xcconfig */,
-				E88514312F09F17C3BD02B9F /* Pods-UIWrapper.debug.xcconfig */,
-				C90F443D1D1F7B417D45AC7C /* Pods-UIWrapper.release.xcconfig */,
-				FA52470841BA493A73C16CD6 /* Pods-UIWrapper.appstore.xcconfig */,
+				73C457F22160EF4B004E71C9 /* protocol.pb.swift */,
 			);
-			name = Pods;
+			path = ProtoModels;
+			sourceTree = "<group>";
+		};
+		73C457F42160F239004E71C9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				73C457F52160F247004E71C9 /* APIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,13 +508,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 731B36791C8C05EF0083BFFA /* Build configuration list for PBXNativeTarget "Nazabore" */;
 			buildPhases = (
-				3587319E3C04033B34034A32 /* Check Pods Manifest.lock */,
+				508C1E24D1DE69B183BCDB14 /* [CP] Check Pods Manifest.lock */,
 				731B36531C8C05EF0083BFFA /* Sources */,
 				731B36541C8C05EF0083BFFA /* Frameworks */,
 				731B36551C8C05EF0083BFFA /* Resources */,
-				E173504ACFD96387B94DD4A3 /* Embed Pods Frameworks */,
-				6BABD4C5D14E16E4B7F9B0CD /* Copy Pods Resources */,
 				73AF52861C9D5DFB009FB75A /* Fabric */,
+				6FA633C70C02A56C0D3009C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -461,12 +528,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 731B367C1C8C05EF0083BFFA /* Build configuration list for PBXNativeTarget "NazaboreTests" */;
 			buildPhases = (
-				6E3C9265D0B46F2AA615982F /* Check Pods Manifest.lock */,
+				6037914DC5EF2F099E5B59AA /* [CP] Check Pods Manifest.lock */,
 				731B366C1C8C05EF0083BFFA /* Sources */,
 				731B366D1C8C05EF0083BFFA /* Frameworks */,
 				731B366E1C8C05EF0083BFFA /* Resources */,
-				7A5E56170C3D2725BF344C34 /* Embed Pods Frameworks */,
-				3DCAE54AFA9805B1A53B5F33 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -483,12 +548,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 731B3CCC1C8C33D20083BFFA /* Build configuration list for PBXNativeTarget "UIWrapper" */;
 			buildPhases = (
-				D49EC144264080F3D7A339CA /* Check Pods Manifest.lock */,
+				37FC4E096CE00D8370F9DC45 /* [CP] Check Pods Manifest.lock */,
 				731B3CB41C8C33D20083BFFA /* Sources */,
 				731B3CB51C8C33D20083BFFA /* Frameworks */,
 				731B3CB61C8C33D20083BFFA /* Resources */,
-				7A888BB8D2B8A424ED87CFD8 /* Embed Pods Frameworks */,
-				ADC9F353745EB7FE4E9CCCEC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -511,6 +574,7 @@
 					731B36561C8C05EF0083BFFA = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = HJ648XXPWE;
+						LastSwiftMigration = 1000;
 					};
 					731B366F1C8C05EF0083BFFA = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -570,64 +634,94 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3587319E3C04033B34034A32 /* Check Pods Manifest.lock */ = {
+		37FC4E096CE00D8370F9DC45 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UIWrapper-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3DCAE54AFA9805B1A53B5F33 /* Copy Pods Resources */ = {
+		508C1E24D1DE69B183BCDB14 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Nazabore-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6BABD4C5D14E16E4B7F9B0CD /* Copy Pods Resources */ = {
+		6037914DC5EF2F099E5B59AA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NazaboreTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6E3C9265D0B46F2AA615982F /* Check Pods Manifest.lock */ = {
+		6FA633C70C02A56C0D3009C7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nazabore/Pods-Nazabore-resources.sh",
+				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
+				"${PODS_ROOT}/XCGLogger/.swift-version",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SSKeychain.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/.swift-version",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nazabore/Pods-Nazabore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		73AF52861C9D5DFB009FB75A /* Fabric */ = {
@@ -644,81 +738,6 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \">>>>${CONFIGURATION}\"\n\nif [ \"AppStore\" = \"${CONFIGURATION}\" ]; then\necho \"Running Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" 1ea87b52b1d0946ed506dcc3bd5b586f422bf03a 24581047190989dd3b32483cd77da4a030cb7d2ed58171c008823f918c327652\nfi";
 		};
-		7A5E56170C3D2725BF344C34 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NazaboreTests/Pods-NazaboreTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7A888BB8D2B8A424ED87CFD8 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIWrapper/Pods-UIWrapper-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ADC9F353745EB7FE4E9CCCEC /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIWrapper/Pods-UIWrapper-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D49EC144264080F3D7A339CA /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E173504ACFD96387B94DD4A3 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nazabore/Pods-Nazabore-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -727,14 +746,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				7328B14F1CB554F90051DE0B /* NZBNotifyView.m in Sources */,
+				73C457F62160F247004E71C9 /* APIService.swift in Sources */,
 				7328B4251CB906B90051DE0B /* NZBEmojiPageVC.m in Sources */,
 				731B36C11C8C1BA70083BFFA /* UIColor+System.m in Sources */,
 				731B36D91C8C1BF30083BFFA /* NZBAdsCell.m in Sources */,
+				73C457ED2160DEA5004E71C9 /* FrameObservingInputAccessoryView.swift in Sources */,
+				73C458002160F5B9004E71C9 /* Localization.swift in Sources */,
 				731B39CC1C8C2FB90083BFFA /* NSDate+NZBPrettyString.m in Sources */,
 				734650141CB17C37004571D7 /* NZBEmojiView.m in Sources */,
+				73C458052160F7B6004E71C9 /* FileManager+ApplicationSettings.swift in Sources */,
+				73C458072160F7FE004E71C9 /* JSONDecoder+Static.swift in Sources */,
 				731B365F1C8C05EF0083BFFA /* AppDelegate.m in Sources */,
 				731B36D71C8C1BF30083BFFA /* NZBMessageCell.m in Sources */,
 				731B36C91C8C1BE10083BFFA /* RDRGrowingTextView.m in Sources */,
+				73C458092160F81D004E71C9 /* Aliases.swift in Sources */,
+				73C4580B2160F856004E71C9 /* ErrorResponse.swift in Sources */,
 				734650051CB15D0F004571D7 /* NZBEmojiSelectVM.m in Sources */,
 				307589701C948069007F6AFA /* UIBarButtonItem+NZBBarButtonItem.m in Sources */,
 				3075896D1C944B92007F6AFA /* UIColor+NZBMessageCell.m in Sources */,
@@ -743,21 +769,30 @@
 				731B36DD1C8C1BF30083BFFA /* NZBEmojiCell.m in Sources */,
 				731B3CD71C8C49080083BFFA /* NZBPreferences.m in Sources */,
 				7334FE3B1CAFEA5D00333668 /* NZBAnalytics.m in Sources */,
+				73C458022160F6EF004E71C9 /* Logger.swift in Sources */,
 				731B365C1C8C05EF0083BFFA /* main.m in Sources */,
 				731B36B41C8C1B790083BFFA /* NZBMapVC.m in Sources */,
 				731B36E41C8C1CD70083BFFA /* MZBBoardAnnotation.m in Sources */,
 				731B36E61C8C1CD70083BFFA /* NZBDataProvider.m in Sources */,
 				734B0F201CBBF58200F35E81 /* NZBZaborVM.m in Sources */,
+				730E149B21626DC000E4EC08 /* ZaborVC.swift in Sources */,
+				73C457FC2160F4F5004E71C9 /* CashbackError.swift in Sources */,
 				7328B4281CB90C7F0051DE0B /* NZBEmojiPageVM.m in Sources */,
 				303E09BA1C8DCF80008978D6 /* NZBPrivateConstants.m in Sources */,
+				73C457FE2160F516004E71C9 /* Result.swift in Sources */,
 				731B36AB1C8C1AEC0083BFFA /* NZBUserVC.m in Sources */,
 				7328B42C1CB91E900051DE0B /* UIViewController+DGSAdditions.m in Sources */,
+				73C457FA2160F47D004E71C9 /* UIDevice-Hardware.swift in Sources */,
 				731B36CB1C8C1BE10083BFFA /* NZBEmojiSelectVC.m in Sources */,
 				731B36BF1C8C1BA70083BFFA /* UIFont+System.m in Sources */,
+				730E149D21626F1900E4EC08 /* Router.swift in Sources */,
+				73C4580F2160FB49004E71C9 /* BoardAnnotation.swift in Sources */,
 				3021D3741CB54452004863A7 /* NZBLocationManager.m in Sources */,
 				731B36DB1C8C1BF30083BFFA /* NZBAnnotationView.m in Sources */,
 				30F4CD991CB923D200C1E103 /* NZBPoiCell.m in Sources */,
+				73C457F32160EF4B004E71C9 /* protocol.pb.swift in Sources */,
 				3075896A1C944B76007F6AFA /* NSString+NZBMessageCell.m in Sources */,
+				73C457F82160F435004E71C9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,10 +938,11 @@
 		};
 		731B367A1C8C05EF0083BFFA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DA112AF91DDAFB9AA73739B /* Pods-Nazabore.debug.xcconfig */;
+			baseConfigurationReference = CED05A1F99A4062CB0C9AAFC /* Pods-Nazabore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Nazabore/Prefix-Header.h";
@@ -921,15 +957,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.Nazabore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nazabore/Nazabore-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		731B367B1C8C05EF0083BFFA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8437A0E72BC35ECE302BBBD6 /* Pods-Nazabore.release.xcconfig */;
+			baseConfigurationReference = 53D6359C7E4F19257487119F /* Pods-Nazabore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Nazabore/Prefix-Header.h";
@@ -944,13 +984,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.Nazabore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nazabore/Nazabore-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 		731B367D1C8C05EF0083BFFA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06544F704E4842E499F22CB0 /* Pods-NazaboreTests.debug.xcconfig */;
+			baseConfigurationReference = D35FA1A7F642E3CBD15993CE /* Pods-NazaboreTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREFIX_HEADER = "NazaboreTests/Prefix-Header.h";
 				INFOPLIST_FILE = NazaboreTests/Info.plist;
@@ -963,8 +1006,9 @@
 		};
 		731B367E1C8C05EF0083BFFA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 048DA4054D1466A2281274B5 /* Pods-NazaboreTests.release.xcconfig */;
+			baseConfigurationReference = A2127FBF57B065C9A165AC55 /* Pods-NazaboreTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREFIX_HEADER = "NazaboreTests/Prefix-Header.h";
 				INFOPLIST_FILE = NazaboreTests/Info.plist;
@@ -977,7 +1021,7 @@
 		};
 		731B3CCD1C8C33D20083BFFA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E88514312F09F17C3BD02B9F /* Pods-UIWrapper.debug.xcconfig */;
+			baseConfigurationReference = 3A2ADA7E1895E2677373275F /* Pods-UIWrapper.debug.xcconfig */;
 			buildSettings = {
 				GCC_PREFIX_HEADER = "UIWrapper/Prefix-Header.h";
 				INFOPLIST_FILE = UIWrapper/Info.plist;
@@ -990,7 +1034,7 @@
 		};
 		731B3CCE1C8C33D20083BFFA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C90F443D1D1F7B417D45AC7C /* Pods-UIWrapper.release.xcconfig */;
+			baseConfigurationReference = 24F0E766C75BC1D8796E4274 /* Pods-UIWrapper.release.xcconfig */;
 			buildSettings = {
 				GCC_PREFIX_HEADER = "UIWrapper/Prefix-Header.h";
 				INFOPLIST_FILE = UIWrapper/Info.plist;
@@ -1040,10 +1084,11 @@
 		};
 		73AF52981C9D617B009FB75A /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36891F096927A4A3B08B00AB /* Pods-Nazabore.appstore.xcconfig */;
+			baseConfigurationReference = 6D6F6CDCD30F6D22B03A1C71 /* Pods-Nazabore.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Nazabore/Prefix-Header.h";
@@ -1058,12 +1103,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.nazabore.Nazabore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nazabore/Nazabore-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 			};
 			name = AppStore;
 		};
 		73AF52991C9D617B009FB75A /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA52470841BA493A73C16CD6 /* Pods-UIWrapper.appstore.xcconfig */;
+			baseConfigurationReference = 262B99413256D3D6FD282363 /* Pods-UIWrapper.appstore.xcconfig */;
 			buildSettings = {
 				GCC_PREFIX_HEADER = "UIWrapper/Prefix-Header.h";
 				INFOPLIST_FILE = UIWrapper/Info.plist;
@@ -1076,8 +1123,9 @@
 		};
 		73AF529A1C9D617B009FB75A /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 938103E6A3FEBD4A8AC45756 /* Pods-NazaboreTests.appstore.xcconfig */;
+			baseConfigurationReference = 7567B220F33F268734041EB8 /* Pods-NazaboreTests.appstore.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREFIX_HEADER = "NazaboreTests/Prefix-Header.h";
 				INFOPLIST_FILE = NazaboreTests/Info.plist;

@@ -5,32 +5,55 @@
 #import "NZBZaborVC.h"
 #import "UIColor+System.h"
 #import "NZBAnalytics.h"
+#import "Nazabore-Swift.h"
 
 static CGFloat const MaxToolbarHeight = 200.0;
 
 @interface NZBWriteVC ()
 
-@property (nonatomic, strong, readonly) UIToolbar *toolbar;
+@property (nonatomic, strong, readonly) UIView *toolbar;
+@property (nonatomic, strong) MASConstraint *hightContraint;
 
 @end
 
 @implementation NZBWriteVC
+
+@synthesize toolbar = _toolbar;
 
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[self.view bringSubviewToFront:self.toolbar];
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	@weakify(self);
 
 	_contentView = [[UIView alloc] init];
 	[self.view addSubview:_contentView];
 	[_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.equalTo(self.view);
-		make.right.equalTo(self.view);
-		make.top.equalTo(self.view);
+		make.top.right.left.equalTo(self.view);
+	}];
+
+	[self.view addSubview:self.toolbar];
+	[self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.left.right.equalTo(self.view);
+		self.hightContraint = make.bottom.equalTo(self.mas_bottomLayoutGuideTop);
+	}];
+
+	FrameObservingInputAccessoryView *accessoryView = [[FrameObservingInputAccessoryView alloc] init];
+	self.textView.inputAccessoryView = accessoryView;
+	[accessoryView setOnFrameChanged:^(CGRect frame) {
+		@strongify(self);
+		[self.hightContraint setOffset:-frame.size.height];
 	}];
 
 	_keyboardView = [[UIView alloc] init];
@@ -132,16 +155,11 @@ static CGFloat const MaxToolbarHeight = 200.0;
 
 #pragma mark - Overrides
 
-- (BOOL)canBecomeFirstResponder
-{
-	return YES;
-}
-
-- (UIView *)inputAccessoryView
+- (UIView *)toolbar
 {
 	if (_toolbar) return _toolbar;
 
-	_toolbar = [UIToolbar new];
+	_toolbar = [UIView new];
 	_toolbar.backgroundColor = [UIColor nzb_toolBarColor];
 
 	UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -1,5 +1,4 @@
-#import "RDRGrowingTextView.h"
-#import "NZBBoard.h"
+@class NZBBoard, RDRGrowingTextView;
 
 @interface NZBWriteVC : UIViewController
 

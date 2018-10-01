@@ -4,6 +4,9 @@
 #import "MZBBoardAnnotation.h"
 #import "NZBAnnotationView.h"
 #import "NZBNotifyView.h"
+#import "Nazabore-Swift.h"
+
+@import ReactiveCocoa;
 
 @interface NZBMapVC ()
 <
@@ -14,6 +17,7 @@ UIGestureRecognizerDelegate
 @property (nonatomic, strong, readonly) MKMapView *mapView;
 @property (nonatomic, strong) NSArray *annotations;
 @property (nonatomic, strong) MKCircle *userCircle;
+@property (nonatomic, strong) MarkerFetcher *mf;
 
 @end
 
@@ -51,18 +55,14 @@ UIGestureRecognizerDelegate
 		make.bottom.greaterThanOrEqualTo(self.keyboardView.mas_top).with.offset(-16.0).with.priorityHigh();
 	}];
 
+	self.mf = [[MarkerFetcher alloc] init];
+
 	[[NZBDataProvider sharedProvider].nearestBoardsSignal subscribeNext:^(NSArray *boards) {
 		@strongify(self);
 
-		(boards.count == 0) ? [self showNoMessagesNotification] : [NZBNotifyView dismiss];
+//		(boards.count == 0) ? [self showNoMessagesNotification] : [NZBNotifyView dismiss];
 
-		[self.mapView removeAnnotations:self.annotations];
-		self.annotations = [[[boards rac_sequence]
-			map:^MZBBoardAnnotation *(id value) {
-				return [[MZBBoardAnnotation alloc] initWithBoard:value];
-			}] array];
 
-		[self.mapView addAnnotations:self.annotations];
 	}];
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -77,6 +77,13 @@ UIGestureRecognizerDelegate
 
 	[locationSignal subscribeNext:^(CLLocation *location) {
 		@strongify(self);
+
+		[self.mf getWithC:location cmp:^(NSArray<BoardAnnotation *> * annotations) {
+
+			[self.mapView removeAnnotations:self.annotations];
+			self.annotations = annotations;
+			[self.mapView addAnnotations:self.annotations];
+		}];
 
 		[self.mapView removeOverlay:self.userCircle];
 		self.userCircle = [MKCircle circleWithCenterCoordinate:location.coordinate
@@ -151,9 +158,9 @@ UIGestureRecognizerDelegate
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(nonnull MKAnnotationView *)view
 {
 	[mapView deselectAnnotation:view.annotation animated:YES];
-	if ([view.annotation isKindOfClass:[MZBBoardAnnotation class]])
+	if ([view.annotation isKindOfClass:[BoardAnnotation class]])
 	{
-		MZBBoardAnnotation *annotation = view.annotation;
+		BoardAnnotation *annotation = view.annotation;
 		[self showBoard:annotation.board];
 	}
 }

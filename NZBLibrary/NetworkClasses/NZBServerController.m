@@ -1,10 +1,10 @@
 #import "NZBServerController.h"
 
 #import <AFNetworking/AFNetworking.h>
-#import <UIDevice-Hardware.h>
+#import "UIDevice-Hardware.h"
 #import <NZBEmoji.h>
 
-static NSString *const kNZBAPIBaseURLString			= @"https://api.nazabore.xyz";
+//static NSString *const kNZBAPIBaseURLString			= @"https://api.nazabore.xyz";
 extern NSString *const kNZBAPIApplicationToken;
 
 #define CURRENT_VERSION ([[NSBundle bundleForClass:self.class] objectForInfoDictionaryKey:@"CFBundleShortVersionString"])
@@ -49,7 +49,7 @@ extern NSString *const kNZBAPIApplicationToken;
 	NSCAssert(kNZBAPIApplicationToken.length > 0, @"You should add Application Token for correct work with Nazabore API.");
 
 	_userID = @"1";
-	_requestManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kNZBAPIBaseURLString]];
+//	_requestManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kNZBAPIBaseURLString]];
 	_requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
 	_requestManager.requestSerializer.timeoutInterval = 10.0;
 	NSDictionary *headers =

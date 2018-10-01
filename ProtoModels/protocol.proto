@@ -1,0 +1,158 @@
+syntax = "proto2";
+
+option java_package = "xyz.steelhoss.nazabore.api";
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////// Entities
+////////////////////////////////////////////////////////////////////////////////////////
+
+message Timestamp {
+    required int64 value = 1;
+}
+
+message DevicePlatformType {
+    // 1 – Ios
+    // 2 – Android
+    required int32 value = 1;
+}
+
+message AuthProviderType {
+    // 1 – Vk
+    // 2 – Facebook
+    // 3 – Google
+    required int32 value = 1;
+}
+
+enum Sex {
+    UNKNOWN_SEX = 0;
+    MALE = 1;
+    FEMALE = 2;
+}
+
+message GeoPoint {
+    required double lon = 1;
+    required double lat = 2;
+}
+
+message Bound {
+    required GeoPoint leftTop = 1;
+    required GeoPoint rightBottom = 2;
+}
+
+message Image {
+    required string url = 1;
+}
+
+message Icon {
+    optional string icon = 1;
+    optional Image image = 2;
+    optional string emoji = 3;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////// Requests
+////////////////////////////////////////////////////////////////////////////////////////
+
+message AddLocationRequest {
+    required GeoPoint location = 1;
+}
+
+message AddPushTokenRequest {
+    required DevicePlatformType platform = 1;
+    required string token = 2;
+}
+
+message AddPlaceRequest {
+    required GeoPoint location = 1;
+}
+
+message AddVisitedPlaceRequest {
+    required GeoPoint location = 1;
+    required double accuracy = 2;
+    optional Timestamp enterTime = 3;
+    optional Timestamp leaveTime = 4;
+}
+
+message AddAuthRequest {
+    required AuthProviderType provider = 1;
+    required string id = 2;
+    required string token = 3;
+    optional string email = 4;
+}
+
+message AddMarkerRequest {
+    required GeoPoint location = 1;
+    required Icon icon = 2;
+    required string message = 3;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////// Entities
+////////////////////////////////////////////////////////////////////////////////////////
+
+message MarkerUser {
+    required int64 id = 1;
+    required string login = 2;
+    required string name = 3;
+    required Image avatar = 4;
+    required double rating = 5;
+}
+
+message Marker {
+    required int64 id = 1;
+    required MarkerUser author = 2;
+    required GeoPoint location = 3;
+    required Icon icon = 4;
+    required string message = 5;
+    required int32 count = 6;
+    required double rating = 7;
+    required int32 upVotes = 8;
+    required int32 downVotes = 9;
+    required int32 commentsCount = 10;
+    required Timestamp createdAt = 11;
+}
+
+message ConversationMessage {
+    required int64 id = 1;
+    required MarkerUser author = 2;
+    required string message = 3;
+    optional Icon icon = 4;
+    required double rating = 5;
+    required int32 upVotes = 6;
+    required int32 downVotes = 7;
+    required Timestamp createdAt = 8;
+}
+
+message Conversation {
+    required int64 id = 1;
+    required int32 total = 2;
+    repeated ConversationMessage messages = 3;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////// Base Responses
+////////////////////////////////////////////////////////////////////////////////////////
+
+message OkResponse {
+    required int32 code = 1;
+}
+
+message ErrorResponse {
+    required int32 code = 1;
+    required string message = 2;
+    optional string systemMessage = 3;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////// Responses
+////////////////////////////////////////////////////////////////////////////////////////
+
+message ListMarkersResponse {
+    required int32 total = 1;
+    repeated Marker markers = 2;
+}
+
+message MarkerConversationResponse {
+    reserved 1;
+    required Conversation conversation = 2;
+}

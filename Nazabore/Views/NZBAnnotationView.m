@@ -1,6 +1,7 @@
 #import "NZBAnnotationView.h"
 
 #import "MZBBoardAnnotation.h"
+#import "Nazabore-Swift.h"
 
 @implementation NZBAnnotationView
 
@@ -9,8 +10,8 @@
 	self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
 	if (self)
 	{
-		MZBBoardAnnotation *a = annotation;
-		self.image = a.board.emoji.image;
+//		BoardAnnotation *a = annotation;
+//		self.image = a.mar;
 	}
 	return self;
 }
@@ -18,8 +19,8 @@
 - (void)setAnnotation:(id<MKAnnotation>)annotation
 {
 	[super setAnnotation:annotation];
-	MZBBoardAnnotation *a = annotation;
-	self.image = a.board.emoji.image;
+//	MZBBoardAnnotation *a = annotation;
+	self.image = [UIImage imageNamed:@"1"];
 }
 
 @end

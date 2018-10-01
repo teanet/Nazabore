@@ -1,0 +1,6 @@
+git clone https://github.com/apple/swift-protobuf.git
+git tag -l
+git checkout tags/1.0.2
+swift build -c release -Xswiftc -static-stdlib
+sudo cp /PATH/protoc-gen-swift /usr/local/bin
+

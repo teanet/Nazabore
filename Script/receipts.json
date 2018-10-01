@@ -1,0 +1,1702 @@
+[
+    {
+        "documentId" : 26044,
+        "fsId" : "99990788603",
+        "content" : {
+            "totalSum" : 11336,
+            "fiscalSign" : 2094524306,
+            "dateTime" : ISODate("2018-01-05T03:23:32.000Z"),
+            "operationType" : 1
+        }
+    },
+    {
+        "fsId" : "9999078900002485",
+        "documentId" : 4270,
+        "content" : {
+            "dateTime" : ISODate("2018-01-07T05:34:00.000Z"),
+            "fiscalSign" : NumberLong(2769381203),
+            "totalSum" : 1000,
+            "operationType" : 1
+        }
+    },
+    {
+        "documentId" : 4271,
+        "fsId" : "9999078900002485",
+        "content" : {
+            "dateTime" : ISODate("2018-01-07T05:34:00.000Z"),
+            "fiscalSign" : NumberLong(2239852456),
+            "totalSum" : 1000,
+            "operationType" : 1
+        }
+    },
+    {
+        "documentId" : 4272,
+        "fsId" : "9999078900002485",
+        "content" : {
+            "dateTime" : ISODate("2018-01-07T05:35:00.000Z"),
+            "totalSum" : 1000,
+            "operationType" : 1,
+            "fiscalSign" : NumberLong(3989298013)
+        }
+    },
+    {
+        "fsId" : "9999078900002485",
+        "content" : {
+            "fiscalSign" : NumberLong(2838967009),
+            "dateTime" : ISODate("2018-01-07T05:35:00.000Z"),
+            "totalSum" : 1000,
+            "operationType" : 1
+        },
+        "documentId" : 4273
+    },
+    {
+        "fsId" : "9999078900002485",
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-07T05:37:00.000Z"),
+            "totalSum" : 1000,
+            "fiscalSign" : NumberLong(3765387970)
+        },
+        "documentId" : 4274
+    },
+    {
+        "content" : {
+            "totalSum" : 1000,
+            "fiscalSign" : NumberLong(2796274208),
+            "dateTime" : ISODate("2018-01-07T05:37:00.000Z"),
+            "operationType" : 1
+        },
+        "fsId" : "9999078900002485",
+        "documentId" : 4275
+    },
+    {
+        "content" : {
+            "fiscalSign" : NumberLong(3468268111),
+            "dateTime" : ISODate("2018-01-07T05:39:00.000Z"),
+            "totalSum" : 1000,
+            "operationType" : 1
+        },
+        "documentId" : 4276,
+        "fsId" : "9999078900002485"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-07T05:40:00.000Z"),
+            "totalSum" : 1000,
+            "fiscalSign" : 1212563563,
+            "operationType" : 1
+        },
+        "documentId" : 4277,
+        "fsId" : "9999078900002485"
+    },
+    {
+        "fsId" : "9999078900002485",
+        "documentId" : 4278,
+        "content" : {
+            "dateTime" : ISODate("2018-01-07T06:30:00.000Z"),
+            "fiscalSign" : NumberLong(4020065441),
+            "totalSum" : 1000,
+            "operationType" : 1
+        }
+    },
+    {
+        "fsId" : "9999078900008646",
+        "content" : {
+            "fiscalSign" : 1770541411,
+            "totalSum" : 7600,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-11T11:45:00.000Z")
+        },
+        "documentId" : 6
+    },
+    {
+        "fsId" : "9999078900006278",
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-11T21:07:00.000Z"),
+            "totalSum" : 12300,
+            "fiscalSign" : 1421508607
+        },
+        "documentId" : 170667
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-11T16:44:06.000Z"),
+            "fiscalSign" : NumberLong(2525596479),
+            "totalSum" : 5668,
+            "operationType" : 1
+        },
+        "fsId" : "99990788607",
+        "documentId" : 35267
+    },
+    {
+        "fsId" : "9999078900006278",
+        "documentId" : 170668,
+        "content" : {
+            "fiscalSign" : NumberLong(4200660391),
+            "totalSum" : 12300,
+            "dateTime" : ISODate("2018-01-11T21:08:00.000Z"),
+            "operationType" : 1
+        }
+    },
+    {
+        "documentId" : 39859,
+        "fsId" : "99990788606",
+        "content" : {
+            "totalSum" : 43696,
+            "fiscalSign" : 517834765,
+            "dateTime" : ISODate("2018-01-11T21:17:04.000Z"),
+            "operationType" : 1
+        }
+    },
+    {
+        "fsId" : "99990788605",
+        "content" : {
+            "fiscalSign" : 1711092949,
+            "totalSum" : 8100,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-11T21:17:04.000Z")
+        },
+        "documentId" : 31669
+    },
+    {
+        "fsId" : "9999078900008650",
+        "content" : {
+            "totalSum" : 10500,
+            "operationType" : 2,
+            "dateTime" : ISODate("2018-01-11T19:44:00.000Z"),
+            "fiscalSign" : NumberLong(2786391985)
+        },
+        "documentId" : 836
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-11T21:44:00.000Z"),
+            "fiscalSign" : NumberLong(2989305293),
+            "totalSum" : 1554600,
+            "operationType" : 1
+        },
+        "fsId" : "9999078900008650",
+        "documentId" : 866
+    },
+    {
+        "fsId" : "9999078900006278",
+        "documentId" : 170669,
+        "content" : {
+            "fiscalSign" : 966530096,
+            "totalSum" : 12300,
+            "dateTime" : ISODate("2018-01-11T21:08:00.000Z"),
+            "operationType" : 1
+        }
+    },
+    {
+        "fsId" : "99990789678",
+        "content" : {
+            "fiscalSign" : 1102525020,
+            "dateTime" : ISODate("2018-01-09T09:10:00.000Z"),
+            "totalSum" : 4900,
+            "operationType" : 1
+        },
+        "documentId" : 216
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-15T01:22:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 488700,
+            "fiscalSign" : 1286246840
+        },
+        "documentId" : 11,
+        "fsId" : "9999078900003297"
+    },
+    {
+        "fsId" : "9999078900003297",
+        "content" : {
+            "fiscalSign" : NumberLong(2702430495),
+            "totalSum" : 10500,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-15T01:27:00.000Z")
+        },
+        "documentId" : 14
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-15T01:27:00.000Z"),
+            "fiscalSign" : NumberLong(4075017555),
+            "totalSum" : 10500,
+            "operationType" : 1
+        },
+        "fsId" : "9999078900003297",
+        "documentId" : 15
+    },
+    {
+        "fsId" : "9999078900003297",
+        "documentId" : 16,
+        "content" : {
+            "fiscalSign" : NumberLong(3144118440),
+            "dateTime" : ISODate("2018-01-15T01:28:00.000Z"),
+            "operationType" : 2,
+            "totalSum" : 10500
+        }
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-15T01:33:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 10500,
+            "fiscalSign" : NumberLong(3632714492)
+        },
+        "documentId" : 19,
+        "fsId" : "9999078900003297"
+    },
+    {
+        "fsId" : "9999078900003297",
+        "content" : {
+            "fiscalSign" : 1869678717,
+            "totalSum" : 10500,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-15T01:33:00.000Z")
+        },
+        "documentId" : 20
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-15T01:33:00.000Z"),
+            "fiscalSign" : 1490254654,
+            "totalSum" : 10500,
+            "operationType" : 2
+        },
+        "fsId" : "9999078900003297",
+        "documentId" : 21
+    },
+    {
+        "documentId" : 22,
+        "fsId" : "9999078900003297",
+        "content" : {
+            "dateTime" : ISODate("2018-01-15T01:34:00.000Z"),
+            "fiscalSign" : 1198878886,
+            "operationType" : 2,
+            "totalSum" : 10500
+        }
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-15T01:46:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 11300,
+            "fiscalSign" : 259871122
+        },
+        "documentId" : 25,
+        "fsId" : "9999078900003297"
+    },
+    {
+        "fsId" : "9999078900002485",
+        "content" : {
+            "fiscalSign" : 652018755,
+            "dateTime" : ISODate("2018-01-15T00:00:00.000Z"),
+            "totalSum" : 1000,
+            "operationType" : 1
+        },
+        "documentId" : 8910
+    },
+    {
+        "fsId" : "9999078900008947",
+        "content" : {
+            "fiscalSign" : 1090268155,
+            "totalSum" : 591000,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-22T00:00:00.000Z")
+        },
+        "documentId" : 674
+    },
+    {
+        "fsId" : "9999078900008947",
+        "content" : {
+            "totalSum" : 851100,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-22T00:00:00.000Z"),
+            "fiscalSign" : 1468571249
+        },
+        "documentId" : 675
+    },
+    {
+        "documentId" : 950,
+        "fsId" : "9999078900008900",
+        "content" : {
+            "dateTime" : ISODate("2018-01-22T00:00:00.000Z"),
+            "fiscalSign" : NumberLong(2791015478),
+            "operationType" : 1,
+            "totalSum" : 10500
+        }
+    },
+    {
+        "fsId" : "9999078900008650",
+        "content" : {
+            "fiscalSign" : 186597080,
+            "totalSum" : 5300,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-22T00:00:00.000Z")
+        },
+        "documentId" : 1787
+    },
+    {
+        "fsId" : "9999078900008650",
+        "content" : {
+            "fiscalSign" : 430312558,
+            "totalSum" : 10500,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-22T00:01:00.000Z")
+        },
+        "documentId" : 1788
+    },
+    {
+        "documentId" : 144,
+        "fsId" : "9999078900003297",
+        "content" : {
+            "dateTime" : ISODate("2018-01-22T00:07:00.000Z"),
+            "fiscalSign" : 1649875542,
+            "operationType" : 1,
+            "totalSum" : 5300
+        }
+    },
+    {
+        "fsId" : "9999078900003297",
+        "content" : {
+            "fiscalSign" : 1878525652,
+            "totalSum" : 10500,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-22T00:08:00.000Z")
+        },
+        "documentId" : 145
+    },
+    {
+        "fsId" : "9999078900003297",
+        "documentId" : 148,
+        "content" : {
+            "fiscalSign" : 1600958921,
+            "dateTime" : ISODate("2018-01-22T00:10:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 595700
+        }
+    },
+    {
+        "documentId" : 149,
+        "fsId" : "9999078900003297",
+        "content" : {
+            "totalSum" : 657600,
+            "fiscalSign" : NumberLong(3780464643),
+            "dateTime" : ISODate("2018-01-22T00:10:00.000Z"),
+            "operationType" : 1
+        }
+    },
+    {
+        "fsId" : "9999078900003297",
+        "documentId" : 156,
+        "content" : {
+            "fiscalSign" : NumberLong(3545925304),
+            "dateTime" : ISODate("2018-01-22T00:23:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 10500
+        }
+    },
+    {
+        "documentId" : 121830,
+        "fsId" : "9999078900006727",
+        "content" : {
+            "totalSum" : 12300,
+            "dateTime" : ISODate("2018-01-29T00:02:00.000Z"),
+            "operationType" : 1,
+            "fiscalSign" : 780811539
+        }
+    },
+    {
+        "fsId" : "9999078900006727",
+        "content" : {
+            "fiscalSign" : 231066760,
+            "dateTime" : ISODate("2018-01-29T00:02:00.000Z"),
+            "totalSum" : 12300,
+            "operationType" : 1
+        },
+        "documentId" : 121829
+    },
+    {
+        "fsId" : "9999078900006727",
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-29T00:03:00.000Z"),
+            "totalSum" : 12300,
+            "fiscalSign" : NumberLong(4224783675)
+        },
+        "documentId" : 121831
+    },
+    {
+        "content" : {
+            "totalSum" : 12300,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-01-29T00:03:00.000Z"),
+            "fiscalSign" : NumberLong(3375975080)
+        },
+        "fsId" : "9999078900006727",
+        "documentId" : 121832
+    },
+    {
+        "content" : {
+            "fiscalSign" : NumberLong(2676383000),
+            "dateTime" : ISODate("2018-01-29T00:03:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 12300
+        },
+        "documentId" : 121833,
+        "fsId" : "9999078900006727"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-01-29T00:03:00.000Z"),
+            "totalSum" : 12300,
+            "fiscalSign" : 1885968518,
+            "operationType" : 1
+        },
+        "documentId" : 121834,
+        "fsId" : "9999078900006727"
+    },
+    {
+        "fsId" : "9999078900007891",
+        "documentId" : 4502,
+        "content" : {
+            "dateTime" : ISODate("2018-01-29T00:08:00.000Z"),
+            "fiscalSign" : NumberLong(3847843767),
+            "totalSum" : 65000,
+            "operationType" : 1
+        }
+    },
+    {
+        "documentId" : 121835,
+        "fsId" : "9999078900006727",
+        "content" : {
+            "dateTime" : ISODate("2018-01-29T00:03:00.000Z"),
+            "fiscalSign" : 1530761608,
+            "operationType" : 1,
+            "totalSum" : 12300
+        }
+    },
+    {
+        "documentId" : 121836,
+        "fsId" : "9999078900006727",
+        "content" : {
+            "totalSum" : 12300,
+            "dateTime" : ISODate("2018-01-29T00:04:00.000Z"),
+            "operationType" : 1,
+            "fiscalSign" : NumberLong(3856158851)
+        }
+    },
+    {
+        "fsId" : "9999078900006727",
+        "content" : {
+            "fiscalSign" : 352654231,
+            "dateTime" : ISODate("2018-01-29T00:04:00.000Z"),
+            "totalSum" : 12300,
+            "operationType" : 1
+        },
+        "documentId" : 121837
+    },
+    {
+        "fsId" : "9999078900009521",
+        "content" : {
+            "fiscalSign" : NumberLong(3124863942),
+            "dateTime" : ISODate("2018-02-05T00:00:00.000Z"),
+            "totalSum" : 500000,
+            "operationType" : 3
+        },
+        "documentId" : 8724
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-02-05T00:01:00.000Z"),
+            "operationType" : 3,
+            "totalSum" : 750000,
+            "fiscalSign" : NumberLong(2851608379)
+        },
+        "fsId" : "9999078900009521",
+        "documentId" : 8725
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-02-05T00:03:00.000Z"),
+            "operationType" : 3,
+            "totalSum" : 20000,
+            "fiscalSign" : NumberLong(3004996777)
+        },
+        "fsId" : "9999078900009521",
+        "documentId" : 8726
+    },
+    {
+        "content" : {
+            "fiscalSign" : NumberLong(4066090827),
+            "dateTime" : ISODate("2018-02-05T00:03:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 12300
+        },
+        "documentId" : 173714,
+        "fsId" : "9999078900006727"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-02-05T00:03:00.000Z"),
+            "totalSum" : 12300,
+            "fiscalSign" : NumberLong(3341225646),
+            "operationType" : 1
+        },
+        "documentId" : 173713,
+        "fsId" : "9999078900006727"
+    },
+    {
+        "fsId" : "9999078900006727",
+        "documentId" : 173715,
+        "content" : {
+            "fiscalSign" : NumberLong(3722214151),
+            "totalSum" : 12300,
+            "dateTime" : ISODate("2018-02-05T00:03:00.000Z"),
+            "operationType" : 1
+        }
+    },
+    {
+        "documentId" : 173716,
+        "fsId" : "9999078900006727",
+        "content" : {
+            "dateTime" : ISODate("2018-02-05T00:04:00.000Z"),
+            "fiscalSign" : 1803727324,
+            "operationType" : 1,
+            "totalSum" : 12300
+        }
+    },
+    {
+        "documentId" : 173717,
+        "fsId" : "9999078900006727",
+        "content" : {
+            "totalSum" : 12300,
+            "dateTime" : ISODate("2018-02-05T00:04:00.000Z"),
+            "operationType" : 1,
+            "fiscalSign" : 505006701
+        }
+    },
+    {
+        "fsId" : "9999078900006727",
+        "content" : {
+            "fiscalSign" : 427633375,
+            "dateTime" : ISODate("2018-02-05T00:04:00.000Z"),
+            "totalSum" : 12300,
+            "operationType" : 1
+        },
+        "documentId" : 173718
+    },
+    {
+        "fsId" : "9999078900006727",
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-02-05T00:04:00.000Z"),
+            "totalSum" : 12300,
+            "fiscalSign" : NumberLong(2548284355)
+        },
+        "documentId" : 173719
+    },
+    {
+        "documentId" : 468,
+        "fsId" : "8710000101812711",
+        "content" : {
+            "dateTime" : ISODate("2018-02-12T01:05:00.000Z"),
+            "fiscalSign" : NumberLong(3318362906),
+            "operationType" : 1,
+            "totalSum" : 1085000
+        }
+    },
+    {
+        "content" : {
+            "totalSum" : 250000,
+            "fiscalSign" : NumberLong(4046691432),
+            "dateTime" : ISODate("2018-02-12T00:02:00.000Z"),
+            "operationType" : 3
+        },
+        "documentId" : 21130,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "totalSum" : 1420000,
+            "fiscalSign" : NumberLong(4024608109),
+            "dateTime" : ISODate("2018-02-12T02:06:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 469,
+        "fsId" : "8710000101812711"
+    },
+    {
+        "documentId" : 7058,
+        "fsId" : "8710000101576976",
+        "content" : {
+            "dateTime" : ISODate("2018-02-12T00:00:00.000Z"),
+            "fiscalSign" : NumberLong(3117031077),
+            "operationType" : 1,
+            "totalSum" : 210000
+        }
+    },
+    {
+        "documentId" : 42673,
+        "content" : {
+            "dateTime" : ISODate("2018-02-12T00:00:00.000Z"),
+            "fiscalSign" : NumberLong(2275797675),
+            "operationType" : 1,
+            "totalSum" : 49500
+        },
+        "fsId" : "8710000101791798"
+    },
+    {
+        "fsId" : "8710000101632586",
+        "content" : {
+            "fiscalSign" : 670271878,
+            "dateTime" : ISODate("2018-02-12T00:06:00.000Z"),
+            "totalSum" : 110000,
+            "operationType" : 1
+        },
+        "documentId" : 4677
+    },
+    {
+        "documentId" : 42674,
+        "content" : {
+            "dateTime" : ISODate("2018-02-12T00:02:00.000Z"),
+            "fiscalSign" : 5592828,
+            "operationType" : 1,
+            "totalSum" : 38900
+        },
+        "fsId" : "8710000101791798"
+    },
+    {
+        "documentId" : 124135,
+        "fsId" : "8710000100691991",
+        "content" : {
+            "dateTime" : ISODate("2018-02-12T00:08:00.000Z"),
+            "fiscalSign" : NumberLong(4090187605),
+            "operationType" : 1,
+            "totalSum" : 29983
+        }
+    },
+    {
+        "documentId" : 7059,
+        "content" : {
+            "dateTime" : ISODate("2018-02-12T00:07:00.000Z"),
+            "fiscalSign" : 275285490,
+            "operationType" : 1,
+            "totalSum" : 80000
+        },
+        "fsId" : "8710000101576976"
+    },
+    {
+        "content" : {
+            "totalSum" : 179591,
+            "fiscalSign" : 2131405422,
+            "dateTime" : ISODate("2018-02-12T00:06:00.000Z"),
+            "operationType" : 1
+        },
+        "fsId" : "8710000100882730",
+        "documentId" : 128909
+    },
+    {
+        "fsId" : "9999001836333333",
+        "content" : {
+            "totalSum" : 41842,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-02-20T08:04:39.000Z"),
+            "fiscalSign" : 322355994
+        },
+        "documentId" : 13534
+    },
+    {
+        "fsId" : "9999078900008900",
+        "content" : {
+            "totalSum" : 10500,
+            "operationType" : 2,
+            "dateTime" : ISODate("2018-02-20T14:38:00.000Z"),
+            "fiscalSign" : 2141658703
+        },
+        "documentId" : 2843
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-02-19T20:05:01.000Z"),
+            "fiscalSign" : NumberLong(3363505671),
+            "totalSum" : 15832,
+            "operationType" : 1
+        },
+        "fsId" : "9999001836111111",
+        "documentId" : 23771
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-02-20T14:38:00.000Z"),
+            "fiscalSign" : 1125551341,
+            "totalSum" : 10500,
+            "operationType" : 2
+        },
+        "fsId" : "9999078900008900",
+        "documentId" : 2842
+    },
+    {
+        "fsId" : "9999078900002347",
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-02-20T10:39:00.000Z"),
+            "totalSum" : 349000,
+            "fiscalSign" : NumberLong(3190775548)
+        },
+        "documentId" : 5452
+    },
+    {
+        "documentId" : 23827,
+        "fsId" : "9999001836111111",
+        "content" : {
+            "totalSum" : 49717,
+            "fiscalSign" : 820493677,
+            "dateTime" : ISODate("2018-02-20T04:05:01.000Z"),
+            "operationType" : 1
+        }
+    },
+    {
+        "documentId" : 134,
+        "fsId" : "9999078900001769",
+        "content" : {
+            "totalSum" : 11000,
+            "dateTime" : ISODate("2018-02-19T16:26:00.000Z"),
+            "operationType" : 1,
+            "fiscalSign" : NumberLong(2435584750)
+        }
+    },
+    {
+        "documentId" : 13919,
+        "fsId" : "9999078900009521",
+        "content" : {
+            "dateTime" : ISODate("2018-02-20T10:39:00.000Z"),
+            "fiscalSign" : NumberLong(3478576431),
+            "totalSum" : 2700000,
+            "operationType" : 3
+        }
+    },
+    {
+        "fsId" : "9999078900008650",
+        "content" : {
+            "totalSum" : 10500,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-02-20T14:05:00.000Z"),
+            "fiscalSign" : NumberLong(2446383533)
+        },
+        "documentId" : 3888
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-02-20T00:05:01.000Z"),
+            "fiscalSign" : NumberLong(2895738182),
+            "totalSum" : 55301,
+            "operationType" : 1
+        },
+        "fsId" : "9999001836111111",
+        "documentId" : 23795
+    },
+    {
+        "fsId" : "9999078900003029",
+        "content" : {
+            "fiscalSign" : NumberLong(2964211004),
+            "totalSum" : 12345,
+            "dateTime" : ISODate("2018-02-28T13:18:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 2653
+    },
+    {
+        "documentId" : 15021,
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-02-28T12:18:00.000Z"),
+            "totalSum" : 200000,
+            "fiscalSign" : 1132660051
+        },
+        "fsId" : "9999078900009322"
+    },
+    {
+        "content" : {
+            "totalSum" : 0,
+            "fiscalSign" : 1975979068,
+            "dateTime" : ISODate("2018-02-28T12:18:00.000Z"),
+            "operationType" : 1
+        },
+        "fsId" : "9999078900007175",
+        "documentId" : 713
+    },
+    {
+        "documentId" : 3575,
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-02-28T12:17:00.000Z"),
+            "totalSum" : 33240,
+            "fiscalSign" : 1490672764
+        },
+        "fsId" : "9999078900006717"
+    },
+    {
+        "documentId" : 15024,
+        "fsId" : "9999078900009322",
+        "content" : {
+            "dateTime" : ISODate("2018-02-28T12:19:00.000Z"),
+            "fiscalSign" : 1499148732,
+            "operationType" : 3,
+            "totalSum" : 10000000
+        }
+    },
+    {
+        "content" : {
+            "totalSum" : 33240,
+            "fiscalSign" : 1047055378,
+            "dateTime" : ISODate("2018-02-28T12:16:00.000Z"),
+            "operationType" : 2
+        },
+        "fsId" : "9999078900006717",
+        "documentId" : 3574
+    },
+    {
+        "documentId" : 15027,
+        "content" : {
+            "dateTime" : ISODate("2018-02-28T12:19:00.000Z"),
+            "fiscalSign" : NumberLong(2526524545),
+            "operationType" : 1,
+            "totalSum" : 800000
+        },
+        "fsId" : "9999078900009322"
+    },
+    {
+        "content" : {
+            "fiscalSign" : NumberLong(3153863193),
+            "totalSum" : 33240,
+            "dateTime" : ISODate("2018-02-28T12:17:00.000Z"),
+            "operationType" : 2
+        },
+        "documentId" : 3576,
+        "fsId" : "9999078900006717"
+    },
+    {
+        "documentId" : 3379,
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-02-28T11:20:00.000Z"),
+            "totalSum" : 240573,
+            "fiscalSign" : NumberLong(2433271396)
+        },
+        "fsId" : "9999078900005166"
+    },
+    {
+        "fsId" : "9999078900009322",
+        "content" : {
+            "fiscalSign" : 819329840,
+            "totalSum" : 200000,
+            "dateTime" : ISODate("2018-02-28T12:19:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 15028
+    },
+    {
+        "documentId" : 22762,
+        "fsId" : "8712000101063006",
+        "content" : {
+            "dateTime" : ISODate("2018-03-05T00:00:00.000Z"),
+            "fiscalSign" : 1027961865,
+            "operationType" : 3,
+            "totalSum" : 250000
+        }
+    },
+    {
+        "content" : {
+            "totalSum" : 20000,
+            "fiscalSign" : 76361301,
+            "dateTime" : ISODate("2018-03-05T00:00:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 22763,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "documentId" : 22764,
+        "fsId" : "8712000101063006",
+        "content" : {
+            "dateTime" : ISODate("2018-03-05T00:14:00.000Z"),
+            "fiscalSign" : 990921991,
+            "operationType" : 1,
+            "totalSum" : 600000
+        }
+    },
+    {
+        "content" : {
+            "totalSum" : 50000,
+            "fiscalSign" : NumberLong(3612416630),
+            "dateTime" : ISODate("2018-03-05T00:14:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 22765,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "totalSum" : 100000,
+            "fiscalSign" : 1738664350,
+            "dateTime" : ISODate("2018-03-05T00:15:00.000Z"),
+            "operationType" : 3
+        },
+        "documentId" : 22766,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "documentId" : 22767,
+        "content" : {
+            "dateTime" : ISODate("2018-03-05T00:16:00.000Z"),
+            "fiscalSign" : 650259771,
+            "operationType" : 3,
+            "totalSum" : 50000
+        },
+        "fsId" : "8712000101063006"
+    },
+    {
+        "documentId" : 22768,
+        "fsId" : "8712000101063006",
+        "content" : {
+            "dateTime" : ISODate("2018-03-05T00:18:00.000Z"),
+            "fiscalSign" : 1249250091,
+            "operationType" : 1,
+            "totalSum" : 500000
+        }
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-03-05T00:22:00.000Z"),
+            "totalSum" : 80000,
+            "fiscalSign" : 831777905,
+            "operationType" : 1
+        },
+        "documentId" : 22769,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "totalSum" : 20000,
+            "fiscalSign" : NumberLong(3562740666),
+            "dateTime" : ISODate("2018-03-05T00:25:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 22770,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-03-05T00:27:00.000Z"),
+            "totalSum" : 100000,
+            "fiscalSign" : 1223906045,
+            "operationType" : 1
+        },
+        "documentId" : 22771,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "totalSum" : 130000,
+            "fiscalSign" : 80259050,
+            "dateTime" : ISODate("2018-03-12T00:15:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 23688,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "totalSum" : 47350,
+            "fiscalSign" : 621456271,
+            "dateTime" : ISODate("2018-03-12T00:00:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 69915,
+        "fsId" : "8710000100039773"
+    },
+    {
+        "documentId" : 69916,
+        "content" : {
+            "dateTime" : ISODate("2018-03-12T00:02:00.000Z"),
+            "totalSum" : 163950,
+            "operationType" : 1,
+            "fiscalSign" : 805027452
+        },
+        "fsId" : "8710000100039773"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-03-12T00:04:00.000Z"),
+            "totalSum" : 17168,
+            "fiscalSign" : 1032195229,
+            "operationType" : 1
+        },
+        "documentId" : 69917,
+        "fsId" : "8710000100039773"
+    },
+    {
+        "content" : {
+            "totalSum" : 22694,
+            "fiscalSign" : NumberLong(3868896142),
+            "dateTime" : ISODate("2018-03-12T00:05:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 69918,
+        "fsId" : "8710000100039773"
+    },
+    {
+        "content" : {
+            "totalSum" : 150000,
+            "fiscalSign" : NumberLong(2224495204),
+            "dateTime" : ISODate("2018-03-12T00:06:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 8415,
+        "fsId" : "8710000101576976"
+    },
+    {
+        "content" : {
+            "totalSum" : 5300,
+            "fiscalSign" : NumberLong(2507987746),
+            "dateTime" : ISODate("2018-03-12T00:06:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 69919,
+        "fsId" : "8710000100039773"
+    },
+    {
+        "documentId" : 141371,
+        "content" : {
+            "dateTime" : ISODate("2018-03-12T00:06:00.000Z"),
+            "totalSum" : 39400,
+            "operationType" : 1,
+            "fiscalSign" : NumberLong(3342603049)
+        },
+        "fsId" : "8710000100882730"
+    },
+    {
+        "fsId" : "8710000100039773",
+        "content" : {
+            "fiscalSign" : NumberLong(2536525310),
+            "dateTime" : ISODate("2018-03-12T00:07:00.000Z"),
+            "totalSum" : 36600,
+            "operationType" : 1
+        },
+        "documentId" : 69920
+    },
+    {
+        "documentId" : 69921,
+        "fsId" : "8710000100039773",
+        "content" : {
+            "dateTime" : ISODate("2018-03-12T00:08:00.000Z"),
+            "fiscalSign" : NumberLong(3738962929),
+            "operationType" : 1,
+            "totalSum" : 15000
+        }
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-03-19T14:14:00.000Z"),
+            "fiscalSign" : 1776984321,
+            "totalSum" : 100,
+            "operationType" : 1
+        },
+        "fsId" : "9999078900009535",
+        "documentId" : 12
+    },
+    {
+        "content" : {
+            "totalSum" : 1000,
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-03-22T19:14:00.000Z"),
+            "fiscalSign" : 2065108622
+        },
+        "documentId" : 188,
+        "fsId" : "9999078900010719"
+    },
+    {
+        "fsId" : "8710000101800612",
+        "content" : {
+            "fiscalSign" : 1240712132,
+            "dateTime" : ISODate("2018-03-23T18:58:00.000Z"),
+            "totalSum" : 515000,
+            "operationType" : 1
+        },
+        "documentId" : 1208
+    },
+    {
+        "documentId" : 14032,
+        "fsId" : "8710000101363705",
+        "content" : {
+            "dateTime" : ISODate("2018-03-20T19:51:00.000Z"),
+            "fiscalSign" : 422226595,
+            "operationType" : 1,
+            "totalSum" : 76000
+        }
+    },
+    {
+        "fsId" : "8710000101363705",
+        "content" : {
+            "operationType" : 1,
+            "dateTime" : ISODate("2018-03-24T19:07:00.000Z"),
+            "fiscalSign" : NumberLong(2684083019),
+            "totalSum" : 24000
+        },
+        "documentId" : 14186
+    },
+    {
+        "documentId" : 14181,
+        "content" : {
+            "dateTime" : ISODate("2018-03-24T17:45:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 90000,
+            "fiscalSign" : NumberLong(2976038225)
+        },
+        "fsId" : "8710000101363705"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-03-24T19:08:00.000Z"),
+            "totalSum" : 196000,
+            "operationType" : 1,
+            "fiscalSign" : 1760356147
+        },
+        "documentId" : 14187,
+        "fsId" : "8710000101363705"
+    },
+    {
+        "documentId" : 14189,
+        "content" : {
+            "dateTime" : ISODate("2018-03-24T19:27:00.000Z"),
+            "operationType" : 1,
+            "totalSum" : 98000,
+            "fiscalSign" : NumberLong(4033467236)
+        },
+        "fsId" : "8710000101363705"
+    },
+    {
+        "documentId" : 14182,
+        "content" : {
+            "dateTime" : ISODate("2018-03-24T18:28:00.000Z"),
+            "totalSum" : 51000,
+            "operationType" : 1,
+            "fiscalSign" : NumberLong(3417288347)
+        },
+        "fsId" : "8710000101363705"
+    },
+    {
+        "fsId" : "8710000101363705",
+        "content" : {
+            "fiscalSign" : 648504402,
+            "dateTime" : ISODate("2018-03-24T18:38:00.000Z"),
+            "totalSum" : 66000,
+            "operationType" : 1
+        },
+        "documentId" : 14185
+    },
+    {
+        "fsId" : "9286000100110046",
+        "content" : {
+            "fiscalSign" : NumberLong(3976785598),
+            "dateTime" : ISODate("2018-03-29T11:29:00.000Z"),
+            "totalSum" : 4000,
+            "operationType" : 1
+        },
+        "documentId" : 2832
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-03-29T11:29:00.000Z"),
+            "totalSum" : 158000,
+            "fiscalSign" : 932658894,
+            "operationType" : 1
+        },
+        "documentId" : 248016,
+        "fsId" : "8710000101443175"
+    },
+    {
+        "documentId" : 43610,
+        "content" : {
+            "fiscalSign" : 1167456553,
+            "totalSum" : 10000,
+            "dateTime" : ISODate("2018-03-29T11:29:00.000Z"),
+            "operationType" : 1
+        },
+        "fsId" : "8710000101585927"
+    },
+    {
+        "content" : {
+            "totalSum" : 50000,
+            "fiscalSign" : 1469995717,
+            "dateTime" : ISODate("2018-03-29T11:29:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 47904,
+        "fsId" : "8710000101585933"
+    },
+    {
+        "content" : {
+            "totalSum" : 3550,
+            "fiscalSign" : NumberLong(3214149606),
+            "dateTime" : ISODate("2018-03-28T17:45:00.000Z"),
+            "operationType" : 1
+        },
+        "fsId" : "8711000101708201",
+        "documentId" : 12774
+    },
+    {
+        "documentId" : 33433,
+        "fsId" : "8710000101586199",
+        "content" : {
+            "dateTime" : ISODate("2018-03-29T11:29:00.000Z"),
+            "fiscalSign" : 1269831512,
+            "operationType" : 1,
+            "totalSum" : 100000
+        }
+    },
+    {
+        "content" : {
+            "fiscalSign" : NumberLong(3646635531),
+            "totalSum" : 20700,
+            "dateTime" : ISODate("2018-03-29T13:29:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 1735,
+        "fsId" : "9282000100035385"
+    },
+    {
+        "content" : {
+            "fiscalSign" : 497887051,
+            "totalSum" : 29779,
+            "dateTime" : ISODate("2018-03-29T13:28:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 657,
+        "fsId" : "8710000101173220"
+    },
+    {
+        "documentId" : 1065,
+        "content" : {
+            "dateTime" : ISODate("2018-03-29T11:28:00.000Z"),
+            "totalSum" : 10488,
+            "operationType" : 1,
+            "fiscalSign" : NumberLong(2867890849)
+        },
+        "fsId" : "8712000100111872"
+    },
+    {
+        "documentId" : 114248,
+        "fsId" : "8710000100439525",
+        "content" : {
+            "dateTime" : ISODate("2018-03-29T11:29:00.000Z"),
+            "fiscalSign" : 922989248,
+            "operationType" : 1,
+            "totalSum" : 13800
+        }
+    },
+    {
+        "documentId" : 25824,
+        "content" : {
+            "dateTime" : ISODate("2018-04-02T00:09:00.000Z"),
+            "totalSum" : 40000,
+            "operationType" : 3,
+            "fiscalSign" : NumberLong(4233351740)
+        },
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-04-02T00:18:00.000Z"),
+            "totalSum" : 20000,
+            "fiscalSign" : 1776413550,
+            "operationType" : 1
+        },
+        "documentId" : 25825,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "totalSum" : 10000,
+            "fiscalSign" : 1373874232,
+            "dateTime" : ISODate("2018-04-02T00:25:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 25826,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "fsId" : "8710000100039791",
+        "content" : {
+            "fiscalSign" : NumberLong(2756254624),
+            "dateTime" : ISODate("2018-04-02T00:00:00.000Z"),
+            "totalSum" : 22550,
+            "operationType" : 1
+        },
+        "documentId" : 90132
+    },
+    {
+        "documentId" : 1066,
+        "fsId" : "8712000100062159",
+        "content" : {
+            "dateTime" : ISODate("2018-04-02T00:02:00.000Z"),
+            "fiscalSign" : NumberLong(4118921656),
+            "operationType" : 1,
+            "totalSum" : 20000
+        }
+    },
+    {
+        "documentId" : 824,
+        "fsId" : "8710000101764672",
+        "content" : {
+            "dateTime" : ISODate("2018-04-02T00:01:00.000Z"),
+            "fiscalSign" : 500448518,
+            "operationType" : 1,
+            "totalSum" : 17000
+        }
+    },
+    {
+        "documentId" : 825,
+        "content" : {
+            "dateTime" : ISODate("2018-04-02T00:02:00.000Z"),
+            "totalSum" : 17000,
+            "operationType" : 1,
+            "fiscalSign" : 537258767
+        },
+        "fsId" : "8710000101764672"
+    },
+    {
+        "content" : {
+            "totalSum" : 75600,
+            "fiscalSign" : 1070071043,
+            "dateTime" : ISODate("2018-04-02T00:05:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 90133,
+        "fsId" : "8710000100039791"
+    },
+    {
+        "documentId" : 90134,
+        "content" : {
+            "dateTime" : ISODate("2018-04-02T00:05:00.000Z"),
+            "totalSum" : 12750,
+            "operationType" : 1,
+            "fiscalSign" : NumberLong(2954877388)
+        },
+        "fsId" : "8710000100039791"
+    },
+    {
+        "documentId" : 90135,
+        "content" : {
+            "dateTime" : ISODate("2018-04-02T00:07:00.000Z"),
+            "totalSum" : 61850,
+            "operationType" : 1,
+            "fiscalSign" : 1357890631
+        },
+        "fsId" : "8710000100039791"
+    },
+    {
+        "documentId" : 26357,
+        "content" : {
+            "dateTime" : ISODate("2018-04-09T00:04:00.000Z"),
+            "totalSum" : 140000,
+            "operationType" : 3,
+            "fiscalSign" : 1948133631
+        },
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "totalSum" : 500000,
+            "fiscalSign" : 956912228,
+            "dateTime" : ISODate("2018-04-09T00:04:00.000Z"),
+            "operationType" : 1
+        },
+        "fsId" : "8712000101063006",
+        "documentId" : 26358
+    },
+    {
+        "documentId" : 74282,
+        "content" : {
+            "dateTime" : ISODate("2018-04-09T00:00:00.000Z"),
+            "fiscalSign" : NumberLong(3456760165),
+            "totalSum" : 6284,
+            "operationType" : 1
+        },
+        "fsId" : "8710000100037742"
+    },
+    {
+        "documentId" : 6818,
+        "content" : {
+            "dateTime" : ISODate("2018-04-09T00:00:00.000Z"),
+            "fiscalSign" : NumberLong(4162738287),
+            "totalSum" : 16000,
+            "operationType" : 1
+        },
+        "fsId" : "8710000101897943"
+    },
+    {
+        "content" : {
+            "totalSum" : 3200,
+            "fiscalSign" : NumberLong(2663642603),
+            "dateTime" : ISODate("2018-04-09T00:01:00.000Z"),
+            "operationType" : 1
+        },
+        "fsId" : "8710000100037742",
+        "documentId" : 74283
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-04-09T00:05:00.000Z"),
+            "totalSum" : 34627,
+            "fiscalSign" : NumberLong(3856689271),
+            "operationType" : 1
+        },
+        "documentId" : 74286,
+        "fsId" : "8710000100037742"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-04-09T00:08:00.000Z"),
+            "totalSum" : 19976,
+            "fiscalSign" : 876907321,
+            "operationType" : 1
+        },
+        "documentId" : 153795,
+        "fsId" : "8710000100691991"
+    },
+    {
+        "fsId" : "8710000100037742",
+        "content" : {
+            "fiscalSign" : 1840343396,
+            "dateTime" : ISODate("2018-04-09T00:06:00.000Z"),
+            "totalSum" : 53900,
+            "operationType" : 1
+        },
+        "documentId" : 74287
+    },
+    {
+        "content" : {
+            "totalSum" : 59212,
+            "fiscalSign" : 1765056971,
+            "dateTime" : ISODate("2018-04-09T00:07:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 74288,
+        "fsId" : "8710000100037742"
+    },
+    {
+        "documentId" : 74289,
+        "fsId" : "8710000100037742",
+        "content" : {
+            "dateTime" : ISODate("2018-04-09T00:08:00.000Z"),
+            "fiscalSign" : 413761821,
+            "operationType" : 1,
+            "totalSum" : 21692
+        }
+    },
+    {
+        "content" : {
+            "totalSum" : 30000,
+            "fiscalSign" : NumberLong(3089361863),
+            "dateTime" : ISODate("2018-04-16T00:02:00.000Z"),
+            "operationType" : 1
+        },
+        "fsId" : "8712000101063006",
+        "documentId" : 26873
+    },
+    {
+        "content" : {
+            "totalSum" : 30000,
+            "fiscalSign" : NumberLong(3742557547),
+            "dateTime" : ISODate("2018-04-16T00:11:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 26874,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "documentId" : 7603,
+        "content" : {
+            "dateTime" : ISODate("2018-04-16T00:05:00.000Z"),
+            "totalSum" : 5000,
+            "operationType" : 1,
+            "fiscalSign" : 2010207055
+        },
+        "fsId" : "8710000101897943"
+    },
+    {
+        "fsId" : "8710000100882730",
+        "content" : {
+            "fiscalSign" : 166246946,
+            "dateTime" : ISODate("2018-04-16T00:05:00.000Z"),
+            "totalSum" : 5200,
+            "operationType" : 1
+        },
+        "documentId" : 156140
+    },
+    {
+        "content" : {
+            "totalSum" : 98500,
+            "fiscalSign" : 1803953518,
+            "dateTime" : ISODate("2018-04-16T00:05:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 156141,
+        "fsId" : "8710000100882730"
+    },
+    {
+        "content" : {
+            "totalSum" : 12663,
+            "fiscalSign" : NumberLong(2709529429),
+            "dateTime" : ISODate("2018-04-16T00:06:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 87973,
+        "fsId" : "8710000100039806"
+    },
+    {
+        "content" : {
+            "totalSum" : 3500,
+            "fiscalSign" : NumberLong(3193787213),
+            "dateTime" : ISODate("2018-04-16T00:06:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 87974,
+        "fsId" : "8710000100039806"
+    },
+    {
+        "documentId" : 87975,
+        "fsId" : "8710000100039806",
+        "content" : {
+            "dateTime" : ISODate("2018-04-16T00:08:00.000Z"),
+            "fiscalSign" : 1327891242,
+            "totalSum" : 64982,
+            "operationType" : 1
+        }
+    },
+    {
+        "content" : {
+            "totalSum" : 39400,
+            "fiscalSign" : NumberLong(4274466899),
+            "dateTime" : ISODate("2018-04-16T00:12:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 156142,
+        "fsId" : "8710000100882730"
+    },
+    {
+        "documentId" : 87976,
+        "content" : {
+            "dateTime" : ISODate("2018-04-16T00:14:00.000Z"),
+            "totalSum" : 18500,
+            "operationType" : 1,
+            "fiscalSign" : 883396432
+        },
+        "fsId" : "8710000100039806"
+    },
+    {
+        "documentId" : 27228,
+        "fsId" : "8712000101063006",
+        "content" : {
+            "dateTime" : ISODate("2018-04-23T00:08:00.000Z"),
+            "fiscalSign" : NumberLong(3789787240),
+            "operationType" : 3,
+            "totalSum" : 250000
+        }
+    },
+    {
+        "documentId" : 27229,
+        "content" : {
+            "dateTime" : ISODate("2018-04-23T00:13:00.000Z"),
+            "totalSum" : 30000,
+            "operationType" : 1,
+            "fiscalSign" : NumberLong(2227124260)
+        },
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "totalSum" : 20000,
+            "fiscalSign" : 1516165960,
+            "dateTime" : ISODate("2018-04-23T00:16:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 27230,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "fsId" : "8712000101063006",
+        "content" : {
+            "fiscalSign" : 1440423698,
+            "dateTime" : ISODate("2018-04-23T00:20:00.000Z"),
+            "totalSum" : 20000,
+            "operationType" : 1
+        },
+        "documentId" : 27231
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-04-23T00:22:00.000Z"),
+            "totalSum" : 50000,
+            "fiscalSign" : NumberLong(2551971117),
+            "operationType" : 1
+        },
+        "documentId" : 27232,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "content" : {
+            "dateTime" : ISODate("2018-04-23T00:23:00.000Z"),
+            "totalSum" : 50000,
+            "fiscalSign" : NumberLong(4282547105),
+            "operationType" : 1
+        },
+        "documentId" : 27233,
+        "fsId" : "8712000101063006"
+    },
+    {
+        "fsId" : "8712000101063006",
+        "content" : {
+            "fiscalSign" : NumberLong(2567404567),
+            "dateTime" : ISODate("2018-04-23T00:24:00.000Z"),
+            "totalSum" : 20000,
+            "operationType" : 1
+        },
+        "documentId" : 27234
+    },
+    {
+        "content" : {
+            "totalSum" : 98500,
+            "fiscalSign" : NumberLong(2381402958),
+            "dateTime" : ISODate("2018-04-23T00:11:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 160920,
+        "fsId" : "8710000100691991"
+    },
+    {
+        "content" : {
+            "totalSum" : 28000,
+            "fiscalSign" : NumberLong(2443002988),
+            "dateTime" : ISODate("2018-04-23T00:00:00.000Z"),
+            "operationType" : 1
+        },
+        "documentId" : 198,
+        "fsId" : "8712000100110073"
+    },
+    {
+        "documentId" : 160919,
+        "content" : {
+            "dateTime" : ISODate("2018-04-23T00:04:00.000Z"),
+            "totalSum" : 49999,
+            "operationType" : 1,
+            "fiscalSign" : 928207589
+        },
+        "fsId" : "8710000100691991"
+    }
+]
