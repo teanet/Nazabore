@@ -5,7 +5,7 @@ internal struct Constants
 	static let baseUrlString: String = {
 		#if DEBUG
 
-		return "http://127.0.0.0:8080/nazabore/api/1.0/"
+		return "http://127.0.0.1:8080/nazabore/api/1.0/"
 //		return "http://10.54.193.61:8080/nazabore/api/1.0/"
 //		return "http://api.cashback.steelhoss.xyz/cashback/api/0.1/"
 //		return "http://cashback.web-staging.2gis.ru/cashback/api/0.1/"

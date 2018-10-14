@@ -6,6 +6,13 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <SSKeychain.h>
+#import "Nazabore-Swift.h"
+
+@interface AppDelegate()
+
+@property (nonatomic, strong, readonly) Container *container;
+
+@end
 
 @implementation AppDelegate
 
@@ -23,8 +30,9 @@
 
 - (void)configureWindow
 {
+	_container = [[Container alloc] init];
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[NZBMapVC alloc] init]];
+	self.window.rootViewController = self.container.rootVC;
 	[self.window makeKeyAndVisible];
 
 	[[UINavigationBar appearance] setBarTintColor:[UIColor nzb_brightGrayColor]];

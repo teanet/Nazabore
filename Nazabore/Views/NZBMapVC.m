@@ -4,6 +4,8 @@
 #import "MZBBoardAnnotation.h"
 #import "NZBAnnotationView.h"
 #import "NZBNotifyView.h"
+#import "RDRGrowingTextView.h"
+
 #import "Nazabore-Swift.h"
 
 @import ReactiveCocoa;
@@ -17,7 +19,6 @@ UIGestureRecognizerDelegate
 @property (nonatomic, strong, readonly) MKMapView *mapView;
 @property (nonatomic, strong) NSArray *annotations;
 @property (nonatomic, strong) MKCircle *userCircle;
-@property (nonatomic, strong) MarkerFetcher *mf;
 
 @end
 
@@ -55,8 +56,6 @@ UIGestureRecognizerDelegate
 		make.bottom.greaterThanOrEqualTo(self.keyboardView.mas_top).with.offset(-16.0).with.priorityHigh();
 	}];
 
-	self.mf = [[MarkerFetcher alloc] init];
-
 	[[NZBDataProvider sharedProvider].nearestBoardsSignal subscribeNext:^(NSArray *boards) {
 		@strongify(self);
 
@@ -78,7 +77,7 @@ UIGestureRecognizerDelegate
 	[locationSignal subscribeNext:^(CLLocation *location) {
 		@strongify(self);
 
-		[self.mf getWithC:location cmp:^(NSArray<BoardAnnotation *> * annotations) {
+		[self.markerFetcher getWithC:location cmp:^(NSArray<BoardAnnotation *> * annotations) {
 
 			[self.mapView removeAnnotations:self.annotations];
 			self.annotations = annotations;
@@ -161,7 +160,7 @@ UIGestureRecognizerDelegate
 	if ([view.annotation isKindOfClass:[BoardAnnotation class]])
 	{
 		BoardAnnotation *annotation = view.annotation;
-		[self showBoard:annotation.board];
+		[annotation select];
 	}
 }
 

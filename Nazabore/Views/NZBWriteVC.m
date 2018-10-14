@@ -5,7 +5,11 @@
 #import "NZBZaborVC.h"
 #import "UIColor+System.h"
 #import "NZBAnalytics.h"
+#import "RDRGrowingTextView.h"
+
 #import "Nazabore-Swift.h"
+
+@import libextobjc;
 
 static CGFloat const MaxToolbarHeight = 200.0;
 
@@ -13,6 +17,7 @@ static CGFloat const MaxToolbarHeight = 200.0;
 
 @property (nonatomic, strong, readonly) UIView *toolbar;
 @property (nonatomic, strong) MASConstraint *hightContraint;
+@property (nonatomic, strong, readonly) Router *router;
 
 @end
 
@@ -23,6 +28,17 @@ static CGFloat const MaxToolbarHeight = 200.0;
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (instancetype)initWithRouter:(Router *)router markerFetcher:(MarkerFetcher *)markerFetcher
+{
+	self = [super initWithNibName:nil bundle:nil];
+	if (self == nil) return nil;
+
+	_router = router;
+	_markerFetcher = markerFetcher;
+
+	return self;
 }
 
 
@@ -95,15 +111,6 @@ static CGFloat const MaxToolbarHeight = 200.0;
 	skipFirstTimeAnimation = YES;
 }
 
-- (void)showBoard:(NZBBoard *)b
-{
-	if ([self.board.id isEqualToString:b.id]) return;
-
-	NZBZaborVC *zaborVC = [[NZBZaborVC alloc] init];
-	zaborVC.board = b;
-	[self.navigationController pushViewController:zaborVC animated:YES];
-}
-
 - (void)sendTap:(UIButton *)b
 {
 	@weakify(self);
@@ -118,27 +125,31 @@ static CGFloat const MaxToolbarHeight = 200.0;
 		@strongify(self);
 		NSCParameterAssert(emoji);
 		[self dismissViewControllerAnimated:YES completion:nil];
-		[[[NZBDataProvider sharedProvider] postMessage:self.textView.text forBoard:self.board emoji:emoji] subscribeNext:^(NZBMessage *m) {
-			@strongify(self);
 
-			if (m.boardD)
-			{
-				NZBBoard *b = [[NZBBoard alloc] initWithDictionary:m.boardD];
-				[self showBoard:b];
-			}
-			self.textView.text = @"";
-			[self refetchData];
-			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @YES,
-																	 NZBASmile: emoji.textForAnalytics}];
-		} error:^(NSError *error) {
-			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @NO,
-																	 NZBASmile: emoji.textForAnalytics}];
-			[[[UIAlertView alloc] initWithTitle:kNZB_ERROR_ALERT_TITLE
-										message:error.localizedDescription
-									   delegate:nil
-							  cancelButtonTitle:kNZB_ERROR_ALERT_BUTTON_OK_TITLE
-							  otherButtonTitles:nil] show];
-		}];
+		[self.markerFetcher postMessageWithLocation:[NZBDataProvider sharedProvider].currentLocation
+											  emoji:emoji.text
+											message:self.textView.text];
+//		[[[NZBDataProvider sharedProvider] postMessage:self.textView.text forBoard:self.board emoji:emoji] subscribeNext:^(NZBMessage *m) {
+//			@strongify(self);
+//
+//			if (m.boardD)
+//			{
+//				NZBBoard *b = [[NZBBoard alloc] initWithDictionary:m.boardD];
+//				[self showBoard:b];
+//			}
+//			self.textView.text = @"";
+//			[self refetchData];
+//			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @YES,
+//																	 NZBASmile: emoji.textForAnalytics}];
+//		} error:^(NSError *error) {
+//			[NZBAnalytics logEvent:NZBAPostMessageEvent parameters:@{NZBAStatus: @NO,
+//																	 NZBASmile: emoji.textForAnalytics}];
+//			[[[UIAlertView alloc] initWithTitle:kNZB_ERROR_ALERT_TITLE
+//										message:error.localizedDescription
+//									   delegate:nil
+//							  cancelButtonTitle:kNZB_ERROR_ALERT_BUTTON_OK_TITLE
+//							  otherButtonTitles:nil] show];
+//		}];
 	};
 	emojiSelectVC.didCloseBlock = ^{
 		@strongify(self);

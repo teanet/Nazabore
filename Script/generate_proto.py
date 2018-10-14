@@ -27,7 +27,7 @@ def create_parser():
 
 def create_protos():
 	subprocess.check_call(["rm", "-rf", "Nazabore/ProtoModels"])
-	subprocess.check_call(["protoc", "--swift_out=./Nazabore", "ProtoModels/protocol.proto"])
+	subprocess.check_call(["protoc", "--swift_out=./Nazabore", "./ProtoModels/protocol.proto"])
 
 if __name__ == "__main__":
     main()

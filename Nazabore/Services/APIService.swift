@@ -3,14 +3,14 @@ import AlamofireNetworkActivityIndicator
 import CoreLocation
 import SwiftProtobuf
 
-internal class APIService {
+@objc public class APIService: NSObject {
 
 	private let manager: SessionManager
 	private var headers: [String : String]
 
 	private private(set) var baseURLString: String = ""
 
-	required init(
+	internal override init(
 //		userId: APIUserId,
 //		userToken: APIUserToken,
 //		deviceId: APIDeviceId,
@@ -48,7 +48,7 @@ internal class APIService {
 
 		// Вот здесь надо как-то правильно прокинуть дефолтные хедэры в менеджер аламофайера
 		self.headers = headers
-
+		super.init()
 		NetworkActivityIndicatorManager.shared.isEnabled = true
 		NetworkActivityIndicatorManager.shared.completionDelay = 0.3
 		self.configure(forBaseUrlString: Constants.baseUrlString)
@@ -169,6 +169,18 @@ internal extension APIService { // + API
 		]
 		self.request(httpMethod: .get, method: "markers", params: params) { (response) in
 			completion(response.unwrapProto(to: ListMarkersResponse.self))
+		}
+	}
+
+	func postMessage(location: CLLocation, emoji: String, message: String, completion: @escaping (Result<OkResponse>) -> Void) {
+		var req = AddMarkerRequest()
+		req.location = location.geoPoint
+		req.message = message
+		var icon = Icon()
+		icon.emoji = emoji
+		req.icon = icon
+		self.protoRequest(httpMethod: .post, method: "markers", protoObject: req) { (response) in
+			completion(response.unwrapProto(to: OkResponse.self))
 		}
 	}
 
